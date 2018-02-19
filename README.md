@@ -1,2 +1,7 @@
+# FEUP - MIEIC
+2º Year - 2º Semester
+
 # CGRA1718
-MIEIC - FEUP CGRA - 2017/2018
+CGRA - Computer Graphics
+
+Programming language used: JavaScript on WebGL
