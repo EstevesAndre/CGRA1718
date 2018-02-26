@@ -11,6 +11,7 @@ class MyUnitCubeQuad extends CGFobject
 	{
 		super(scene);
 		this.quad=new MyQuad(this.scene);
+		this.quad.initBuffers();
 	};  
 
 	display()
@@ -49,7 +50,6 @@ class MyUnitCubeQuad extends CGFobject
 		this.scene.rotate(Math.PI/2.0, 1,0,0);
 		this.quad.display();
 		this.scene.popMatrix();
-		
 	};
 };
 
