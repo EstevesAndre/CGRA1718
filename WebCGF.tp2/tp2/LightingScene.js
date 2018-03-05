@@ -51,6 +51,18 @@ class LightingScene extends CGFscene
 		this.materialB.setDiffuse(0.6,0.6,0.6,1);
 		this.materialB.setSpecular(0.8,0.8,0.8,1);	
 		this.materialB.setShininess(120);
+
+		this.wallM = new CGFappearance(this);
+		this.wallM.setAmbient(0.3,0.3,0.3,1);
+		this.wallM.setDiffuse(0.5,0.5,0.75,1);
+		this.wallM.setSpecular(0.1,0.1,0.1,1);	
+		this.wallM.setShininess(5);
+
+		this.floorM = new CGFappearance(this);
+		this.floorM.setAmbient(0.3,0.3,0.3,1);
+		this.floorM.setDiffuse(0.78,0.39,0.25,1);
+		this.floorM.setSpecular(0.75,0.75,0.75,1);	
+		this.floorM.setShininess(75);
 		
 	};
 
@@ -135,6 +147,7 @@ class LightingScene extends CGFscene
 			this.translate(7.5, 0, 7.5);
 			this.rotate(-90 * degToRad, 1, 0, 0);
 			this.scale(15, 15, 0.2);
+			this.floorM.apply();
 			this.floor.display();
 		this.popMatrix();
 
@@ -143,6 +156,7 @@ class LightingScene extends CGFscene
 			this.translate(0, 4, 7.5);
 			this.rotate(90 * degToRad, 0, 1, 0);
 			this.scale(15, 8, 0.2);
+			this.wallM.apply();
 			this.wall.display();
 		this.popMatrix();
 
@@ -151,6 +165,7 @@ class LightingScene extends CGFscene
 			this.translate(7.5, 4, 0);
 			this.scale(15, 8, 0.2);
 			this.wall.display();
+			this.wallM.apply();
 		this.popMatrix();
 
 		// First Table
