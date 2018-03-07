@@ -38,6 +38,13 @@ class myCouch extends CGFobject
 		this.sofa.display();
 		this.scene.popMatrix();
 
+		this.scene.pushMatrix();
+		this.scene.translate(2.9,2.25,0);
+		this.scene.scale(0.8,0.5,3);
+		this.sofa.display();
+		this.scene.translate(-2.9*2 -1.45,0,0);
+		this.sofa.display();
+		this.scene.popMatrix();
 
 	};
 };
