@@ -25,7 +25,7 @@ class TPscene extends CGFscene
         this.obj = new MyQuad(this);
         this.table = new myTable(this);
         this.floor = new myFloor(this);
-        
+        this.sofa = new myCouch(this);
 
         // NOTE: OpenGL transformation matrices are transposed
 
@@ -116,45 +116,11 @@ class TPscene extends CGFscene
         
         this.pushMatrix();
 
-        this.translate(4,0,3);
-        this.floor.display();
-        this.translate(0,0.1,0);
-        this.table.display();
+        this.sofa.display();
         
         this.popMatrix();
 
-       
-        // forfun
-      /*  this.pushMatrix();
-        this.translate(4,0,3);
-        
-        this.pushMatrix();
-        this.scale(2,1,2);
-        this.translate(2.1,0,1.5);
-        this.floor.display();
-        this.popMatrix();
-        
-        this.translate(2,0.1,1.5);
-        this.table.display();
-        this.popMatrix();
-        
-        this.pushMatrix();
-        this.rotate(-Math.PI/2.0,1,0,0);
-        this.translate(4,0,3);
-        this.scale(2,1,2);
-        this.translate(2,0,1.5);
-        this.floor.display();
-        this.rotate(-Math.PI/2.0,0,0,1);
-        this.scale(1.5,1,1);
-        this.translate(4,-4,0); 
-        this.floor.display();
-        this.popMatrix();
-        
-        this.scale(0.2,1,0.5);
-        this.translate(10,1,20);
-        this.floor.display();
-
-        */
+      
         // ---- END Primitive drawing section
       
     };
