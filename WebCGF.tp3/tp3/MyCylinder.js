@@ -1,10 +1,10 @@
 /**
- * MyPrism
+ * MyCylinder
  * @param gl {WebGLRenderingContext}
  * @constructor
  */
 
-class MyPrism extends CGFobject
+class MyCylinder extends CGFobject
 {
 	constructor(scene, slices, stacks)
 	{
@@ -31,20 +31,21 @@ class MyPrism extends CGFobject
 		
 		for(let k = 0; k < this.stacks; k++)
 		{
+			this.vertices.push(Math.cos(angle), Math.sin(angle), k * division);
+			this.vertices.push(Math.cos(angle), Math.sin(angle), (k+1) * division);
+			this.normals.push(Math.cos((angle)), Math.sin((angle)), 0);
+			this.normals.push(Math.cos((angle)), Math.sin((angle)), 0);
+
 			for(let i = 0; i < this.slices; i++)
 			{
-				this.vertices.push(Math.cos(i * angle), Math.sin(i * angle), k * division);
-				this.vertices.push(Math.cos(i * angle), Math.sin(i * angle), (k+1) * division);
 				this.vertices.push(Math.cos((i+1) * angle), Math.sin((i+1) * angle), k * division);
 				this.vertices.push(Math.cos((i+1) * angle), Math.sin((i+1) * angle), (k+1) * division);
 
-				this.indices.push(4*i + k*4*this.slices, 4*i + 2 + k*4*this.slices, 4*i + 3 + k*4*this.slices);
-				this.indices.push(4*i + 3 + k*4*this.slices, 4*i + 1 + k*4*this.slices, 4*i + k*4*this.slices);
+				this.indices.push(2*i + k*2*(this.slices + 1), 2*i + 2 + k*2*(this.slices + 1), 2*i + 3 + k*2*(this.slices + 1));
+				this.indices.push(2*i + 3 + k*2*(this.slices + 1), 2*i + 1 + k*2*(this.slices + 1), 2*i + k*2*(this.slices + 1));
 
-				this.normals.push(Math.cos((i * angle) + angle / 2), Math.sin((i * angle) + angle / 2), 0);
-				this.normals.push(Math.cos((i * angle) + angle / 2), Math.sin((i * angle) + angle / 2), 0);
-				this.normals.push(Math.cos((i * angle) + angle / 2), Math.sin((i * angle) + angle / 2), 0);
-				this.normals.push(Math.cos((i * angle) + angle / 2), Math.sin((i * angle) + angle / 2), 0);
+				this.normals.push(Math.cos(((i+1) * angle)), Math.sin(((i+1) * angle)), 0);
+				this.normals.push(Math.cos(((i+1) * angle) ), Math.sin(((i+1) * angle)), 0);
 			}
 		}
 		/*	
