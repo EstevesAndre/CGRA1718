@@ -11,6 +11,7 @@ serialInclude([
 	'Plane.js',
 	'MyChair.js' ,
 	'MyCouch.js',
+	'MyPrism.js',
 
 	main=function() {
 		var app = new CGFapplication(document.body);
