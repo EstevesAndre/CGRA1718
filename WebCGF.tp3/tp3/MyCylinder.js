@@ -47,6 +47,12 @@ class MyCylinder extends CGFobject
 				this.normals.push(Math.cos(((i+1) * angle)), Math.sin(((i+1) * angle)), 0);
 				this.normals.push(Math.cos(((i+1) * angle) ), Math.sin(((i+1) * angle)), 0);
 			}
+
+			this.indices.push(k*2*(this.slices + 1), 1 + k*2*(this.slices + 1), k*2*(this.slices + 1) + this.slices*2 + 1);
+			this.indices.push(k*2*(this.slices + 1) + this.slices*2, k*2*(this.slices + 1), k*2*(this.slices + 1) + this.slices*2 + 1);
+	
+			
+			
 		}
 		/*	
 		console.log(division);
