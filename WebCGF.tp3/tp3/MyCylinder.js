@@ -49,13 +49,13 @@ class MyCylinder extends CGFobject
 		}
 		
 		//console.log(division);
-		console.log(this.vertices.length); // slices * stacks * 3 <-- geral
+		console.log("Number of Cylinder vertices: " + this.vertices.length); // slices * stacks * 3 <-- geral
 		// 8 slices * 20 stacks * 3 sizeOf <-- case of 20 stacks and 8 slices
 
-		console.log(this.indices.length); // 2 * slices * (stacks-1) * 3 <-- geral
+		console.log("Number of Cylinder indices: " + this.indices.length); // 2 * slices * (stacks-1) * 3 <-- geral
 		// 2 * 8 twoTrianglesPerSlice * 19 blocksConnected * 3 sizeOf <-- case of 20 stacks and 8 slices
 
-		console.log(this.normals.length); // slices * stacks * 3 <-- geral
+		console.log("Number of Cylinder normals: " +this.normals.length); // slices * stacks * 3 <-- geral
 		// 8 slices * 20 stacks * 3 sizeOf <-- case of 20 stacks and 8 slices
 		
 		this.primitiveType=this.scene.gl.TRIANGLES;

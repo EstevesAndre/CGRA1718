@@ -26,7 +26,8 @@ class MyPrism extends CGFobject
 		var angle = (2* Math.PI) / this.slices;
 		var division = 1.0 / this.stacks;
 		
-		for(let k = 0; k < this.stacks; k++)
+		for(let k = 0; k < this.stacks-1; k++) // 20 stacks, for each cicle we create k*division and (k+1)*division
+											   // so the terminate condition is k < stacks - 1
 		{
 			for(let i = 0; i < this.slices; i++)
 			{
@@ -44,12 +45,12 @@ class MyPrism extends CGFobject
 				this.normals.push(Math.cos((i * angle) + angle / 2), Math.sin((i * angle) + angle / 2), 0);
 			}
 		}
-		/*
-		console.log(division);
-		console.log(this.vertices.length);
-		console.log(this.indices.length);
-		console.log(this.normals.length);
-	*/
+		
+	//	console.log(division);
+	//	console.log(this.vertices.length);
+	//	console.log(this.indices.length);
+	//	console.log(this.normals.length);
+	
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	};
