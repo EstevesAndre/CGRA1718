@@ -31,35 +31,33 @@ class MyCylinder extends CGFobject
 		
 		for(let k = 0; k < this.stacks; k++)
 		{
-			this.vertices.push(Math.cos(angle), Math.sin(angle), k * division);
-			this.vertices.push(Math.cos(angle), Math.sin(angle), (k+1) * division);
-			this.normals.push(Math.cos((angle)), Math.sin((angle)), 0);
-			this.normals.push(Math.cos((angle)), Math.sin((angle)), 0);
-
 			for(let i = 0; i < this.slices; i++)
 			{
-				this.vertices.push(Math.cos((i+1) * angle), Math.sin((i+1) * angle), k * division);
-				this.vertices.push(Math.cos((i+1) * angle), Math.sin((i+1) * angle), (k+1) * division);
-
-				this.indices.push(2*i + k*2*(this.slices + 1), 2*i + 2 + k*2*(this.slices + 1), 2*i + 3 + k*2*(this.slices + 1));
-				this.indices.push(2*i + 3 + k*2*(this.slices + 1), 2*i + 1 + k*2*(this.slices + 1), 2*i + k*2*(this.slices + 1));
-
-				this.normals.push(Math.cos(((i+1) * angle)), Math.sin(((i+1) * angle)), 0);
-				this.normals.push(Math.cos(((i+1) * angle) ), Math.sin(((i+1) * angle)), 0);
+				this.vertices.push(Math.cos(i * angle), Math.sin(i * angle), k * division);
+				this.normals.push(Math.cos(i * angle), Math.sin(i * angle), 0);
+				if(k != 0 && i != 0)
+				{
+					this.indices.push(8*k + i - 1, 8*(k-1) + i - 1, 8*(k-1) + i);
+					this.indices.push(8*k + i - 1, 8*(k-1) + i , 8*k + i);
+					if(i == 7)
+					{
+						this.indices.push(8 * (k-1) + i, 8 * (k - 1), 8*k+i);
+						this.indices.push(8*k+i, 8*(k-1), 8*k);
+					}
+				}
 			}
-
-			this.indices.push(k*2*(this.slices + 1), 1 + k*2*(this.slices + 1), k*2*(this.slices + 1) + this.slices*2 + 1);
-			this.indices.push(k*2*(this.slices + 1) + this.slices*2, k*2*(this.slices + 1), k*2*(this.slices + 1) + this.slices*2 + 1);
-	
-			
-			
 		}
-		/*	
-		console.log(division);
-		console.log(this.vertices.length);
-		console.log(this.indices.length);
-		console.log(this.normals.length);
-		*/
+		
+		//console.log(division);
+		console.log(this.vertices.length); // slices * stacks * 3 <-- geral
+		// 8 slices * 20 stacks * 3 sizeOf <-- case of 20 stacks and 8 slices
+
+		console.log(this.indices.length); // 2 * slices * (stacks-1) * 3 <-- geral
+		// 2 * 8 twoTrianglesPerSlice * 19 blocksConnected * 3 sizeOf <-- case of 20 stacks and 8 slices
+
+		console.log(this.normals.length); // slices * stacks * 3 <-- geral
+		// 8 slices * 20 stacks * 3 sizeOf <-- case of 20 stacks and 8 slices
+		
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	};

@@ -31,12 +31,12 @@ class LightingScene extends CGFscene
 
 
 		// Scene elements
-		this.table = new MyTable(this);
+		/*this.table = new MyTable(this);
 		this.wall = new Plane(this);
 		this.floor = new MyQuad(this);
 		this.chair = new MyChair(this);
 		this.couch = new MyCouch(this);
-		this.prism = new MyPrism(this, 8, 20);
+		this.prism = new MyPrism(this, 8, 20);*/
 		this.cylinder = new MyCylinder(this, 8, 20);
 
 		this.boardA = new Plane(this, BOARD_A_DIVISIONS);
@@ -78,7 +78,7 @@ class LightingScene extends CGFscene
 
 	initLights() 
 	{
-		this.setGlobalAmbientLight(0.3,0.3,0.3, 1.0);
+		this.setGlobalAmbientLight(0.9,0.9,0.9, 1.0);
 		
 		// Positions for four lights
 		this.lights[0].setPosition(4, 6, 1, 1);
@@ -144,18 +144,18 @@ class LightingScene extends CGFscene
 		this.materialDefault.apply();
 
 		this.pushMatrix();
-			this.translate(6, 0, 2);
-			this.scale(1, 5, 1);
+			this.translate(2, 0, 2);
+			this.scale(1,5, 1);
 			this.rotate(-Math.PI / 2, 1, 0, 0);
 			this.cylinder.display();
 		this.popMatrix();
 
-		this.pushMatrix();
+		/*this.pushMatrix();
 			this.translate(2, 0, 2);
 			this.scale(1, 5, 1);
 			this.rotate(-Math.PI / 2, 1, 0, 0);
 			this.prism.display();
-		this.popMatrix();
+		this.popMatrix();*/
 		
 
 
