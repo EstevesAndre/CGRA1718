@@ -37,12 +37,12 @@ class MyCylinder extends CGFobject
 				this.normals.push(Math.cos(i * angle), Math.sin(i * angle), 0);
 				if(k != 0 && i != 0)
 				{
-					this.indices.push(8*k + i - 1, 8*(k-1) + i - 1, 8*(k-1) + i);
-					this.indices.push(8*k + i - 1, 8*(k-1) + i , 8*k + i);
+					this.indices.push(this.slices*k + i - 1, this.slices*(k-1) + i - 1, this.slices*(k-1) + i);
+					this.indices.push(this.slices*k + i - 1, this.slices*(k-1) + i , this.slices*k + i);
 					if(i == 7)
 					{
-						this.indices.push(8 * (k-1) + i, 8 * (k - 1), 8*k+i);
-						this.indices.push(8*k+i, 8*(k-1), 8*k);
+						this.indices.push(this.slices * (k-1) + i, this.slices * (k - 1), this.slices*k+i);
+						this.indices.push(this.slices*k+i, this.slices*(k-1), this.slices*k);
 					}
 				}
 			}
