@@ -38,6 +38,7 @@ class LightingScene extends CGFscene
 		this.couch = new MyCouch(this);
 		this.prism = new MyPrism(this, 8, 20);
 		this.cylinder = new MyCylinder(this, 8, 20);
+		//this.lamp = new MyLamp(this,8,20);
 
 		this.boardA = new Plane(this, BOARD_A_DIVISIONS);
 		this.boardB = new Plane(this, BOARD_B_DIVISIONS);
@@ -143,21 +144,28 @@ class LightingScene extends CGFscene
 
 		this.materialDefault.apply();
 
+		
 		this.pushMatrix();
 			this.translate(2, 0, 2);
 			this.scale(1,5, 1); // scale by 5 on Oy
 			this.rotate(-Math.PI / 2, 1, 0, 0); 
 			this.cylinder.display();
 		this.popMatrix();
-
-		this.pushMatrix();
+		
+		/*this.pushMatrix();
 			this.translate(5, 0, 2);
 			this.scale(1, 5, 1);
 			this.rotate(-Math.PI / 2, 1, 0, 0);
 			this.prism.display();
+		this.popMatrix();*/
+		/*
+		this.pushMatrix();
+			this.translate(2,0,2);
+			this.scale(2,1,2);
+			this.rotate(-Math.PI/2,1,0,0);
+			this.lamp.display();
 		this.popMatrix();
-		
-
+		*/
 
 		// ---- END Background, camera and axis setup
 
