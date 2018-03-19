@@ -25,36 +25,51 @@ class MyLamp extends CGFobject
 
 		var angle = (2* Math.PI) / this.slices;
 		var division = 1.0 / this.stacks;
-		
-		for(let k = 0; k < this.stacks; k++)
+
+		for(let k = 0; k <= this.stacks; k++)
 		{
-			
-			for(let i = 0; i < this.slices; i++)
+			if(k == this.stacks)
 			{
-				this.vertices.push(Math.cos(i * angle)*(Math.cos(k*division)), Math.sin(i * angle)*(Math.cos(k*division)), k * division);
-				this.normals.push(Math.cos(i * angle), Math.sin(i * angle), Math.cos(k*division));
-				if(k != 0 && i != 0)
+				this.vertices.push(Math.cos((this.slices-1) * angle)*Math.cos(Math.asin(division*(k))), Math.sin((this.slices-1) * angle)*Math.cos(Math.asin(division*(k))), k * division);
+				this.normals.push(Math.cos((this.slices-1) * angle), Math.sin((this.slices-1) * angle), Math.cos(Math.asin(division*(k))));
+
+				for(let i = 0; i < this.slices; i++)
 				{
-					this.indices.push(this.slices*k + i - 1, this.slices*(k-1) + i - 1, this.slices*(k-1) + i);
-					this.indices.push(this.slices*k + i - 1, this.slices*(k-1) + i , this.slices*k + i);
-					if(i == 7)
+					this.indices.push(this.slices*k, this.slices*(k-1) + i - 1, this.slices*(k-1) + i);
+					
+					if(i == (this.slices - 1))
 					{
-						this.indices.push(this.slices * (k-1) + i, this.slices * (k - 1), this.slices*k+i);
-						this.indices.push(this.slices*k+i, this.slices*(k-1), this.slices*k);
+						this.indices.push(this.slices * (k-1) + i, this.slices * (k - 1), this.slices*k);
+					}
+				}	
+			}
+			else
+			{
+				for(let i = 0; i < this.slices; i++)
+				{
+					this.vertices.push(Math.cos(i * angle)*Math.cos(Math.asin(division*(k))), Math.sin(i * angle)*Math.cos(Math.asin(division*(k))), k * division);
+					this.normals.push(Math.cos(i * angle), Math.sin(i * angle), Math.cos(Math.asin(division*(k))));
+
+					if(k != 0 && i != 0)
+					{
+						this.indices.push(this.slices*k + i - 1, this.slices*(k-1) + i - 1, this.slices*(k-1) + i);
+						this.indices.push(this.slices*k + i - 1, this.slices*(k-1) + i , this.slices*k + i);
+						if(i == (this.slices - 1))
+						{
+							this.indices.push(this.slices * (k-1) + i, this.slices * (k - 1), this.slices*k+i);
+							this.indices.push(this.slices*k+i, this.slices*(k-1), this.slices*k);
+						}
 					}
 				}
 			}
+			
+		
 		}
 		
-		//console.log(division);
-		console.log("Number of Cylinder vertices: " + this.vertices.length); // slices * stacks * 3 <-- geral
-		// 8 slices * 20 stacks * 3 sizeOf <-- case of 20 stacks and slices slices
-
-		console.log("Number of Cylinder indices: " + this.indices.length); // 2 * slices * (stacks-1) * 3 <-- geral
-		// 2 * 8 twoTrianglesPerSlice * 19 blocksConnected * 3 sizeOf <-- case of 20 stacks and slices slices
-
-		console.log("Number of Cylinder normals: " +this.normals.length); // slices * stacks * 3 <-- geral
-		// 8 slices * 20 stacks * 3 sizeOf <-- case of 20 stacks and slices slices
+		console.log(division);
+		console.log("Number of SemiSphere vertices: " + this.vertices.length);
+		console.log("Number of SemiSphere indices: " + this.indices.length);
+		console.log("Number of SemiSphere normals: " +this.normals.length); 
 		
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
