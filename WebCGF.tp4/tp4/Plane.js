@@ -15,7 +15,7 @@ class Plane extends CGFobject{
 		this.initBuffers();
 	};
 
-	initBuffers
+	initBuffers()
 	{
 		/* example for nrDivs = 3 :
 		(numbers represent index of point in vertices array)
