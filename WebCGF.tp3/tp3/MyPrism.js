@@ -26,10 +26,10 @@ class MyPrism extends CGFobject
 		var angle = (2* Math.PI) / this.slices;
 		var division = 1.0 / this.stacks;
 		
-		for(let k = 0; k < this.stacks; k++) // 20 stacks, for each cicle we create k*division and (k+1)*division
-											   // so the terminate condition is k < stacks - 1
+		// 20 stacks, for each iteration we create k*division and(k+1)*division
+		for(let k = 0; k < this.stacks; k++) 											   
 		{
-			for(let i = 0; i < this.slices; i++)
+			for(let i = 0; i < this.slices; i++)  // 4 vertices, 2 indices and 4 normals per iteration
 			{
 				this.vertices.push(Math.cos(i * angle), Math.sin(i * angle), k * division);
 				this.vertices.push(Math.cos(i * angle), Math.sin(i * angle), (k+1) * division);
@@ -45,11 +45,11 @@ class MyPrism extends CGFobject
 				this.normals.push(Math.cos((i * angle) + angle / 2), Math.sin((i * angle) + angle / 2), 0);
 			}
 		}
-		
-		console.log(division);
-		console.log(this.vertices.length);
-		console.log(this.indices.length);
-		console.log(this.normals.length);
+
+		//console.log(division);
+		console.log("Number of Prism vertices: " + this.vertices.length);
+		console.log("Number of Prism indices: " + this.indices.length);
+		console.log("Number of Prism normals: " + this.normals.length); 
 	
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();

@@ -29,7 +29,9 @@ class MyCylinder extends CGFobject
 		var angle = (2* Math.PI) / this.slices;
 		var division = 1.0 / this.stacks;
 		
-		for(let k = 0; k < this.stacks; k++)
+		// Here we do 1 division per iteration so it's k <= this.stacks.
+		// We actually do k + 1 divisions to have exactly the right number of stacks
+		for(let k = 0; k <= this.stacks; k++)
 		{
 			for(let i = 0; i < this.slices; i++)
 			{
@@ -48,15 +50,15 @@ class MyCylinder extends CGFobject
 			}
 		}
 		
-		//console.log(division);
-		console.log("Number of Cylinder vertices: " + this.vertices.length); // slices * stacks * 3 <-- geral
-		// 8 slices * 20 stacks * 3 sizeOf <-- case of 20 stacks and 8 slices
+		console.log(division);
+		console.log("Number of Cylinder vertices: " + this.vertices.length); // slices * (stacks + 1) * 3 <-- geral
+		// 8 slices * (20 + 1) * stacks * 3 sizeOf <-- case of 20 stacks and 8 slices
 
-		console.log("Number of Cylinder indices: " + this.indices.length); // 2 * slices * (stacks-1) * 3 <-- geral
-		// 2 * 8 twoTrianglesPerSlice * 19 blocksConnected * 3 sizeOf <-- case of 20 stacks and 8 slices
+		console.log("Number of Cylinder indices: " + this.indices.length); // 2 * slices * stacks * 3 <-- geral
+		// 2 * 8 twoTrianglesPerSlice * 20 stacks * 3 sizeOf <-- case of 20 stacks and 8 slices
 
-		console.log("Number of Cylinder normals: " +this.normals.length); // slices * stacks * 3 <-- geral
-		// 8 slices * 20 stacks * 3 sizeOf <-- case of 20 stacks and 8 slices
+		console.log("Number of Cylinder normals: " +this.normals.length); // slices * (stacks + 1) * 3 <-- geral
+		// 8 slices * (20 + 1) * stacks * 3 sizeOf <-- case of 20 stacks and 8 slices
 		
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
