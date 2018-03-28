@@ -14,6 +14,7 @@ class Plane extends CGFobject{
 
 		this.initBuffers();
 	};
+	
 
 	initBuffers()
 	{

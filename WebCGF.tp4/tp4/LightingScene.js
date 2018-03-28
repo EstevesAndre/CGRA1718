@@ -32,7 +32,7 @@ class LightingScene extends CGFscene
 
 		// Scene elements
 		this.table = new MyTable(this);
-		//this.wall = new Plane(this);
+		this.wall = new Plane(this);
 		this.floor = new MyQuad(this);
 		this.chair = new MyChair(this);
 		this.couch = new MyCouch(this);
@@ -40,8 +40,8 @@ class LightingScene extends CGFscene
 		this.cylinder = new MyCylinder(this, 8, 20);
 		this.lamp = new MyLamp(this,8,20);
 
-		//this.boardA = new Plane(this, BOARD_A_DIVISIONS);
-		//this.boardB = new Plane(this, BOARD_B_DIVISIONS);
+		this.boardA = new Plane(this, BOARD_A_DIVISIONS);
+		this.boardB = new Plane(this, BOARD_B_DIVISIONS);
 
 		// Materials
 		this.materialDefault = new CGFappearance(this);
@@ -144,20 +144,20 @@ class LightingScene extends CGFscene
 
 		this.materialDefault.apply();
 
-		/*
+		
 		this.pushMatrix();
-			this.translate(2, 0, 2);
-			this.scale(1,5, 1); // scale by 5 on Oy
+			this.translate(5, 3.8, 8);
+			this.scale(0.5, 1.5, 0.5); 
 			this.rotate(-Math.PI / 2, 1, 0, 0); 
 			this.cylinder.display();
 		this.popMatrix();
-		*/
-		/*this.pushMatrix();
-			this.translate(5, 0, 2);
-			this.scale(1, 5, 1);
+		
+		this.pushMatrix();
+			this.translate(12, 3.8, 8);
+			this.scale(0.5, 1.5, 0.5);
 			this.rotate(-Math.PI / 2, 1, 0, 0);
 			this.prism.display();
-		this.popMatrix();*/
+		this.popMatrix();
 		
 		this.pushMatrix();
 			this.translate(6,8,6);
@@ -180,21 +180,21 @@ class LightingScene extends CGFscene
 		this.popMatrix();
 
 		// Left Wall
-		/*this.pushMatrix();
+		this.pushMatrix();
 			this.translate(0, 4, 7.5);
 			this.rotate(90 * degToRad, 0, 1, 0);
 			this.scale(15, 8, 0.2);
 			this.wallM.apply();
 			this.wall.display();
-		this.popMatrix();*/
+		this.popMatrix();
 
 		// Plane Wall
-		/*this.pushMatrix();
+		this.pushMatrix();
 			this.translate(7.5, 4, 0);
 			this.scale(15, 8, 0.2);
 			this.wall.display();
 			this.wallM.apply();
-		this.popMatrix();*/
+		this.popMatrix();
 
 		// First Table
 		this.pushMatrix();
@@ -209,7 +209,7 @@ class LightingScene extends CGFscene
 		this.popMatrix();
 
 		// First Chair
-		this.pushMatrix();
+		/*this.pushMatrix();
 			this.translate(5,0,6);
 			this.chair.display();
 		this.popMatrix();
@@ -218,17 +218,17 @@ class LightingScene extends CGFscene
 		this.pushMatrix();
 			this.translate(12,0,6);
 			this.chair.display();
-		this.popMatrix();
+		this.popMatrix();*/
 		
 
 		// Couch
-		this.pushMatrix();
+		/*this.pushMatrix();
 			this.translate(8.5,0,13.5);
 			this.rotate(Math.PI , 0,1,0);
 			this.couch.display();
-		this.popMatrix();
+		this.popMatrix();*/
 
-/*
+
 
 		// Board A
 		this.pushMatrix();
@@ -247,7 +247,7 @@ class LightingScene extends CGFscene
 			this.materialB.apply();
 			this.boardB.display();
 		this.popMatrix();
-		*/
+		
 		// ---- END Scene drawing section
 	};
 };
