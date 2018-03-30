@@ -29,7 +29,6 @@ class LightingScene extends CGFscene
 
 		this.axis = new CGFaxis(this);
 
-
 		// Scene elements
 		this.table = new MyTable(this);
 		this.wall = new Plane(this);
@@ -70,6 +69,14 @@ class LightingScene extends CGFscene
 		this.floorM.setSpecular(0.75,0.75,0.75,1);	
 		this.floorM.setShininess(75);
 		
+		// Textures
+		this.enableTextures(true);
+
+		this.floorAppearance = new CGFappearance(this);
+		this.floorAppearance.loadTexture("../resources/images/floor.png");
+		this.floorAppearance.setTextureWrap("REPEAT", "REPEAT");
+
+
 	};
 
 	initCameras() 
@@ -94,7 +101,7 @@ class LightingScene extends CGFscene
 		this.lights[3].setVisible(true); // show marker on light position (different from enabled)
 
 		this.lights[0].setAmbient(0, 0, 0, 1);
-		this.lights[0].setDiffuse(1.0, 1.0, 0, 1.0);
+		this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[0].enable();
 
 		this.lights[1].setAmbient(0, 0, 0, 1);
@@ -171,7 +178,8 @@ class LightingScene extends CGFscene
 		// ---- BEGIN Scene drawing section
 	    
 		// Floor
-		this.pushMatrix();
+		this.pushMatrix();		
+			this.floorAppearance.apply();
 			this.translate(7.5, 0, 7.5);
 			this.rotate(-90 * degToRad, 1, 0, 0);
 			this.scale(15, 15, 0.2);
