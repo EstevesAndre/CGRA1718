@@ -39,7 +39,7 @@ class LightingScene extends CGFscene
 		this.prism = new MyPrism(this, 8, 20);
 		this.cylinder = new MyCylinder(this, 8, 20);
 		this.lamp = new MyLamp(this,8,20);
-		this.boardA = new Plane(this, BOARD_A_DIVISIONS);
+		this.boardA = new Plane(this, BOARD_A_DIVISIONS, 0.1, 0.9, 0.1, 0.76);
 		this.boardB = new Plane(this, BOARD_B_DIVISIONS);
 
 		// Materials
@@ -76,6 +76,20 @@ class LightingScene extends CGFscene
 		this.floorM.setDiffuse(0.78,0.39,0.25,1);
 		this.floorM.setSpecular(0.75,0.75,0.75,1);	
 		this.floorM.setShininess(75);
+
+		this.slidesAppearance = new CGFappearance(this);
+		this.slidesAppearance.loadTexture("../resources/images/slides.png");
+		this.slidesAppearance.setAmbient(0.3,0.3,0.3,1);
+		this.slidesAppearance.setDiffuse(0.85,0.85,0.85,1);
+		this.slidesAppearance.setSpecular(0.1,0.1,0.1,1);	
+		this.slidesAppearance.setShininess(5);
+
+		this.boardAppearance = new CGFappearance(this);
+		this.boardAppearance.loadTexture("../resources/images/board.png");
+		this.boardAppearance.setAmbient(0.3,0.3,0.3,1);
+		this.boardAppearance.setDiffuse(0.25,0.25,0.25,1);
+		this.boardAppearance.setSpecular(0.5,0.5,0.5,1);	
+		this.boardAppearance.setShininess(75);
 		
 		// Textures
 		this.enableTextures(true);
@@ -107,7 +121,7 @@ class LightingScene extends CGFscene
 		this.lights[0].enable();
 
 		this.lights[1].setAmbient(0, 0, 0, 1);
-		this.lights[1].setDiffuse(1.0, 1.0, 1.0, 1.0);
+		this.lights[1].setDiffuse(1.0, 1.0, 0.4, 1.0);
 		this.lights[1].enable();
 	};
 
@@ -159,6 +173,7 @@ class LightingScene extends CGFscene
 		this.pushMatrix();
 			this.translate(6,8,6);
 			this.rotate(-3*Math.PI/2,1,0,0);
+			this.floorM.apply();
 			this.lamp.display();
 		this.popMatrix();
 		
@@ -232,7 +247,7 @@ class LightingScene extends CGFscene
 			this.translate(4, 4.5, 0.2);
 			this.scale(BOARD_WIDTH, BOARD_HEIGHT, 1);
 			
-			this.materialA.apply();
+			this.slidesAppearance.apply();
 			this.boardA.display();
 		this.popMatrix();
 
@@ -241,7 +256,7 @@ class LightingScene extends CGFscene
 			this.translate(10.5, 4.5, 0.2);
 			this.scale(BOARD_WIDTH, BOARD_HEIGHT, 1);
 			
-			this.materialB.apply();
+			this.boardAppearance.apply();
 			this.boardB.display();
 		this.popMatrix();
 		
