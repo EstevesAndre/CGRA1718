@@ -32,7 +32,7 @@ class LightingScene extends CGFscene
 		// Scene elements
 		this.table = new MyTable(this);
 		this.wall = new Plane(this);
-		this.floor = new MyQuad(this);
+		this.floor = new MyQuad(this,0,10,0,10);
 		this.chair = new MyChair(this);
 		this.couch = new MyCouch(this);
 		this.prism = new MyPrism(this, 8, 20);
@@ -72,7 +72,7 @@ class LightingScene extends CGFscene
 		// Textures
 		this.enableTextures(true);
 
-		this.floorAppearance = new CGFappearance(this);
+		this.floorAppearance = new CGFappearance(this);		
 		this.floorAppearance.loadTexture("../resources/images/floor.png");
 		this.floorAppearance.setTextureWrap("REPEAT", "REPEAT");
 
@@ -183,7 +183,7 @@ class LightingScene extends CGFscene
 			this.translate(7.5, 0, 7.5);
 			this.rotate(-90 * degToRad, 1, 0, 0);
 			this.scale(15, 15, 0.2);
-			this.floorM.apply();
+			//this.floorM.apply();
 			this.floor.display();
 		this.popMatrix();
 
@@ -217,7 +217,7 @@ class LightingScene extends CGFscene
 		this.popMatrix();
 
 		// First Chair
-		/*this.pushMatrix();
+		this.pushMatrix();
 			this.translate(5,0,6);
 			this.chair.display();
 		this.popMatrix();
@@ -226,7 +226,7 @@ class LightingScene extends CGFscene
 		this.pushMatrix();
 			this.translate(12,0,6);
 			this.chair.display();
-		this.popMatrix();*/
+		this.popMatrix();
 		
 
 		// Couch
