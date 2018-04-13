@@ -37,9 +37,9 @@ class LightingScene extends CGFscene
 		this.chair = new MyChair(this);
 		this.couch = new MyCouch(this);
 		this.prism = new MyPrism(this, 8, 20);
-		this.cylinder = new MyCylinder(this, 8, 20);
+		this.cylinder = new MyCylinder(this, 8, 1,0,5,0,5);
 		this.lamp = new MyLamp(this,8,20);
-		this.boardA = new Plane(this, BOARD_A_DIVISIONS, 0.1, 0.9, 0.1, 0.76);
+		this.boardA = new Plane(this, BOARD_A_DIVISIONS, 0, 0.96, 0.1, 0.76);
 		this.boardB = new Plane(this, BOARD_B_DIVISIONS);
 
 		// Materials
@@ -66,6 +66,14 @@ class LightingScene extends CGFscene
 		this.wallWindow = new CGFappearance(this);
 		this.wallWindow.loadTexture("../resources/images/window.png");
 		this.wallWindow.setTextureWrap('CLAMP_TO_EDGE','CLAMP_TO_EDGE');
+		this.wallWindow.setAmbient(0.3,0.3,0.3,1);
+		this.wallWindow.setDiffuse(0.5,0.5,0.5,1);
+		this.wallWindow.setSpecular(0.1,0.1,0.1,1);	
+		this.wallWindow.setShininess(5);
+
+		this.cylinderTest = new CGFappearance(this);
+		this.cylinderTest.loadTexture("../resources/images/floor.png");
+		this.cylinderTest.setTextureWrap('CLAMP_TO_EDGE','CLAMP_TO_EDGE');
 		this.wallWindow.setAmbient(0.3,0.3,0.3,1);
 		this.wallWindow.setDiffuse(0.5,0.5,0.5,1);
 		this.wallWindow.setSpecular(0.1,0.1,0.1,1);	
@@ -160,6 +168,7 @@ class LightingScene extends CGFscene
 			this.translate(5, 3.8, 8);
 			this.scale(0.5, 1.5, 0.5); 
 			this.rotate(-Math.PI / 2, 1, 0, 0); 
+			this.cylinderTest.apply();
 			this.cylinder.display();
 		this.popMatrix();
 		
