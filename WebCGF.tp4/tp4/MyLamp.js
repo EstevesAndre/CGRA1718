@@ -14,7 +14,6 @@ class MyLamp extends CGFobject
 		this.initBuffers();
 	}
 
-
 	initBuffers() 
 	{
 		this.vertices = [];
@@ -22,6 +21,8 @@ class MyLamp extends CGFobject
 		this.indices = [];
 
 		this.normals = [];
+
+		this.texCoords = [];
 
 		var angle = (2* Math.PI) / this.slices;
 		var division = 1.0 / this.stacks;
@@ -32,7 +33,8 @@ class MyLamp extends CGFobject
 			{
 				this.vertices.push(Math.cos((this.slices-1) * angle)*Math.cos(Math.asin(division*(k))), Math.sin((this.slices-1) * angle)*Math.cos(Math.asin(division*(k))), k * division);
 				this.normals.push(Math.cos((this.slices-1) * angle), Math.sin((this.slices-1) * angle), Math.cos(Math.asin(division*(k))));
-
+				this.texCoords.push(0,0);
+					
 				for(let i = 0; i < this.slices; i++)
 				{
 					this.indices.push(this.slices*k, this.slices*(k-1) + i - 1, this.slices*(k-1) + i);
@@ -49,7 +51,8 @@ class MyLamp extends CGFobject
 				{
 					this.vertices.push(Math.cos(i * angle)*Math.cos(Math.asin(division*(k))), Math.sin(i * angle)*Math.cos(Math.asin(division*(k))), k * division);
 					this.normals.push(Math.cos(i * angle), Math.sin(i * angle), Math.cos(Math.asin(division*(k))));
-
+					this.texCoords.push(i/this.slices,k * division);
+					
 					if(k != 0 && i != 0)
 					{
 						this.indices.push(this.slices*k + i - 1, this.slices*(k-1) + i - 1, this.slices*(k-1) + i);

@@ -15,6 +15,7 @@ class MyPrism extends CGFobject
 	}
 
 
+
 	initBuffers() 
 	{
 		this.vertices = [];

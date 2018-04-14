@@ -14,7 +14,6 @@ class MyLamp extends CGFobject
 		this.initBuffers();
 	}
 
-
 	initBuffers() 
 	{
 		this.vertices = [];

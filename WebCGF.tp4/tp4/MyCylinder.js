@@ -6,20 +6,11 @@
 
 class MyCylinder extends CGFobject
 {
-	constructor(scene, slices, stacks,minS,maxS,minT,maxT)
+	constructor(scene, slices, stacks)
 	{
 		super(scene);
 		this.slices = slices;
 		this.stacks = stacks;
-
-		minS = typeof minS !== 'undefined' ? minS : 0;
-		maxS = typeof maxS !== 'undefined' ? maxS : 1;
-		minT = typeof minT !== 'undefined' ? minT : 0;
-		maxT = typeof maxT !== 'undefined' ? maxT : 1;
-		this.minS = minS;
-		this.maxS = maxS;
-		this.minT = minT;
-		this.maxT = maxT;
 
 		this.initBuffers();
 	}
@@ -51,10 +42,8 @@ class MyCylinder extends CGFobject
 				this.vertices.push(Math.cos(i * angle), Math.sin(i * angle), k * division);
 				this.normals.push(Math.cos(i * angle), Math.sin(i * angle), 0);
 			
-				// Place to texCoords
-				//this.texCoords.push(i * 1.0/this.stacks * (this.maxS - this.minS) + this.minS, k * 1.0/this.stacks * (this.maxT - this.minT) + this.minT);
-
-				this.texCoords.push(i/this.slices,k/this.stacks);
+				// Place to texCoords				
+				this.texCoords.push(i/this.slices,k*division);
 				
 				if(k != 0 && i != 0)
 				{

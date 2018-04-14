@@ -37,7 +37,7 @@ class LightingScene extends CGFscene
 		this.chair = new MyChair(this);
 		this.couch = new MyCouch(this);
 		this.prism = new MyPrism(this, 8, 20);
-		this.cylinder = new MyCylinder(this, 8, 1,0,5,0,5);
+		this.cylinder = new MyCylinder(this, 15, 20);
 		this.lamp = new MyLamp(this,8,20);
 		this.boardA = new Plane(this, BOARD_A_DIVISIONS, 0, 0.96, 0.1, 0.76);
 		this.boardB = new Plane(this, BOARD_B_DIVISIONS);
@@ -57,34 +57,35 @@ class LightingScene extends CGFscene
 		this.materialB.setSpecular(0.8,0.8,0.8,1);	
 		this.materialB.setShininess(120);
 
-		this.wallM = new CGFappearance(this);
-		this.wallM.setAmbient(0.3,0.3,0.3,1);
-		this.wallM.setDiffuse(0.5,0.5,0.5,1);
-		this.wallM.setSpecular(0.1,0.1,0.1,1);	
-		this.wallM.setShininess(5);
-
 		this.wallWindow = new CGFappearance(this);
 		this.wallWindow.loadTexture("../resources/images/window.png");
 		this.wallWindow.setTextureWrap('CLAMP_TO_EDGE','CLAMP_TO_EDGE');
-		this.wallWindow.setAmbient(0.3,0.3,0.3,1);
+		this.wallWindow.setAmbient(1,1,1,1);
 		this.wallWindow.setDiffuse(0.5,0.5,0.5,1);
 		this.wallWindow.setSpecular(0.1,0.1,0.1,1);	
 		this.wallWindow.setShininess(5);
 
-		this.cylinderTest = new CGFappearance(this);
-		this.cylinderTest.loadTexture("../resources/images/floor.png");
-		this.cylinderTest.setTextureWrap('CLAMP_TO_EDGE','CLAMP_TO_EDGE');
-		this.wallWindow.setAmbient(0.3,0.3,0.3,1);
-		this.wallWindow.setDiffuse(0.5,0.5,0.5,1);
-		this.wallWindow.setSpecular(0.1,0.1,0.1,1);	
-		this.wallWindow.setShininess(5);
+		this.cylinderText = new CGFappearance(this);
+		this.cylinderText.loadTexture("../resources/images/cylinder.png");
+		this.cylinderText.setAmbient(0.3,0.3,0.3,1);
+		this.cylinderText.setDiffuse(0.5,0.5,0.5,1);
+		this.cylinderText.setSpecular(0.1,0.1,0.1,1);	
+		this.cylinderText.setShininess(5);
 
-		this.floorM = new CGFappearance(this);
-		this.floorM.setAmbient(0.3,0.3,0.3,1);
-		this.floorM.setDiffuse(0.78,0.39,0.25,1);
-		this.floorM.setSpecular(0.75,0.75,0.75,1);	
-		this.floorM.setShininess(75);
-
+		this.cylinderText2 = new CGFappearance(this);
+		this.cylinderText2.loadTexture("../resources/images/cylinder2.jpg");
+		this.cylinderText2.setAmbient(0.3,0.3,0.3,1);
+		this.cylinderText2.setDiffuse(0.5,0.5,0.5,1);
+		this.cylinderText2.setSpecular(0.1,0.1,0.1,1);	
+		this.cylinderText2.setShininess(5);
+		
+		this.lampText = new CGFappearance(this);
+		this.lampText.loadTexture("../resources/images/lamptext.jpg");
+		this.lampText.setAmbient(0.3,0.3,0.3,1);
+		this.lampText.setDiffuse(0.5,0.5,0.5,1);
+		this.lampText.setSpecular(0.1,0.1,0.1,1);	
+		this.lampText.setShininess(5);
+		
 		this.slidesAppearance = new CGFappearance(this);
 		this.slidesAppearance.loadTexture("../resources/images/slides.png");
 		this.slidesAppearance.setAmbient(0.3,0.3,0.3,1);
@@ -115,16 +116,15 @@ class LightingScene extends CGFscene
 
 	initLights() 
 	{
-		this.setGlobalAmbientLight(0.5,0.5,0.5, 1.0);
+		this.setGlobalAmbientLight(1,1,1, 1.0);
 		
-		// Positions for four lights
 		this.lights[0].setPosition(0, 4, 7.5, 1);
 		this.lights[0].setVisible(true); 
 		
-		this.lights[1].setPosition(6,7,6,1);
+		this.lights[1].setPosition(6,7.5,6,1);
 		this.lights[1].setVisible(true); 
 		
-		this.lights[0].setAmbient(0, 0, 0, 1);
+		this.lights[0].setAmbient(0.5, 0.5, 0.5, 1);
 		this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[0].enable();
 
@@ -163,33 +163,30 @@ class LightingScene extends CGFscene
 
 		this.materialDefault.apply();
 
-		
+		// ---- END Background, camera and axis setup
+
+		// ---- BEGIN Scene drawing section
+
+		// cylinder
 		this.pushMatrix();
 			this.translate(5, 3.8, 8);
 			this.scale(0.5, 1.5, 0.5); 
 			this.rotate(-Math.PI / 2, 1, 0, 0); 
-			this.cylinderTest.apply();
+			this.cylinderText.apply();
 			this.cylinder.display();
+			this.cylinderText2.apply();
+			this.translate(14,0,0);
+			this.cylinder.display();	
 		this.popMatrix();
 		
-		this.pushMatrix();
-			this.translate(12, 3.8, 8);
-			this.scale(0.5, 1.5, 0.5);
-			this.rotate(-Math.PI / 2, 1, 0, 0);
-			this.prism.display();
-		this.popMatrix();
-		
+		// lamp
 		this.pushMatrix();
 			this.translate(6,8,6);
 			this.rotate(-3*Math.PI/2,1,0,0);
-			this.floorM.apply();
+			this.lampText.apply();
 			this.lamp.display();
 		this.popMatrix();
 		
-
-		// ---- END Background, camera and axis setup
-
-		// ---- BEGIN Scene drawing section
 	    
 		// Floor
 		this.pushMatrix();		
@@ -211,7 +208,7 @@ class LightingScene extends CGFscene
 
 		// Plane Wall
 		this.pushMatrix();
-			this.wallM.apply();
+			this.materialDefault.apply();
 			this.translate(7.5, 4, 0);
 			this.scale(15, 8, 0.2);			
 			this.wallRight.display();
