@@ -42,6 +42,7 @@ class LightingScene extends CGFscene
 		this.boardA = new Plane(this, BOARD_A_DIVISIONS, 0, 0.96, 0.1, 0.76);
 		this.boardB = new Plane(this, BOARD_B_DIVISIONS);
 		this.clock = new MyClock(this);
+		this.plane = new MyPaperPlane(this);
 
 		// Materials
 		this.materialDefault = new CGFappearance(this);
@@ -109,6 +110,13 @@ class LightingScene extends CGFscene
 		this.floorAppearance = new CGFappearance(this);		
 		this.floorAppearance.loadTexture("../resources/images/floor.png");
 		this.floorAppearance.setTextureWrap("REPEAT", "REPEAT");
+
+		this.planeColor = new CGFappearance(this);
+		this.planeColor.loadTexture("../resources/images/plane.jpg");
+		this.planeColor.setAmbient(0.3,0.3,0.3,1);
+		this.planeColor.setDiffuse(0.85,0.85,0.85,1);
+		this.planeColor.setSpecular(0.5,0.5,0.5,1);	
+		this.planeColor.setShininess(75);
 
 		this.setUpdatePeriod(100);
 	};
@@ -245,8 +253,7 @@ class LightingScene extends CGFscene
 		// Board A
 		this.pushMatrix();
 			this.translate(4, 4.5, 0.2);
-			this.scale(BOARD_WIDTH, BOARD_HEIGHT, 1);
-			
+			this.scale(BOARD_WIDTH, BOARD_HEIGHT, 1);			
 			this.slidesAppearance.apply();
 			this.boardA.display();
 		this.popMatrix();
@@ -254,17 +261,33 @@ class LightingScene extends CGFscene
 		// Board B
 		this.pushMatrix();
 			this.translate(10.5, 4.5, 0.2);
-			this.scale(BOARD_WIDTH, BOARD_HEIGHT, 1);
-			
+			this.scale(BOARD_WIDTH, BOARD_HEIGHT, 1);			
 			this.boardAppearance.apply();
 			this.boardB.display();
 		this.popMatrix();
 		
 		this.pushMatrix();
+			this.materialDefault.apply();
 			this.translate(7.25,7.25,0.2);
 			this.scale(0.6,0.6,0.1);
 			this.clock.display();
 		this.popMatrix();
+		
+		this.pushMatrix();		
+			this.planeColor.apply();
+			this.translate(14.5,3.88,9);
+			this.scale(1,1.5,1.5);
+			this.rotate(-Math.PI/2.0,0,1,0);
+			this.pushMatrix();
+				this.translate(-0.5,0,8.47);
+				this.rotate(Math.PI/60.0,1,0,0);
+				this.rotate(Math.PI/190.0,0,0,1);
+				this.rotate(-Math.PI/5.0,0,1,0);
+				this.plane.display();
+			this.popMatrix();
+			this.plane.display();
+		this.popMatrix();
+
 		// ---- END Scene drawing section
 	};
 
