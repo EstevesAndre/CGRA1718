@@ -109,6 +109,8 @@ class LightingScene extends CGFscene
 		this.floorAppearance = new CGFappearance(this);		
 		this.floorAppearance.loadTexture("../resources/images/floor.png");
 		this.floorAppearance.setTextureWrap("REPEAT", "REPEAT");
+
+		this.setUpdatePeriod(100);
 	};
 
 	initCameras() 
@@ -258,11 +260,22 @@ class LightingScene extends CGFscene
 			this.boardB.display();
 		this.popMatrix();
 		
-		this.pushMatrix();///15,8
+		this.pushMatrix();
 			this.translate(7.25,7.25,0.2);
 			this.scale(0.6,0.6,0.1);
 			this.clock.display();
 		this.popMatrix();
 		// ---- END Scene drawing section
 	};
+
+	update(currTime)
+	{
+		this.lastTime = this.lastTime || 0;
+
+		this.deltaTime = currTime - this.lastTime;
+
+		this.lastTime = currTime;
+
+		this.clock.update(this.deltaTime);
+	}
 };
