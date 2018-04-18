@@ -10,24 +10,44 @@ class MyPaperPlane extends CGFobject
 	{
 		super(scene);
 
+		this.x = 0;
+		this.y = 0;
+		this.z = 0;
+
+		this.angle = 0;
+		this.xRot = 0;
+		this.yRot = 0;
+		this.zRot = 0;
+
+		this.xRotValue = 0;
+		this.yRotValue = 0;
+
+		this.straightFlight = false;
+		this.loopFlight = false;
+		this.fallFlight = false;
+
 		this.initBuffers();
 	};
 
 	initBuffers() 
 	{
 		this.vertices = [
-				0,0,1,  
-				0.25,0,0,
-				0.05,0,0,
-				-0.25,0,0,
-				-0.05,0,0,
+				-1,0,0,  
+				0,0,-0.25,
+				0,0,-0.05,
+				0,0,0.25,
+				0,0,0.05,
 				0,-0.05,0,
-				0.05,0,0,
-				-0.05,0,0,
-				0,0,1
+				0,0,-0.05,
+				0,0,0.05,
+				-1, 0, 0
 			];
 
 		this.indices = [
+				0, 2, 1, 
+				0,3,4,
+				0,5,2,
+				0,4,5,
 				0, 1, 2, 
 				0,4,3,
 				0,2,5,
@@ -61,4 +81,73 @@ class MyPaperPlane extends CGFobject
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	};
+
+	setPosition(x, y, z)
+	{
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+
+	setAngle(angle, x, y, z)
+	{
+		this.angle = angle;
+		this.xRot = x;
+		this.yRot = y;
+		this.zRot = z;
+	}
+
+	setFlight(fly)
+	{
+		this.straightFlight = fly;
+	}
+
+
+	fly()
+	{
+		if(this.straightFlight)
+		{
+			this.x -= 0.2;
+			this.y += 2*(5-3.88)/135;
+
+			if(this.x <= 8.6 && this.x >= 8.4)
+			{
+				this.straightFlight = false;
+				this.loopFlight = true;
+				this.xRotValue = this.x;
+				this.yRotValue = this.y;
+			}
+			else if(this.x <= 1)
+			{
+				this.straightFlight = false;
+				this.fallFlight = true;
+			}
+		}
+		else if(this.loopFlight)
+		{
+			this.zRot = -1;
+			this.angle += 0.1;
+			this.x = this.xRotValue - Math.cos(this.angle);
+			this.y = this.yRotValue + Math.cos(this.angle);
+			if(this.angle >= 2*Math.PI-0.1 && this.angle <= 2*Math.PI+0.1)
+			{
+				this.straightFlight = true;
+				this.loopFlight = false;
+			}
+		}
+		else if(this.fallFlight)
+		{
+			this.angle = Math.PI/2.0;
+			this.zRot = 1;
+			this.x = 0.1;
+			this.y -= 0.1
+			if(this.y <= 1.5)
+			{
+				this.fallFlight = false;
+				this.angle = 0;
+				this.x = 1;
+				this.y = 0.1;
+			}
+		}
+	}
 };

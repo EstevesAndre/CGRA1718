@@ -42,7 +42,10 @@ class LightingScene extends CGFscene
 		this.boardA = new Plane(this, BOARD_A_DIVISIONS, 0, 0.96, 0.1, 0.76);
 		this.boardB = new Plane(this, BOARD_B_DIVISIONS);
 		this.clock = new MyClock(this);
-		this.plane = new MyPaperPlane(this);
+
+		this.plane1 = new MyPaperPlane(this);
+		this.plane1.setPosition(14.5, 3.88, 9);
+		this.plane1.setFlight(true);
 
 		// Materials
 		this.materialDefault = new CGFappearance(this);
@@ -118,7 +121,7 @@ class LightingScene extends CGFscene
 		this.planeColor.setSpecular(0.5,0.5,0.5,1);	
 		this.planeColor.setShininess(75);
 
-		this.setUpdatePeriod(100);
+		this.setUpdatePeriod(20);
 	};
 
 	initCameras() 
@@ -275,17 +278,10 @@ class LightingScene extends CGFscene
 		
 		this.pushMatrix();		
 			this.planeColor.apply();
-			this.translate(14.5,3.88,9);
+			this.translate(this.plane1.x,this.plane1.y,this.plane1.z);
 			this.scale(1,1.5,1.5);
-			this.rotate(-Math.PI/2.0,0,1,0);
-			this.pushMatrix();
-				this.translate(-0.5,0,8.47);
-				this.rotate(Math.PI/60.0,1,0,0);
-				this.rotate(Math.PI/190.0,0,0,1);
-				this.rotate(-Math.PI/5.0,0,1,0);
-				this.plane.display();
-			this.popMatrix();
-			this.plane.display();
+			this.rotate(this.plane1.angle,this.plane1.xRot,this.plane1.yRot,this.plane1.zRot);
+			this.plane1.display();
 		this.popMatrix();
 
 		// ---- END Scene drawing section
@@ -300,5 +296,7 @@ class LightingScene extends CGFscene
 		this.lastTime = currTime;
 
 		this.clock.update(this.deltaTime);
+
+		this.plane1.fly();
 	}
 };
