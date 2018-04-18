@@ -127,8 +127,9 @@ class MyPaperPlane extends CGFobject
 		{
 			this.zRot = -1;
 			this.angle += 0.1;
-			this.x = this.xRotValue - Math.cos(this.angle);
-			this.y = this.yRotValue + Math.cos(this.angle);
+			this.x = this.xRotValue + 2*Math.cos(this.angle+Math.PI/2.0)-0.5;
+			this.y = this.yRotValue + 2 - 2*Math.cos(this.angle);
+			
 			if(this.angle >= 2*Math.PI-0.1 && this.angle <= 2*Math.PI+0.1)
 			{
 				this.straightFlight = true;
