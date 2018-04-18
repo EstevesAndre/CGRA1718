@@ -281,6 +281,7 @@ class LightingScene extends CGFscene
 			this.translate(this.plane1.x,this.plane1.y,this.plane1.z);
 			this.scale(1,1.5,1.5);
 			this.rotate(this.plane1.angle,this.plane1.xRot,this.plane1.yRot,this.plane1.zRot);
+			this.angle = 1/Math.tan((5-3.88)/14.5);
 			this.plane1.display();
 		this.popMatrix();
 

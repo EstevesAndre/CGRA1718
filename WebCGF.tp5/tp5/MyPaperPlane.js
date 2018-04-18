@@ -19,6 +19,7 @@ class MyPaperPlane extends CGFobject
 		this.yRot = 0;
 		this.zRot = 0;
 
+		this.angleRot = 0;
 		this.xRotValue = 0;
 		this.yRotValue = 0;
 
@@ -89,14 +90,6 @@ class MyPaperPlane extends CGFobject
 		this.z = z;
 	}
 
-	setAngle(angle, x, y, z)
-	{
-		this.angle = angle;
-		this.xRot = x;
-		this.yRot = y;
-		this.zRot = z;
-	}
-
 	setFlight(fly)
 	{
 		this.straightFlight = fly;
@@ -116,6 +109,7 @@ class MyPaperPlane extends CGFobject
 				this.loopFlight = true;
 				this.xRotValue = this.x;
 				this.yRotValue = this.y;
+				this.angleRot = this.angle;
 			}
 			else if(this.x <= 1)
 			{
@@ -130,10 +124,11 @@ class MyPaperPlane extends CGFobject
 			this.x = this.xRotValue + 2*Math.cos(this.angle+Math.PI/2.0)-0.5;
 			this.y = this.yRotValue + 2 - 2*Math.cos(this.angle);
 			
-			if(this.angle >= 2*Math.PI-0.1 && this.angle <= 2*Math.PI+0.1)
+			if(this.angle > this.angleRot + 2*Math.PI -0.1 && this.angle < this.angleRot + 2*Math.PI +0.1)
 			{
 				this.straightFlight = true;
 				this.loopFlight = false;
+				this.angle = this.angleRot;
 			}
 		}
 		else if(this.fallFlight)
