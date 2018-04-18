@@ -141,8 +141,9 @@ class MyPaperPlane extends CGFobject
 			{
 				this.fallFlight = false;
 				this.angle = 0;
-				this.x = 1;
-				this.y = 0.1;
+				this.x = 14.5;
+				this.y = 3.88;
+				this.straightFlight=true;
 			}
 		}
 	}
