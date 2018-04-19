@@ -10,8 +10,8 @@ class MyCylinder extends CGFobject
 	{
 		super(scene);
 		this.slices = slices;
-		this.stacks = stacks;
-
+		this.stacks = stacks;		
+		
 		this.initBuffers();
 	}
 

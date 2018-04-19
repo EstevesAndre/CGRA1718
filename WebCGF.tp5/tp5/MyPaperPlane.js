@@ -35,12 +35,10 @@ class MyPaperPlane extends CGFobject
 		this.vertices = [
 				-1,0,0,  
 				0,0,-0.25,
-				0,0,-0.05,
+				0,0,-0.04,
 				0,0,0.25,
-				0,0,0.05,
+				0,0,0.04,
 				0,-0.05,0,
-				0,0,-0.05,
-				0,0,0.05,
 				-1, 0, 0
 			];
 
@@ -58,24 +56,20 @@ class MyPaperPlane extends CGFobject
 		this.normals = [
 				0, 0, 1,
 				0, 0, 1,
-				-Math.cos(Math.PI/4.0), 0, 0,
+				-Math.cos(Math.PI/6.0), 0, 0,
 				0, 0, 1,
-				Math.cos(Math.PI/4.0), 0, 0,
+				Math.cos(Math.PI/6.0), 0, 0,
 				0,0,-1,
-				0, 0, 1,
-				0, 0, 1,
 				0,-1,0,
 			];
 			
 		this.texCoords = [
 				0.5,1,
 				1,0,
-				0.60,0,
+				0.65,0,
 				0,0,
-				0.40,0,
+				0.35,0,
 				0.5,0,
-				0.60,0,
-				0.40,0,
 				1,1
 			];
 
@@ -141,9 +135,8 @@ class MyPaperPlane extends CGFobject
 			{
 				this.fallFlight = false;
 				this.angle = 0;
-				this.x = 14.5;
-				this.y = 3.88;
-				this.straightFlight=true;
+				this.x = 1;
+				this.y = 0.1;
 			}
 		}
 	}

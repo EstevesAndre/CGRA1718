@@ -18,13 +18,11 @@ class MyTable extends CGFobject
   		this.tableAppearance.setShininess(10);
 
 		this.metal = new CGFappearance(this.scene);
-		this.metal.loadTexture("../resources/images/tableLegs.jpg");
+		this.metal.loadTexture("../resources/images/legs.jpg");
 		this.metal.setAmbient(0.3,0.3,0.3,1);
 		this.metal.setDiffuse(0.5,0.5,0.5,1);
 		this.metal.setSpecular(1,1,1,1);
 		this.metal.setShininess(120);
-
-
 	};
 
 	display()

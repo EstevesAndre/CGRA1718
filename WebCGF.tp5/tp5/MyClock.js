@@ -12,7 +12,7 @@ class MyClock extends CGFobject
 
 		this.clockSlices = new MyCylinder(this.scene,12,1);
 
-		this.front = new MyClockFront(this.scene,12);
+		this.front = new MyObjectsFront(this.scene,12);
 		
 		this.minutePointer = new MyClockHand(this.scene,20,1);
 
@@ -31,13 +31,11 @@ class MyClock extends CGFobject
 		this.materialDefault.setDiffuse(0,0,0,1);
 
 		this.minutePointer.setSize(0.7);
-		//this.minutePointer.setAngle(180);
-
+		this.minutePointer.setThickness(0.011);
 		this.hourPointer.setSize(0.5);
-		//this.hourPointer.setAngle(90);
-		
-		this.secondPointer.setSize(0.80);
-		//this.secondPointer.setAngle(270);
+		this.hourPointer.setThickness(0.013);
+		this.secondPointer.setSize(0.80,0.2);
+		this.secondPointer.setThickness(0.007);
 	}
 
 

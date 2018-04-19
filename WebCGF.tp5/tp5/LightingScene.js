@@ -35,17 +35,16 @@ class LightingScene extends CGFscene
 		this.wallRight = new Plane(this);
 		this.floor = new MyQuad(this,0,10,0,12);
 		this.chair = new MyChair(this);
-		this.couch = new MyCouch(this);
-		this.prism = new MyPrism(this, 8, 20);
 		this.cylinder = new MyCylinder(this, 15, 20);
-		this.lamp = new MyLamp(this,8,20);
+		this.coverCircularObject = new MyObjectsFront(this,15);
+		this.lamp = new MyLamp(this,15,20);
 		this.boardA = new Plane(this, BOARD_A_DIVISIONS, 0, 0.96, 0.1, 0.76);
 		this.boardB = new Plane(this, BOARD_B_DIVISIONS);
 		this.clock = new MyClock(this);
 
-		this.plane1 = new MyPaperPlane(this);
-		this.plane1.setPosition(14.5, 3.88, 9);
-		this.plane1.setFlight(true);
+		this.plane = new MyPaperPlane(this);
+		this.plane.setPosition(14.5, 3.88, 9);
+		this.plane.setFlight(true);
 
 		// Materials
 		this.materialDefault = new CGFappearance(this);
@@ -105,8 +104,8 @@ class LightingScene extends CGFscene
 
 		this.boardAppearance = new CGFappearance(this);
 		this.boardAppearance.loadTexture("../resources/images/board.png");
-		this.boardAppearance.setAmbient(0.3,0.3,0.3,1);
-		this.boardAppearance.setDiffuse(0.25,0.25,0.25,1);
+		this.boardAppearance.setAmbient(0.6,0.6,0.6,1);
+		this.boardAppearance.setDiffuse(0.2,0.2,0.2,1);
 		this.boardAppearance.setSpecular(0.5,0.5,0.5,1);	
 		this.boardAppearance.setShininess(75);
 	
@@ -119,7 +118,7 @@ class LightingScene extends CGFscene
 		this.planeColor.setAmbient(0.3,0.3,0.3,1);
 		this.planeColor.setDiffuse(0.85,0.85,0.85,1);
 		this.planeColor.setSpecular(0.5,0.5,0.5,1);	
-		this.planeColor.setShininess(75);
+		this.planeColor.setShininess(5);
 
 		this.setUpdatePeriod(20);
 	};
@@ -189,9 +188,13 @@ class LightingScene extends CGFscene
 			this.rotate(-Math.PI / 2, 1, 0, 0); 
 			this.cylinderText.apply();
 			this.cylinder.display();
+			this.translate(0,0,1);
+			this.coverCircularObject.display();
 			this.cylinderText2.apply();
-			this.translate(14,0,0);
-			this.cylinder.display();	
+			this.translate(14,0,-1);
+			this.cylinder.display();						
+			this.translate(0,0,1);
+			this.coverCircularObject.display();	
 		this.popMatrix();
 		
 		// lamp
@@ -200,9 +203,10 @@ class LightingScene extends CGFscene
 			this.rotate(-3*Math.PI/2,1,0,0);
 			this.lampText.apply();
 			this.lamp.display();
+			this.rotate(Math.PI,1,0,0);
+			this.coverCircularObject.display();
 		this.popMatrix();
 		
-	    
 		// Floor
 		this.pushMatrix();		
 			this.floorAppearance.apply();
@@ -243,13 +247,17 @@ class LightingScene extends CGFscene
 
 		// First Chair
 		this.pushMatrix();
-			this.translate(5,0,6);
+			this.translate(5,0,9.5);
+			this.rotate(Math.PI,0,1,0);			
+			this.scale(1.2,1,1);
 			this.chair.display();
 		this.popMatrix();
 
 		// Second Chair
 		this.pushMatrix();
-			this.translate(12,0,6);
+			this.translate(12,0,9.5);
+			this.rotate(Math.PI,0,1,0);
+			this.scale(1.2,1,1);
 			this.chair.display();
 		this.popMatrix();
 	
@@ -269,6 +277,7 @@ class LightingScene extends CGFscene
 			this.boardB.display();
 		this.popMatrix();
 		
+		// Clock
 		this.pushMatrix();
 			this.materialDefault.apply();
 			this.translate(7.25,7.25,0.2);
@@ -276,13 +285,14 @@ class LightingScene extends CGFscene
 			this.clock.display();
 		this.popMatrix();
 		
+		// Plane
 		this.pushMatrix();		
 			this.planeColor.apply();
-			this.translate(this.plane1.x,this.plane1.y,this.plane1.z);
+			this.translate(this.plane.x,this.plane.y,this.plane.z);
 			this.scale(1,1.5,1.5);
-			this.rotate(this.plane1.angle,this.plane1.xRot,this.plane1.yRot,this.plane1.zRot);
+			this.rotate(this.plane.angle,this.plane.xRot,this.plane.yRot,this.plane.zRot);
 			this.angle = 1/Math.tan((5-3.88)/14.5);
-			this.plane1.display();
+			this.plane.display();
 		this.popMatrix();
 
 		// ---- END Scene drawing section
@@ -298,6 +308,6 @@ class LightingScene extends CGFscene
 
 		this.clock.update(this.deltaTime);
 
-		this.plane1.fly();
+		this.plane.fly();
 	}
 };
