@@ -25,6 +25,7 @@ class MyPaperPlane extends CGFobject
 
 		this.straightFlight = false;
 		this.loopFlight = false;
+		this.afterLoopFlight = false;
 		this.fallFlight = false;
 
 		this.initBuffers();
@@ -90,12 +91,12 @@ class MyPaperPlane extends CGFobject
 	}
 
 
-	fly()
+	update(currTime)
 	{
 		if(this.straightFlight)
 		{
-			this.x -= 0.2;
-			this.y += 2*(5-3.88)/135;
+			this.x -= 0.2 * currTime/50.0;
+			this.y += 2*(5-3.88)* (currTime/50.0) /135;
 
 			if(this.x <= 8.6 && this.x >= 8.4)
 			{
@@ -114,15 +115,26 @@ class MyPaperPlane extends CGFobject
 		else if(this.loopFlight)
 		{
 			this.zRot = -1;
-			this.angle += 0.1;
+			this.angle += 0.1 * currTime /50.0;
 			this.x = this.xRotValue + 2*Math.cos(this.angle+Math.PI/2.0)-0.5;
 			this.y = this.yRotValue + 2 - 2*Math.cos(this.angle);
 			
 			if(this.angle > this.angleRot + 2*Math.PI -0.1 && this.angle < this.angleRot + 2*Math.PI +0.1)
 			{
-				this.straightFlight = true;
+				this.afterLoopFlight = true;
 				this.loopFlight = false;
 				this.angle = this.angleRot;
+			}
+		}
+		else if(this.afterLoopFlight)
+		{
+			this.x -= 0.2 * currTime/50.0;
+			this.y += 2*(5-3.88)* (currTime/50.0) /135;
+
+			if(this.x <= 1)
+			{
+				this.afterLoopFlight = false;
+				this.fallFlight = true;
 			}
 		}
 		else if(this.fallFlight)
@@ -130,7 +142,7 @@ class MyPaperPlane extends CGFobject
 			this.angle = Math.PI/2.0;
 			this.zRot = 1;
 			this.x = 0.1;
-			this.y -= 0.1
+			this.y -= 0.1* currTime /50.0;
 			if(this.y <= 1.5)
 			{
 				this.fallFlight = false;
@@ -139,5 +151,5 @@ class MyPaperPlane extends CGFobject
 				this.y = 0.1;
 			}
 		}
-	}
+	};
 };

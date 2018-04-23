@@ -6,6 +6,8 @@ var BOARD_HEIGHT = 4.0;
 var BOARD_A_DIVISIONS = 30;
 var BOARD_B_DIVISIONS = 100;
 
+var FPS = 30;
+
 class LightingScene extends CGFscene 
 {
 	constructor()
@@ -120,7 +122,7 @@ class LightingScene extends CGFscene
 		this.planeColor.setSpecular(0.5,0.5,0.5,1);	
 		this.planeColor.setShininess(5);
 
-		this.setUpdatePeriod(20);
+		this.setUpdatePeriod(1000/FPS);
 	};
 
 	initCameras() 
@@ -308,6 +310,7 @@ class LightingScene extends CGFscene
 
 		this.clock.update(this.deltaTime);
 
-		this.plane.fly();
+		if(this.deltaTime <= 1000)
+			this.plane.update(this.deltaTime);
 	}
 };
