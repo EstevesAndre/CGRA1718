@@ -32,7 +32,7 @@ class LightingScene extends CGFscene
 		this.axis = new CGFaxis(this);
 
 		// Scene elements
-		
+		this.trapezium = new MyTrapezium(this,6,8,2,4,-3);
 
 		// Materials
 		
@@ -40,7 +40,9 @@ class LightingScene extends CGFscene
 		// Textures
 		this.enableTextures(true);
 
-		
+		this.materialDefault = new CGFappearance(this);
+		this.materialDefault.setDiffuse(0,0,0.25,1);
+		this.materialDefault.setAmbient(0.2,0.2,0.2,1);
 
 		this.setUpdatePeriod(1000/FPS);
 	};
@@ -57,7 +59,7 @@ class LightingScene extends CGFscene
 		this.lights[0].setPosition(0, 4, 7.5, 1);
 		this.lights[0].setVisible(true); 
 		
-		this.lights[1].setPosition(6,7.5,6,1);
+		this.lights[1].setPosition(3,4.5,2,1);
 		this.lights[1].setVisible(true); 
 		
 		this.lights[0].setAmbient(0.5, 0.5, 0.5, 1);
@@ -101,7 +103,10 @@ class LightingScene extends CGFscene
 		// ---- END Background, camera and axis setup
 
 		// ---- BEGIN Scene drawing section
-
+		this.pushMatrix();
+			this.materialDefault.apply();
+			this.trapezium.display();
+		this.popMatrix();
 		
 		// ---- END Scene drawing section
 	};

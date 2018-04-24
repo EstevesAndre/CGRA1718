@@ -18,6 +18,9 @@ serialInclude([
 	'MyObjectsFront.js',
 	'MyClockHand.js',
 	'MyPaperPlane.js',
+	// TP6 CLASSES
+	'MyTrapezium.js',
+
 
 	main=function() {
 		var app = new CGFapplication(document.body);
