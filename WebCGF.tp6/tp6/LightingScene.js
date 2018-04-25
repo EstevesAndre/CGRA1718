@@ -32,8 +32,9 @@ class LightingScene extends CGFscene
 		this.axis = new CGFaxis(this);
 
 		// Scene elements
-		this.trapezium = new MyTrapezium(this,6,8,2,4,-3);
-
+		this.floor = new MyQuad(this,0,10,0,12);
+		this.trapezium = new MyTrapezium(this,6.5,0,0.3,3.5,0);
+		this.wheel = new MyWheel(this,12,1);
 		// Materials
 		
 
@@ -41,8 +42,13 @@ class LightingScene extends CGFscene
 		this.enableTextures(true);
 
 		this.materialDefault = new CGFappearance(this);
+		this.materialDefault.loadTexture("../resources/images/lamptext.jpg");
 		this.materialDefault.setDiffuse(0,0,0.25,1);
 		this.materialDefault.setAmbient(0.2,0.2,0.2,1);
+		
+		this.floorAppearance = new CGFappearance(this);		
+		this.floorAppearance.loadTexture("../resources/images/floor.png");
+		this.floorAppearance.setTextureWrap("REPEAT", "REPEAT");
 
 		this.setUpdatePeriod(1000/FPS);
 	};
@@ -103,10 +109,35 @@ class LightingScene extends CGFscene
 		// ---- END Background, camera and axis setup
 
 		// ---- BEGIN Scene drawing section
+
+		// Floor
+		this.pushMatrix();		
+			this.floorAppearance.apply();
+			this.translate(7.5, 0, 7.5);
+			this.rotate(-90 * degToRad, 1, 0, 0);
+			this.scale(15, 15, 0.2);
+			this.floor.display();
+		this.popMatrix();
+
+		this.pushMatrix();
+			this.translate(2,1,2);
+			this.wheel.display();
+			this.translate(6,0,0);
+			this.wheel.display();
+			this.translate(0,0,5);
+			this.rotate(Math.PI,1,0,0);
+			this.wheel.display();
+			this.translate(-6,0,0);
+			this.wheel.display();
+		this.popMatrix();
+		
 		this.pushMatrix();
 			this.materialDefault.apply();
+			this.translate(8.3,1.25,6.23);
+			this.rotate(Math.PI,0,1,0);
 			this.trapezium.display();
 		this.popMatrix();
+
 		
 		// ---- END Scene drawing section
 	};

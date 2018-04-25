@@ -22,23 +22,19 @@ class MyTrapezium extends CGFobject
 		if(b+offset > B)
 		{
 			this.angle_R = -Math.atan((b+offset-B)/h);
-			console.log(this.angle_R * 180 / Math.PI);
 		}
 		else
 		{			
 			this.angle_R = Math.atan((B-(b+offset))/h);
-			console.log(this.angle_R * 180 / Math.PI);
 		}
 
 		if(offset > 0)
 		{			
 			this.angle_L = Math.atan(h/offset) + Math.PI/2.0;
-			console.log(this.angle_L * 180 / Math.PI);
 		}
 		else
 		{			
 			this.angle_L = Math.atan(-offset/h) + Math.PI;
-			console.log(this.angle_L * 180 / Math.PI);
 		}
 		
 		this.xRight = Math.cos(this.angle_R);

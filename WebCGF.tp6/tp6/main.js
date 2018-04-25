@@ -13,15 +13,17 @@ serialInclude([
 	'MyChair.js',
 	'MyPrism.js',
 	'MyCylinder.js',
-	'MyLamp.js',
 	'MyClock.js',
 	'MyObjectsFront.js',
 	'MyClockHand.js',
 	'MyPaperPlane.js',
 	// TP6 CLASSES
 	'MyTrapezium.js',
-
-
+	'MyWheel.js',
+	'MyObjectsFrontCircule.js',
+	'MySemiCylinder.js',
+	'MySemiSphere.js',
+	
 	main=function() {
 		var app = new CGFapplication(document.body);
 		var myScene = new LightingScene();

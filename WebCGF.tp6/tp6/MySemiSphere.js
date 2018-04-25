@@ -1,10 +1,10 @@
 /**
- * MyLamp
+ * MySemiSphere
  * @param gl {WebGLRenderingContext}
  * @constructor
  */
 
-class MyLamp extends CGFobject
+class MySemiSphere extends CGFobject
 {
 	constructor(scene, slices, stacks)
 	{

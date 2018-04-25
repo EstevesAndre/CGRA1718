@@ -1,22 +1,17 @@
 /**
- * MyCylinder
+ * MySemiCylinder
  * @param gl {WebGLRenderingContext}
  * @constructor
  */
 
-class MyCylinder extends CGFobject
+class MySemiCylinder extends CGFobject
 {
-	constructor(scene, slices, stacks, side = 1)
+	constructor(scene, slices, stacks, angle)
 	{
 		super(scene);
 		this.slices = slices;
 		this.stacks = stacks;		
-		this.side = side;
-		
-		if(side != -1 && side != 1)
-		{
-			this.side = 1;
-		}
+		this.rot = angle;
 
 		this.initBuffers();
 	}
@@ -36,7 +31,7 @@ class MyCylinder extends CGFobject
 		this.texCoords = [
 			];
 
-		var angle = (2* Math.PI) / this.slices;
+		var angle = this.rot / this.slices;
 		var division = 1.0 / this.stacks;
 		
 		// Here we do 1 division per iteration so it's k <= this.stacks.
@@ -49,22 +44,22 @@ class MyCylinder extends CGFobject
 								   Math.sin(i * angle),
 								   k * division);
 				 
-				this.normals.push(this.side == 1 ? Math.cos(i * angle) : - Math.cos(i * angle),
-								  this.side == 1 ? Math.sin(i * angle) : - Math.sin(i * angle),
+				this.normals.push(Math.cos(i * angle),
+								  Math.sin(i * angle),
 								  0);
 			
 				// Place to texCoords				
-				this.texCoords.push(i/this.slices,k*division);
+				this.texCoords.push(k*division,i/this.slices);
 				
 				if(k != 0 && i != 0)
 				{
 					this.indices.push((this.slices+1)*k + i - 1, 
-									  this.side == 1 ? (this.slices+1)*(k-1) + i - 1 : (this.slices+1)*(k-1) + i, 
-									  this.side == 1 ? (this.slices+1)*(k-1) + i : (this.slices+1)*(k-1) + i - 1);
+									  (this.slices+1)*(k-1) + i - 1, 
+									  (this.slices+1)*(k-1) + i );
 									  
 					this.indices.push((this.slices+1)*k + i - 1, 
-									  this.side == 1 ? (this.slices+1)*(k-1) + i : (this.slices+1)*k + i,
-									  this.side == 1 ? (this.slices+1)*k + i : (this.slices+1)*(k-1) + i);
+									   (this.slices+1)*(k-1) + i,
+									  (this.slices+1)*k + i);
 				}
 			}
 		}
