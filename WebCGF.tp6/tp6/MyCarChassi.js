@@ -23,10 +23,16 @@ class MyCarChassi extends CGFobject
 		this.barLeft2 = new MyTrapeziumCylindric(this.scene,2,1.5,0.7,0);
 		
 		// red
-		this.barSide = new MyTrapeziumCylindric(this.scene,0.5,0.5,3,-1);
+		this.barSide = new MyTrapeziumCylindric(this.scene,0.5,0.5,2,-1);
 		
-		this.barRear = new MyTrapeziumCylindric(this.scene,4,3,2,-1);
+		// green
+		this.barLeft3 = new MyTrapeziumCylindric(this.scene,2,2,2,0.5);
 		
+		// red
+		this.barUp = new MyTrapeziumCylindric(this.scene,3,3,3,0);
+
+
+
 		this.red = new CGFappearance(this.scene);
 		this.red.setDiffuse(1,0,0,1);
 
@@ -144,6 +150,105 @@ class MyCarChassi extends CGFobject
 				this.bar.display();
 			this.scene.popMatrix();
 
+		this.blue.apply();
+			this.scene.pushMatrix();			
+				this.scene.translate(-6.6,1.5,2);
+				this.scene.rotate(Math.PI/4.0,1,0,0);
+				this.scene.rotate(Math.PI,0,1,0)
+				this.scene.scale(0.1,0.1,1.5/Math.cos(Math.PI/4.0));
+				this.bar.display();
+			this.scene.popMatrix();
+			
+		this.red.apply();
+			this.scene.pushMatrix();			
+				this.scene.translate(-6.6,1.5,2);
+				this.scene.rotate(Math.PI,0,1,0);
+				this.scene.scale(0.1,0.1,1.5);
+				this.bar.display();
+			this.scene.popMatrix();
+
+		this.yellow.apply();
+			this.scene.pushMatrix();
+				this.scene.translate(-6.6,1.5,0.5);
+				this.scene.rotate(Math.PI/4.0,0,1,0);
+				this.scene.rotate(-Math.PI/6.0,1,0,0);
+				this.scene.scale(0.1,0.1,0.5);
+				this.bar.display();
+			this.scene.popMatrix();
+	
+		this.red.apply();
+			this.scene.pushMatrix();			
+				this.scene.translate(-6.6,3,0.5);
+				this.scene.rotate(Math.PI/12.0,1,0,0);				
+				this.scene.rotate(Math.PI/3,0,1,0);
+				this.scene.scale(0.1,0.1,1.8);
+				this.bar.display();
+			this.scene.popMatrix();
+
+		this.green.apply();
+			this.scene.pushMatrix();			
+				this.scene.translate(-6.3,1.75,0.8);
+				this.scene.rotate(Math.PI/4.8,0,0,1);
+				this.scene.rotate(Math.PI/2.57,0,1,0);
+				this.scene.scale(0.1,0.1,1.7);
+				this.bar.display();
+			this.scene.popMatrix();
+
+		this.blue.apply();
+			this.scene.pushMatrix();
+				this.scene.translate(-1.5,0.9,2.8);
+				this.scene.rotate(-3*Math.PI/6,1,0,0);
+				this.barLeft3.display(0x0111);
+			this.scene.popMatrix();
+			
+
+		this.green.apply();
+			this.scene.pushMatrix();
+				this.scene.translate(-1,0.9,2.8);
+				this.scene.rotate(-Math.PI/4.8,0,0,1);
+				this.scene.rotate(-3*Math.PI/6,1,0,0);				
+				this.scene.scale(0.1,0.1,2.5);
+				this.bar.display();
+			this.scene.popMatrix();
+			
+
+		this.green.apply();
+			this.scene.pushMatrix();
+				this.scene.translate(1,0.9,2.8);
+				this.scene.rotate(-Math.PI/3.5,0,0,1);
+				this.scene.rotate(-3*Math.PI/6,1,0,0);				
+				this.scene.scale(0.1,0.1,3.2);
+				this.bar.display();
+			this.scene.popMatrix();
+			
+
+		this.red.apply();
+			this.scene.pushMatrix();
+				this.scene.translate(-1.5,2.9,2.8);
+				this.scene.rotate(Math.PI/3.0,0,0,1);
+				this.scene.rotate(Math.PI/2.0,0,1,0);
+				this.barUp.display(0x1011);
+			this.scene.popMatrix();
+
+		this.blue.apply();
+			this.scene.pushMatrix();
+				this.scene.translate(-1.5,2.9,0.5);
+				this.scene.rotate(-Math.PI/12.5,1,0,0);
+				this.scene.rotate(Math.PI/3.0,0,0,1);
+				this.scene.rotate(Math.PI/2.0,0,1,0);
+				this.scene.scale(0.05,0.05,3);
+				this.bar.display();
+			this.scene.popMatrix();
+			
+		this.yellow.apply();
+			this.scene.pushMatrix();
+				this.scene.translate(-5.05,2.75,1.37);
+				this.scene.rotate(Math.PI/70,0,0,1);
+				this.scene.rotate(Math.PI/2-Math.PI/8.2,0,1,0);
+				this.scene.scale(0.1,0.1,3.85);
+				this.bar.display();
+			this.scene.popMatrix();
+			
 
 		this.scene.popMatrix();
 	};

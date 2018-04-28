@@ -37,7 +37,7 @@ class LightingScene extends CGFscene
 		this.wheel = new MyWheel(this,12,1);
 		//this.cyl = new MyHandWheel(this);
 		this.cyl = new MyCarChassi(this);
-
+		this.sphericalbow = new MySphericalBow(this,12, 12, 1);
 		// Materials
 		
 
@@ -159,6 +159,7 @@ class LightingScene extends CGFscene
 		this.pushMatrix();
 			//this.translate(1,1,1);
 			this.cyl.display();
+			//this.sphericalbow.display();
 		this.popMatrix();
 		
 		// ---- END Scene drawing section
