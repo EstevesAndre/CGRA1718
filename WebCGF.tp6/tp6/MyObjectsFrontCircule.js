@@ -48,8 +48,6 @@ class MyObjectsFrontCircule extends CGFobject
 				this.indices.push(2*i,2*i+1,2*i-1);
 			}
 		}
-				
-		
 		
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();

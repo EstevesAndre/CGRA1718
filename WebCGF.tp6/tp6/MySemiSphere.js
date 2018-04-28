@@ -6,13 +6,14 @@
 
 class MySemiSphere extends CGFobject
 {
-	constructor(scene, slices, stacks)
+	constructor(scene, slices, stacks, angl)
 	{
 		super(scene);
 		this.slices = slices;
-		this.stacks = stacks;
+		this.stacks = stacks;		
+		//this.rot = angl || (2*Math.PI);
 		this.initBuffers();
-	}
+	};
 
 	initBuffers() 
 	{
@@ -68,11 +69,6 @@ class MySemiSphere extends CGFobject
 			
 		
 		}
-		
-		console.log(division);
-		console.log("Number of SemiSphere vertices: " + this.vertices.length);
-		console.log("Number of SemiSphere indices: " + this.indices.length);
-		console.log("Number of SemiSphere normals: " +this.normals.length); 
 		
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();

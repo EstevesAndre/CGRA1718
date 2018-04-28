@@ -17,7 +17,7 @@ class MyCylinder extends CGFobject
 		{
 			this.side = 1;
 		}
-
+		
 		this.initBuffers();
 	}
 

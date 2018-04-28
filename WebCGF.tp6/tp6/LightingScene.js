@@ -46,9 +46,9 @@ class LightingScene extends CGFscene
 
 		this.materialDefault = new CGFappearance(this);
 		this.materialDefault.loadTexture("../resources/images/lamptext.jpg");
-		this.materialDefault.setDiffuse(0,0,0.25,1);
+		//this.materialDefault.setDiffuse(0,0,0.25,1);
 		this.materialDefault.setAmbient(0.2,0.2,0.2,1);
-		
+	
 		this.floorAppearance = new CGFappearance(this);		
 		this.floorAppearance.loadTexture("../resources/images/floor.png");
 		this.floorAppearance.setTextureWrap("REPEAT", "REPEAT");
@@ -114,7 +114,7 @@ class LightingScene extends CGFscene
 		// ---- BEGIN Scene drawing section
 
 		// Floor
-		this.pushMatrix();		
+/*		this.pushMatrix();		
 			this.floorAppearance.apply();
 			this.translate(7.5, 0, 7.5);
 			this.rotate(-90 * degToRad, 1, 0, 0);
@@ -146,16 +146,18 @@ class LightingScene extends CGFscene
 			this.rotate(Math.PI,1,0,0);	
 			this.rotate(-this.wheel.angle,0,0,1);	
 			this.wheel.display();
-		this.popMatrix();
-		
+		this.popMatrix();*/
+		/*
 		this.pushMatrix();
 			this.materialDefault.apply();
 			this.translate(8.3,1.25,6.23);
 			this.rotate(Math.PI,0,1,0);
 			//this.trapezium.display();
 		this.popMatrix();
-
+*/
+		this.materialDefault.apply();
 		this.pushMatrix();
+			//this.translate(1,1,1);
 			this.cyl.display();
 		this.popMatrix();
 		
