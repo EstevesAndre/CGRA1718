@@ -35,6 +35,8 @@ class LightingScene extends CGFscene
 		this.floor = new MyQuad(this,0,10,0,12);
 		this.trapezium = new MyTrapezium(this,6.5,0,0.3,3.5,0);
 		this.wheel = new MyWheel(this,12,1);
+		this.cyl = new MyHandWheel(this);
+
 		// Materials
 		
 
@@ -120,14 +122,28 @@ class LightingScene extends CGFscene
 		this.popMatrix();
 
 		this.pushMatrix();
-			this.translate(2,1,2);
+			this.translate(2,1.1,2);
+			this.rotate(this.wheel.angle,0,0,1);	
 			this.wheel.display();
-			this.translate(6,0,0);
+		this.popMatrix();
+
+		this.pushMatrix();			
+			this.translate(8,1.1,2);
+			this.rotate(this.wheel.angle,0,0,1);	
 			this.wheel.display();
-			this.translate(0,0,5);
-			this.rotate(Math.PI,1,0,0);
+		this.popMatrix();	
+			
+		this.pushMatrix();	
+			this.translate(8,1.1,7);
+			this.rotate(Math.PI,1,0,0);			
+			this.rotate(-this.wheel.angle,0,0,1);	
 			this.wheel.display();
-			this.translate(-6,0,0);
+		this.popMatrix();
+
+		this.pushMatrix();			
+			this.translate(2,1.1,7);				
+			this.rotate(Math.PI,1,0,0);	
+			this.rotate(-this.wheel.angle,0,0,1);	
 			this.wheel.display();
 		this.popMatrix();
 		
@@ -138,6 +154,9 @@ class LightingScene extends CGFscene
 			this.trapezium.display();
 		this.popMatrix();
 
+		this.pushMatrix();
+			//this.cyl.display();
+		this.popMatrix();
 		
 		// ---- END Scene drawing section
 	};
@@ -149,5 +168,8 @@ class LightingScene extends CGFscene
 		this.deltaTime = currTime - this.lastTime;
 
 		this.lastTime = currTime;
+
+		if(this.deltaTime <= 1000)
+			this.wheel.update(this.deltaTime);
 	};
 };

@@ -14,7 +14,6 @@ serialInclude([
 	'MyPrism.js',
 	'MyCylinder.js',
 	'MyClock.js',
-	'MyObjectsFront.js',
 	'MyClockHand.js',
 	'MyPaperPlane.js',
 	// TP6 CLASSES
@@ -23,6 +22,7 @@ serialInclude([
 	'MyObjectsFrontCircule.js',
 	'MySemiCylinder.js',
 	'MySemiSphere.js',
+	'MyHandWheel.js',
 	
 	main=function() {
 		var app = new CGFapplication(document.body);
