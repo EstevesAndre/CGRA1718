@@ -35,7 +35,8 @@ class LightingScene extends CGFscene
 		this.floor = new MyQuad(this,0,10,0,12);
 		this.trapezium = new MyTrapezium(this,6.5,0,0.3,3.5,0);
 		this.wheel = new MyWheel(this,12,1);
-		this.cyl = new MyHandWheel(this);
+		//this.cyl = new MyHandWheel(this);
+		this.cyl = new MyCarChassi(this);
 
 		// Materials
 		
@@ -151,11 +152,11 @@ class LightingScene extends CGFscene
 			this.materialDefault.apply();
 			this.translate(8.3,1.25,6.23);
 			this.rotate(Math.PI,0,1,0);
-			this.trapezium.display();
+			//this.trapezium.display();
 		this.popMatrix();
 
 		this.pushMatrix();
-			//this.cyl.display();
+			this.cyl.display();
 		this.popMatrix();
 		
 		// ---- END Scene drawing section

@@ -128,8 +128,11 @@ class MyWheel extends CGFobject
 						else							
 							this.scene.scale(0.08,0.08,0.1);
 						this.center.display();
-					this.scene.popMatrix();				
-					angle+=Math.PI/20;
+					this.scene.popMatrix();
+					if(z%2==0)				
+						angle+=Math.PI/20;
+					else
+						angle+=Math.PI/20;
 				}
 			}
 		this.scene.popMatrix();
@@ -137,6 +140,6 @@ class MyWheel extends CGFobject
 
 	update(currTime)
 	{
-		this.angle+=Math.PI/65.0 * currTime /50.0;
+		this.angle+=Math.PI/150.0 * currTime /50.0;
 	}
 };
