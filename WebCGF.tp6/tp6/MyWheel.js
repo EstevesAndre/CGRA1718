@@ -138,6 +138,6 @@ class MyWheel extends CGFobject
 
 	update(currTime)
 	{
-		//this.angle+=Math.PI/80.0 * currTime /50.0;
+		this.angle+=Math.PI/50.0 * currTime /50.0;
 	}
 };

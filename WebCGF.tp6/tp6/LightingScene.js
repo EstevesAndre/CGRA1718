@@ -33,11 +33,11 @@ class LightingScene extends CGFscene
 
 		// Scene elements
 		this.floor = new MyQuad(this,0,10,0,12);
-		this.trapezium = new MyTrapezium(this,6.5,0,0.3,3.5,0);
-		this.wheel = new MyWheel(this,12,1);
+		this.trapezium = new MyTrapezium(this,5,0,0.1,2,0);
 		//this.cyl = new MyHandWheel(this);
-		this.cyl = new MyCarChassi(this);
+		this.chassi = new MyCarChassi(this,1);
 		this.sphericalbow = new MySphericalBow(this,12, 12, 1);
+		this.car = new MyOffRoadCar(this);
 		// Materials
 		
 
@@ -48,11 +48,17 @@ class LightingScene extends CGFscene
 		this.materialDefault.loadTexture("../resources/images/lamptext.jpg");
 		//this.materialDefault.setDiffuse(0,0,0.25,1);
 		this.materialDefault.setAmbient(0.2,0.2,0.2,1);
+		
+		this.flame = new CGFappearance(this);
+		this.flame.loadTexture("../resources/images/flames.jpg");
+		//this.materialDefault.setDiffuse(0,0,0.25,1);
+		this.flame.setAmbient(0.2,0.2,0.2,1);
 	
 		this.floorAppearance = new CGFappearance(this);		
 		this.floorAppearance.loadTexture("../resources/images/floor.png");
 		this.floorAppearance.setTextureWrap("REPEAT", "REPEAT");
 
+		
 		this.setUpdatePeriod(1000/FPS);
 	};
 
@@ -70,14 +76,21 @@ class LightingScene extends CGFscene
 		
 		this.lights[1].setPosition(3,4.5,2,1);
 		this.lights[1].setVisible(true); 
+
+		this.lights[2].setPosition(2,0,2,1);
+		this.lights[2].setVisible(true); 		
 		
 		this.lights[0].setAmbient(0.5, 0.5, 0.5, 1);
 		this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[0].enable();
 
 		this.lights[1].setAmbient(0, 0, 0, 1);
-		this.lights[1].setDiffuse(1.0, 1.0, 0.4, 1.0);
+		this.lights[1].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[1].enable();
+
+		this.lights[2].setAmbient(0.5,0.5,0.5,1);
+		this.lights[2].setDiffuse(1,1,1,1);
+		this.lights[2].enable();
 	};
 
 	updateLights() 
@@ -121,47 +134,29 @@ class LightingScene extends CGFscene
 			this.scale(15, 15, 0.2);
 			this.floor.display();
 		this.popMatrix();
-
-		this.pushMatrix();
-			this.translate(2,1.1,2);
-			this.rotate(this.wheel.angle,0,0,1);	
-			this.wheel.display();
-		this.popMatrix();
-
-		this.pushMatrix();			
-			this.translate(8,1.1,2);
-			this.rotate(this.wheel.angle,0,0,1);	
-			this.wheel.display();
-		this.popMatrix();	
-			
-		this.pushMatrix();	
-			this.translate(8,1.1,7);
-			this.rotate(Math.PI,1,0,0);			
-			this.rotate(-this.wheel.angle,0,0,1);	
-			this.wheel.display();
-		this.popMatrix();
-
-		this.pushMatrix();			
-			this.translate(2,1.1,7);				
-			this.rotate(Math.PI,1,0,0);	
-			this.rotate(-this.wheel.angle,0,0,1);	
-			this.wheel.display();
-		this.popMatrix();*/
-		/*
-		this.pushMatrix();
-			this.materialDefault.apply();
-			this.translate(8.3,1.25,6.23);
-			this.rotate(Math.PI,0,1,0);
-			//this.trapezium.display();
-		this.popMatrix();
 */
-		this.materialDefault.apply();
-		this.pushMatrix();
-			//this.translate(1,1,1);
-			this.cyl.display();
-			//this.sphericalbow.display();
-		this.popMatrix();
 		
+	/*	this.pushMatrix();
+			this.flame.apply();
+			this.translate(3,3,2.45);
+			this.rotate(Math.PI,0,0,1);
+			this.rotate(-Math.PI/2.0,1,0,0);
+			this.trapezium.display();
+		this.popMatrix();
+
+
+		this.pushMatrix();
+			//this.scale(1.5,1.5,1.5);
+		//	this.translate(8,2,5);
+			this.chassi.display();
+//			this.scale(1,1,-1);
+//			this.chassi.display();
+		this.popMatrix();
+		*/
+		this.pushMatrix();
+			this.translate(8,0,5);
+			this.car.display();
+		this.popMatrix();
 		// ---- END Scene drawing section
 	};
 
@@ -174,6 +169,6 @@ class LightingScene extends CGFscene
 		this.lastTime = currTime;
 
 		if(this.deltaTime <= 1000)
-			this.wheel.update(this.deltaTime);
+			this.car.update(this.deltaTime);
 	};
 };
