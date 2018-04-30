@@ -132,7 +132,7 @@ class LightingScene extends CGFscene
 		// ---- END Background, camera and axis setup
 
 		// ---- BEGIN Scene drawing section
-
+		
 		// Floor
 		this.pushMatrix();		
 			this.terrainAppearance.apply();
