@@ -80,4 +80,16 @@ class MyOffRoadCar extends CGFobject
 	{
 		this.wheel.update(currTime);
 	}
+
+	setPaint(Paint)
+	{
+		if(Paint == 'Flames')
+		{
+			this.model = new MyCarModel(this.scene);
+		}
+		else
+		{
+			this.model = new MyCarModel(this.scene, "camouflageTex.jpg", "camouflageTex.jpg", "camouflageTex.jpg");
+		}
+	};
 };

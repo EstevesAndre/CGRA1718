@@ -23,6 +23,9 @@ class LightingScene extends CGFscene
 
 		this.initLights();
 
+		this.Paint = "Flames";
+		this.PaintControl = "";
+
 		this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
 		this.gl.clearDepth(100.0);
 		this.gl.enable(this.gl.DEPTH_TEST);
@@ -160,6 +163,11 @@ class LightingScene extends CGFscene
 		
 		this.pushMatrix();
 			this.translate(8,0,5);
+			if(this.Paint != this.PaintControl)
+			{
+				this.car.setPaint(this.Paint);
+				this.PaintControl = this.Paint;
+			}
 			this.car.display();
 		this.popMatrix();
 
@@ -181,4 +189,11 @@ class LightingScene extends CGFscene
 		if(this.deltaTime <= 1000)
 			this.car.update(this.deltaTime);
 	};
+
+	doSomething()
+	{
+	
+	};
 };
+
+
