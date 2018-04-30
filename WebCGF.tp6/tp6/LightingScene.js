@@ -26,6 +26,11 @@ class LightingScene extends CGFscene
 		this.Paint = "Flames";
 		this.PaintControl = "";
 
+		this.Sun=true;
+		this.CarLights=true;
+
+		this.axisDisplay = true;
+
 		this.gl.clearColor(0.7, 0.7, 1.0, 1.0);
 		this.gl.clearDepth(100.0);
 		this.gl.enable(this.gl.DEPTH_TEST);
@@ -78,26 +83,19 @@ class LightingScene extends CGFscene
 	{
 		this.setGlobalAmbientLight(1,1,1, 1.0);
 		
-		this.lights[0].setPosition(0, 4, 7.5, 1);
-		this.lights[0].setVisible(true); 
+		this.lights[0].setPosition(0, 50, 0, 1);
+		this.lights[0].setVisible(true);
 		
-		this.lights[1].setPosition(3,4.5,2,1);
-		this.lights[1].setVisible(true); 
-
-		this.lights[2].setPosition(2,0,2,1);
-		this.lights[2].setVisible(true); 		
-		
-		this.lights[0].setAmbient(0.5, 0.5, 0.5, 1);
+		this.lights[0].setAmbient(1.0, 1.0, 1.0, 1);
 		this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[0].enable();
 
-		this.lights[1].setAmbient(0, 0, 0, 1);
-		this.lights[1].setDiffuse(1.0, 1.0, 1.0, 1.0);
+		this.lights[1].setPosition(0, 5, 5, 1);
+		this.lights[1].setVisible(true);
+		
+		this.lights[1].setAmbient(1.0, 1.0, 0.0, 1);
+		this.lights[1].setDiffuse(1.0, 1.0, 0.0, 1.0);
 		this.lights[1].enable();
-
-		this.lights[2].setAmbient(0.5,0.5,0.5,1);
-		this.lights[2].setDiffuse(1,1,1,1);
-		this.lights[2].enable();
 	};
 
 	updateLights() 
@@ -123,10 +121,12 @@ class LightingScene extends CGFscene
 		this.applyViewMatrix();
 
 		// Update all lights used
+		this.evalLights();
 		this.updateLights();
 
 		// Draw axis
-		this.axis.display();
+		if(this.axisDisplay)
+			this.axis.display();
 
 
 		// ---- END Background, camera and axis setup
@@ -140,24 +140,6 @@ class LightingScene extends CGFscene
 			this.scale(50, 50, 0);
 			this.floor.display();
 		this.popMatrix();
-
-		
-	/*	this.pushMatrix();
-			this.flame.apply();
-			this.translate(3,3,2.45);
-			this.rotate(Math.PI,0,0,1);
-			this.rotate(-Math.PI/2.0,1,0,0);
-			this.trapezium.display();
-		this.popMatrix();
-*/
-
-		this.pushMatrix();
-			//this.scale(1.5,1.5,1.5);
-		//	this.translate(8,2,5);
-//			this.chassi.display();
-//			this.scale(1,1,-1);
-//			this.chassi.display();
-		this.popMatrix();
 		
 		this.pushMatrix();
 			this.translate(8,0,5);
@@ -169,10 +151,6 @@ class LightingScene extends CGFscene
 			this.car.display();
 		this.popMatrix();
 
-		this.pushMatrix();
-			//this.translate(8,0,5);
-			//this.model.display();
-		this.popMatrix();
 		// ---- END Scene drawing section
 	};
 
@@ -187,6 +165,32 @@ class LightingScene extends CGFscene
 		if(this.deltaTime <= 1000)
 			this.car.update(this.deltaTime);
 	};
+
+	toggleAxis()
+	{
+		this.axisDisplay = !this.axisDisplay;
+	}
+
+	evalLights()
+	{
+		if(this.Sun)
+		{
+			this.lights[0].enable();
+		}
+		else
+		{
+			this.lights[0].disable();
+		}
+
+		if(this.CarLights)
+		{
+			this.lights[1].enable();
+		}
+		else
+		{
+			this.lights[1].disable();
+		}
+	}
 
 };
 

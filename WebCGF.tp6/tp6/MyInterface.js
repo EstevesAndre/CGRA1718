@@ -22,13 +22,20 @@ class MyInterface extends CGFinterface {
 
 		this.gui = new dat.GUI();
 
+		this.gui.add(this.scene, 'toggleAxis');
 
 		// add a group of controls (and open/expand by defult)
 
-		var group=this.gui.addFolder("Car");
-		group.open();
+		var groupCar=this.gui.addFolder("Car");
+		groupCar.open();
 
-		group.add(this.scene, 'Paint', [ 'Flames', 'Camo' ]);
+		groupCar.add(this.scene, 'Paint', [ 'Flames', 'Camo' ]);
+
+		var groupLights=this.gui.addFolder("Lights");
+		groupLights.open();
+
+		groupLights.add(this.scene, 'Sun');
+		groupLights.add(this.scene, 'CarLights');
 
 		return true;
 	};
