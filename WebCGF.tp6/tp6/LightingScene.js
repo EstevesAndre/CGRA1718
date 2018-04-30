@@ -26,7 +26,7 @@ class LightingScene extends CGFscene
 		this.Paint = "Flames";
 		this.PaintControl = "";
 
-		this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
+		this.gl.clearColor(0.7, 0.7, 1.0, 1.0);
 		this.gl.clearDepth(100.0);
 		this.gl.enable(this.gl.DEPTH_TEST);
 		this.gl.enable(this.gl.CULL_FACE);
@@ -35,7 +35,7 @@ class LightingScene extends CGFscene
 		this.axis = new CGFaxis(this);
 
 		// Scene elements
-		this.floor = new MyQuad(this,0,10,0,12);
+		this.floor = new MyTerrain(this,20, 0,10,0,10);
 		this.car = new MyOffRoadCar(this);
 		
 		//test
@@ -61,11 +61,10 @@ class LightingScene extends CGFscene
 		this.flame.loadTexture("../resources/images/flames.jpg");
 		//this.materialDefault.setDiffuse(0,0,0.25,1);
 		this.flame.setAmbient(0.2,0.2,0.2,1);
-	
-		this.floorAppearance = new CGFappearance(this);		
-		this.floorAppearance.loadTexture("../resources/images/floor.png");
-		this.floorAppearance.setTextureWrap("REPEAT", "REPEAT");
 
+		this.terrainAppearance = new CGFappearance(this);
+		this.terrainAppearance.loadTexture("../resources/images/terrain.png");
+	
 		
 		this.setUpdatePeriod(1000/FPS);
 	};
@@ -135,14 +134,13 @@ class LightingScene extends CGFscene
 		// ---- BEGIN Scene drawing section
 
 		// Floor
-/*		this.pushMatrix();		
-			this.floorAppearance.apply();
-			this.translate(7.5, 0, 7.5);
+		this.pushMatrix();		
+			this.terrainAppearance.apply();
 			this.rotate(-90 * degToRad, 1, 0, 0);
-			this.scale(15, 15, 0.2);
+			this.scale(50, 50, 0);
 			this.floor.display();
 		this.popMatrix();
-*/
+
 		
 	/*	this.pushMatrix();
 			this.flame.apply();
@@ -190,10 +188,6 @@ class LightingScene extends CGFscene
 			this.car.update(this.deltaTime);
 	};
 
-	doSomething()
-	{
-	
-	};
 };
 
 
