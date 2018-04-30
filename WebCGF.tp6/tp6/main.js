@@ -26,7 +26,6 @@ serialInclude([
 	'MyCarChassi.js',
 	'MyCylinderwCover.js',
 	'MyTrapeziumCylindric.js',
-	'MySphericalBow.js',
 	'MyOffRoadCar.js',
 	'MyCarModel.js',
 	

@@ -6,11 +6,13 @@
 
 class MyCarModel extends CGFobject
 {
-	constructor(scene,texture)
+	constructor(scene,texture,texture2,texture3)
 	{
 		super(scene);
 
-		texture = typeof texture !== 'undefined' ? texture : "plane.jpg";
+		texture = typeof texture !== 'undefined' ? texture : "flames.jpg";
+		texture2 = typeof texture2 !== 'undefined' ? texture2 : "yellow.jpg";
+		texture3 = typeof texture3 !== 'undefined' ? texture3 : "grey.jpg";
 		
 		this.modelTexture = new CGFappearance(this.scene);
 		this.modelTexture.loadTexture("../resources/images/"+texture);
@@ -23,14 +25,14 @@ class MyCarModel extends CGFobject
 		this.modelhexsTexture.setDiffuse(0,0,0,1);
 	
 		this.modelYellowTexture = new CGFappearance(this.scene);
-		this.modelYellowTexture.loadTexture("../resources/images/yellow.jpg");
-		this.modelYellowTexture.setAmbient(0.2,0.2,0.2,1);
-		this.modelYellowTexture.setDiffuse(0.3,0.3,0.3,1);
+		this.modelYellowTexture.loadTexture("../resources/images/"+texture2);
+		this.modelYellowTexture.setAmbient(0.4,0.4,0.4,1);
+		this.modelYellowTexture.setDiffuse(0.1,0.1,0.1,1);
 
 		this.modelGreyTexture = new CGFappearance(this.scene);
-		this.modelGreyTexture.loadTexture("../resources/images/grey.jpg");
-		this.modelGreyTexture.setAmbient(0.5,0.5,0.5,1);
-		this.modelGreyTexture.setDiffuse(0.2,0.2,0.2,1);
+		this.modelGreyTexture.loadTexture("../resources/images/"+texture3);
+		this.modelGreyTexture.setAmbient(0.4,0.4,0.4,1);
+		this.modelGreyTexture.setDiffuse(0.1,0.1,0.1,1);
 
 		this.modelFrontTexture = new CGFappearance(this.scene);
 		this.modelFrontTexture.loadTexture("../resources/images/lights.jpg");

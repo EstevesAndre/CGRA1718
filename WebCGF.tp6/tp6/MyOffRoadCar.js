@@ -15,7 +15,9 @@ class MyOffRoadCar extends CGFobject
 		
 		this.chassi = new MyCarChassi(this.scene,0);	
 
-		this.model = new MyCarModel(this.scene,"flames.jpg");
+		this.model = new MyCarModel(this.scene);//"camouflageTex.jpg",
+											   //"camouflageTex.jpg",
+											   //"camouflageTex.jpg");
 
 		this.chassiAppearance = new CGFappearance(this.scene);
 		this.chassiAppearance.loadTexture("../resources/images/chassi.jpg");
