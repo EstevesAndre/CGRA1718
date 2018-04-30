@@ -28,6 +28,7 @@ serialInclude([
 	'MyTrapeziumCylindric.js',
 	'MySphericalBow.js',
 	'MyOffRoadCar.js',
+	'MyCarModel.js',
 	
 	main=function() {
 		var app = new CGFapplication(document.body);

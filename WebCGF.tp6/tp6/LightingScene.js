@@ -33,11 +33,17 @@ class LightingScene extends CGFscene
 
 		// Scene elements
 		this.floor = new MyQuad(this,0,10,0,12);
+		this.car = new MyOffRoadCar(this);
+		
+		//test
 		this.trapezium = new MyTrapezium(this,5,0,0.1,2,0);
-		//this.cyl = new MyHandWheel(this);
+		this.cyl = new MyHandWheel(this);
 		this.chassi = new MyCarChassi(this,1);
 		this.sphericalbow = new MySphericalBow(this,12, 12, 1);
-		this.car = new MyOffRoadCar(this);
+		this.model = new MyCarModel(this,"flames.jpg");
+
+
+
 		// Materials
 		
 
@@ -143,19 +149,24 @@ class LightingScene extends CGFscene
 			this.rotate(-Math.PI/2.0,1,0,0);
 			this.trapezium.display();
 		this.popMatrix();
-
+*/
 
 		this.pushMatrix();
 			//this.scale(1.5,1.5,1.5);
 		//	this.translate(8,2,5);
-			this.chassi.display();
+//			this.chassi.display();
 //			this.scale(1,1,-1);
 //			this.chassi.display();
 		this.popMatrix();
-		*/
+		
 		this.pushMatrix();
 			this.translate(8,0,5);
 			this.car.display();
+		this.popMatrix();
+
+		this.pushMatrix();
+			//this.translate(8,0,5);
+			//this.model.display();
 		this.popMatrix();
 		// ---- END Scene drawing section
 	};
