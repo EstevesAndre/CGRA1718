@@ -39,7 +39,6 @@ class LightingScene extends CGFscene
 		this.trapezium = new MyTrapezium(this,5,0,0.1,2,0);
 		this.cyl = new MyHandWheel(this);
 		this.chassi = new MyCarChassi(this,1);
-		this.sphericalbow = new MySphericalBow(this,12, 12, 1);
 		this.model = new MyCarModel(this,"flames.jpg");
 
 
