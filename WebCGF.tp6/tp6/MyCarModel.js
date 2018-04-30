@@ -1,0 +1,260 @@
+/**
+ * MyCarModel
+ * @param gl {WebGLRenderingContext}
+ * @constructor
+ */
+
+class MyCarModel extends CGFobject
+{
+	constructor(scene,texture)
+	{
+		super(scene);
+
+		texture = typeof texture !== 'undefined' ? texture : "plane.jpg";
+		
+		this.modelTexture = new CGFappearance(this.scene);
+		this.modelTexture.loadTexture("../resources/images/"+texture);
+		this.modelTexture.setAmbient(0.4,0.4,0.4,1);
+		this.modelTexture.setDiffuse(0.1,0.1,0.1,1);
+
+		this.modelhexsTexture = new CGFappearance(this.scene);
+		this.modelhexsTexture.loadTexture("../resources/images/carrr.jpg");
+		this.modelhexsTexture.setAmbient(0.2,0.2,0.2,1);
+		this.modelhexsTexture.setDiffuse(0,0,0,1);
+	
+		this.modelYellowTexture = new CGFappearance(this.scene);
+		this.modelYellowTexture.loadTexture("../resources/images/yellow.jpg");
+		this.modelYellowTexture.setAmbient(0.2,0.2,0.2,1);
+		this.modelYellowTexture.setDiffuse(0.3,0.3,0.3,1);
+
+		this.modelGreyTexture = new CGFappearance(this.scene);
+		this.modelGreyTexture.loadTexture("../resources/images/grey.jpg");
+		this.modelGreyTexture.setAmbient(0.5,0.5,0.5,1);
+		this.modelGreyTexture.setDiffuse(0.2,0.2,0.2,1);
+
+		this.modelFrontTexture = new CGFappearance(this.scene);
+		this.modelFrontTexture.loadTexture("../resources/images/lights.jpg");
+		this.modelFrontTexture.setAmbient(0.3,0.3,0.3,1);
+		this.modelFrontTexture.setDiffuse(0.2,0.2,0.2,1);
+
+		this.modelBlackTexture = new CGFappearance(this.scene);
+		//this.modelBlackTexture.loadTexture("../resources/images/table.png");
+		this.modelBlackTexture.setAmbient(0.2,0.2,0.2,1);
+		this.modelBlackTexture.setDiffuse(0,0,0,1);
+
+
+		// modelTexture
+		this.sidehex1 = new MyTrapezium(this.scene,2.05,3.5,2.04,0.01,-0.5);
+		this.sidehex2 = new MyTrapezium(this.scene,1.9,0,1.8,0.01,1.35);
+		this.sidehex3 = new MyTrapezium(this.scene,2.05,2.05,2.04,0.01,-0.5);
+		this.sideup4 = new MyTrapezium(this.scene,4,5.5,1.7,0.01,-0.8);
+		this.sideup5 = new MyTrapezium(this.scene,1.9,0,1.83,0.01,0.95);
+		this.sideup6 = new MyTrapezium(this.scene,1.55,1.55,1.7,0.01,0);
+		this.sideup7 = new MyTrapezium(this.scene,1,1,1.7,0.01,0);
+		this.sideup8 = new MyTrapezium(this.scene,1.57,2.5,1.6,0.01,0);
+
+		// modelYellowTexture
+		this.middle2 = new MyTrapezium(this.scene,1.5,2,0.85,0.01,-0.5);
+		this.middle3 = new MyTrapezium(this.scene,1.5,2.05,0.85,0.01,0);
+		this.middle4 = new MyTrapezium(this.scene,2,3,0.5,0.01,-0.5);
+		this.middle5 = new MyTrapezium(this.scene,0.4,1.9,0.85,0.01,0.55);
+
+		// modelGreyTexture
+		this.down1 = new MyTrapezium(this.scene,2.05,2.05,1.57,0.01,0);
+		this.down2 = new MyTrapezium(this.scene,3,3,1.57,0.01,0);
+		this.down3 = new MyTrapezium(this.scene,1.05,1.05,1.57,0.01,0);
+		this.down4 = new MyTrapezium(this.scene,3,3,1.57,0.01,0);
+		this.down5 = new MyTrapezium(this.scene,4.05,4.05,1.57,0.01,0);
+
+		// modelhexsTexture
+		this.hex1 = new MyTrapezium(this.scene,0.5,0.5,2.4,0.01,0.5);
+		this.hex2 = new MyTrapezium(this.scene,0.5,0.5,2,0.01,0);
+		this.hex3 = new MyTrapezium(this.scene,1,2.4,3.5,0.01,0);
+
+		// modelFrontTexture
+		this.front = new MyTrapezium(this.scene,1.6,1.6,1.7,0.01,0);
+
+		// modelBlackTexture
+		this.up1 = new MyTrapezium(this.scene,1.61,1.61,5.2,0.01,0);
+
+		// aux
+		this.chassi = new MyCarChassi(this.scene,1);	
+		
+
+	};
+
+
+	display() 
+	{	
+		//this.chassi.display();
+
+		this.modelTexture.apply();
+
+		this.scene.pushMatrix();
+			this.scene.translate(0,0.9,2.4);
+			this.sidehex1.display();
+		this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+			this.scene.translate(-2.05,0.9,2.4);
+			this.sidehex3.display();
+		this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+			this.scene.translate(3.64,1.4,1.55);
+			this.scene.rotate(-Math.PI/42,0,0,1);
+			this.scene.rotate(Math.PI/5.8,1,0,0);
+			this.sideup4.display();
+		this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+			this.scene.translate(2.04,0.88,2.39);
+			this.scene.rotate(Math.PI/6.5,0,1,0);
+			this.scene.rotate(Math.PI/11,0,0,1);
+			this.scene.rotate(Math.PI/11.4,1,0,0);
+			this.sidehex2.display();
+		this.scene.popMatrix();
+		
+		this.scene.pushMatrix();
+			this.scene.translate(-3.65,1.4,1.54);
+			this.scene.rotate(Math.PI/13,1,0,0);
+			this.scene.rotate(-Math.PI/18,0,0,1);
+			this.scene.rotate(-Math.PI/6,0,1,0);
+			this.sideup5.display();
+		this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+			this.scene.translate(-7.7,1.4,1.6);
+			this.sideup6.display();
+			this.scene.translate(1.55,0,0);			
+			this.sideup6.display();
+		this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+			this.scene.translate(-4.6,1.4,1.6);
+			this.scene.rotate(-Math.PI/8.5,0,1,0);
+			this.sideup7.display();
+		this.scene.popMatrix();
+
+	this.scene.pushMatrix();
+			this.scene.translate(7.65,1.1,0);
+			this.scene.rotate(-Math.PI/6.0,0,0,1);
+			this.scene.rotate(-Math.PI/2.0,0,1,0);
+			this.sideup8.display();
+		this.scene.popMatrix();
+
+		this.modelYellowTexture.apply();
+
+		this.scene.pushMatrix();
+			this.scene.translate(-1.5,0.16,2);
+			this.scene.rotate(Math.PI/6.1,1,0,0);
+			this.middle2.display();
+		this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+			this.scene.translate(0,0.16,2);
+			this.scene.rotate(Math.PI/6.1,1,0,0);
+			this.middle3.display();
+		this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+			this.scene.translate(-1,-0.09,1.57);
+			this.scene.rotate(Math.PI/3,1,0,0);
+			this.middle4.display();
+		this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+			this.scene.translate(1.5,0.15,2);
+			this.scene.rotate(Math.PI/5,1,0,0);	
+			this.scene.rotate(Math.PI/15,0,0,1);		
+			this.scene.rotate(Math.PI/15,0,1,0);
+			this.scene.rotate(Math.PI/6.1,1,0,0);	
+			//this.middle5.display();
+		this.scene.popMatrix();
+
+		
+
+		this.modelGreyTexture.apply();
+
+		this.scene.pushMatrix();
+			this.scene.translate(-1.05,-0.11,1.57);
+			this.scene.rotate(-Math.PI/2.0,1,0,0);
+			this.down1.display();
+		this.scene.popMatrix();	
+
+		this.scene.pushMatrix();
+			this.scene.translate(-3.65,1.4,1.57);
+			this.scene.rotate(-Math.PI/6.0,0,0,1);
+			this.scene.rotate(-Math.PI/2.0,1,0,0);
+			this.down2.display();
+		this.scene.popMatrix();	
+
+		this.scene.pushMatrix();
+			this.scene.translate(1.0,-0.107,0);
+			this.scene.rotate(Math.PI/6.0,0,0,1);
+			this.scene.rotate(Math.PI/2.0,1,0,0);
+			this.down2.display();
+		this.scene.popMatrix();	
+		
+		this.scene.pushMatrix();
+			this.scene.translate(3.60,1.38,1.57);
+			this.scene.rotate(-Math.PI/45,0,0,1);				
+			this.scene.rotate(-Math.PI/2.0,1,0,0);
+			this.down3.display();
+		this.scene.popMatrix();	
+
+		this.scene.pushMatrix();
+			this.scene.translate(4.64,1.31,1.57);
+			this.scene.rotate(-Math.PI/45,0,0,1);				
+			this.scene.rotate(-Math.PI/2.0,1,0,0);
+			this.down4.display();
+		this.scene.popMatrix();	
+
+		this.scene.pushMatrix();
+			this.scene.translate(-7.7,1.4,1.57);
+			this.scene.rotate(-Math.PI/2.0,1,0,0);
+			this.down5.display();
+		this.scene.popMatrix();	
+
+		this.modelhexsTexture.apply();
+		
+		this.scene.pushMatrix();
+			this.scene.translate(2.5,3,2.3);
+			this.hex1.display();
+		this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+			this.scene.translate(3,5.5,2.2);
+			this.scene.rotate(-Math.PI/2.0,1,0,0);
+			this.hex2.display();
+		this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+			this.scene.translate(-5.95,2.85,0);
+			this.scene.rotate(Math.PI/70.0,0,0,1);
+			this.scene.rotate(-Math.PI/2.0,0,1,0);
+			this.scene.rotate(-Math.PI/2.0,1,0,0);
+			//this.hex3.display();
+		this.scene.popMatrix();
+
+		
+		this.modelFrontTexture.apply();
+
+		this.scene.pushMatrix();
+			this.scene.translate(-7.7,1.4,0);
+			this.scene.rotate(-Math.PI/2.0,0,1,0);
+			this.front.display();
+		this.scene.popMatrix();
+
+		this.modelBlackTexture.apply();
+
+		this.scene.pushMatrix();
+			this.scene.translate(-7.7,3.1,0);
+			this.scene.rotate(-Math.PI/2.0,1,0,0);
+			this.scene.rotate(-Math.PI/2.0,0,0,1);
+		//	this.up1.display();
+		this.scene.popMatrix();
+
+
+	};
+};
