@@ -90,7 +90,7 @@ class LightingScene extends CGFscene
 		this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[0].enable();
 
-		this.lights[1].setPosition(0, 5, 5, 1);
+		this.lights[1].setPosition(-2, 1, 0, 1);
 		this.lights[1].setVisible(true);
 		
 		this.lights[1].setAmbient(1.0, 1.0, 0.0, 1);
@@ -142,7 +142,6 @@ class LightingScene extends CGFscene
 		this.popMatrix();
 		
 		this.pushMatrix();
-			this.translate(8,0,5);
 			if(this.Paint != this.PaintControl)
 			{
 				this.car.setPaint(this.Paint);
