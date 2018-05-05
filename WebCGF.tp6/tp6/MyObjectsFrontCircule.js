@@ -13,7 +13,7 @@ class MyObjectsFrontCircule extends CGFobject
 		this.radius = radius;
 
 		this.initBuffers();
-	}
+	};
 
 
 	initBuffers() 

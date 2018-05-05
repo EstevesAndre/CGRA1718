@@ -12,7 +12,7 @@ class MyCylinderwCover extends CGFobject
 		
 		this.cylinder = new MyCylinder(this.scene,slices,stacks);
 		this.cover = new MyObjectsFrontCircule(this.scene,slices,0);
-	}
+	};
 
 
 	display() 

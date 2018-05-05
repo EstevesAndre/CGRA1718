@@ -7,7 +7,7 @@ class MyInterface extends CGFinterface {
 	 */
  	constructor () {
  		super();
- 	}
+ 	};
 	
 	/**
 	 * init

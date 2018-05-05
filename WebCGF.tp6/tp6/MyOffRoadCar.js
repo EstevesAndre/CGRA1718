@@ -19,6 +19,8 @@ class MyOffRoadCar extends CGFobject
 											   //"camouflageTex.jpg",
 											   //"camouflageTex.jpg");
 
+		this.handWheel = new MyHandWheel(this.scene);
+
 		this.seat = new MySeat(this.scene);
 
 		this.crate = new MyUnitCubeQuad(this.scene);
@@ -74,6 +76,14 @@ class MyOffRoadCar extends CGFobject
 			this.seat.display();
 		this.scene.popMatrix();
 
+		this.scene.pushMatrix();		
+			this.scene.translate(-0.25,1.35,0.3);
+			this.scene.scale(0.25,0.25,0.25);	
+			this.scene.rotate(Math.PI/6,0,0,1);
+			this.scene.rotate(Math.PI/2,0,1,0);
+			this.handWheel.display();
+		this.scene.popMatrix();
+		
 		this.chassiAppearance.apply();
 		
 		this.scene.pushMatrix();
@@ -107,8 +117,9 @@ class MyOffRoadCar extends CGFobject
 	update(currTime)
 	{
 		this.wheel.update(currTime);
-	}
-
+		this.handWheel.setAngle(this.handWheel.angle + currTime/1000);
+	};
+	
 	setPaint(Paint)
 	{
 		if(Paint == 'Flames')

@@ -45,7 +45,7 @@ class LightingScene extends CGFscene
 		
 		//test
 		this.trapezium = new MyTrapezium(this,5,0,0.1,2,0);
-		this.cyl = new MyHandWheel(this);
+		this.wheel = new MyHandWheel(this);
 		this.chassi = new MyCarChassi(this,1);
 		this.model = new MyCarModel(this,"flames.jpg");
 
@@ -102,7 +102,7 @@ class LightingScene extends CGFscene
 	{
 		for (var i = 0; i < this.lights.length; i++)
 			this.lights[i].update();
-	}
+	};
 
 
 	display() 
@@ -138,7 +138,7 @@ class LightingScene extends CGFscene
 			this.terrainAppearance.apply();
 			this.rotate(-90 * degToRad, 1, 0, 0);
 			this.scale(50, 50, 0);
-			this.floor.display();
+			//this.floor.display();
 		this.popMatrix();
 		
 		this.pushMatrix();
@@ -154,7 +154,7 @@ class LightingScene extends CGFscene
 
 		// test
 		this.pushMatrix();		
-			//this.model.display();
+			
 		this.popMatrix();
 		
 	};
@@ -168,13 +168,15 @@ class LightingScene extends CGFscene
 		this.lastTime = currTime;
 
 		if(this.deltaTime <= 1000)
-			this.car.update(this.deltaTime);
+		{
+			this.car.update(this.deltaTime);		
+		}
 	};
 
 	toggleAxis()
 	{
 		this.axisDisplay = !this.axisDisplay;
-	}
+	};
 
 	evalLights()
 	{
@@ -195,7 +197,7 @@ class LightingScene extends CGFscene
 		{
 			this.lights[1].disable();
 		}
-	}
+	};
 
 };
 

@@ -36,7 +36,7 @@ class MyClock extends CGFobject
 		this.hourPointer.setThickness(0.013);
 		this.secondPointer.setSize(0.80,0.2);
 		this.secondPointer.setThickness(0.007);
-	}
+	};
 
 
 	display() 
@@ -78,5 +78,5 @@ class MyClock extends CGFobject
 		this.secondPointer.setAngle(this.secondPointer.angle + (360/60.0)*(currTime/1000.0));
 		this.minutePointer.setAngle(this.minutePointer.angle + (360/3600.0)*(currTime/1000.0));
 		this.hourPointer.setAngle(this.hourPointer.angle + (360.0/(60*60*12))*(currTime/1000.0));
-	}
+	};
 };

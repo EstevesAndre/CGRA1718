@@ -60,5 +60,5 @@ class MyTable extends CGFobject
 		this.scene.scale(0.3, 3.5, 0.3);
 		this.cube.display();
 		this.scene.popMatrix();
-	}
+	};
 };

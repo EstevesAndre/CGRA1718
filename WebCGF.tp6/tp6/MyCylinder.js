@@ -19,7 +19,7 @@ class MyCylinder extends CGFobject
 		}
 		
 		this.initBuffers();
-	}
+	};
 
 
 	initBuffers() 

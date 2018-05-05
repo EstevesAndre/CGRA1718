@@ -14,7 +14,7 @@ class MySemiCylinder extends CGFobject
 		this.rot = angle;
 
 		this.initBuffers();
-	}
+	};
 
 
 	initBuffers() 

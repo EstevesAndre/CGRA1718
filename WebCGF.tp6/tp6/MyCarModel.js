@@ -103,8 +103,6 @@ class MyCarModel extends CGFobject
 
 	display() 
 	{	
-// 		this.chassi.display();
-
 		this.modelTexture.apply();
 
 		this.scene.pushMatrix();

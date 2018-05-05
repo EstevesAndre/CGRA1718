@@ -24,11 +24,9 @@ class MyChair extends CGFobject
 		this.chairLegs.setAmbient(0.3,0.3,0.3,1);
 		this.chairLegs.setDiffuse(0.5,0.5,0.5,1);
 		this.chairLegs.setSpecular(0.5,0.5,0.5,1);
-		this.chairLegs.setShininess(20);
-
-		
+		this.chairLegs.setShininess(20);		
 	};  
-
+	
 	display()
 	{		
 		this.chairLegs.apply();

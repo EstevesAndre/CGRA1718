@@ -6,12 +6,12 @@
 
 class MySemiSphere extends CGFobject
 {
-	constructor(scene, slices, stacks, angl)
+	constructor(scene, slices, stacks)
 	{
 		super(scene);
 		this.slices = slices;
-		this.stacks = stacks;		
-		//this.rot = angl || (2*Math.PI);
+		this.stacks = stacks;
+		
 		this.initBuffers();
 	};
 
@@ -69,7 +69,6 @@ class MySemiSphere extends CGFobject
 			
 		
 		}
-		
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	};

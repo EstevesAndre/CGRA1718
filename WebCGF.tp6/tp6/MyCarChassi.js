@@ -475,6 +475,4 @@ class MyCarChassi extends CGFobject
 		this.scene.popMatrix();
 		
 	};
-
-
 };

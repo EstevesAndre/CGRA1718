@@ -83,12 +83,12 @@ class MyPaperPlane extends CGFobject
 		this.x = x;
 		this.y = y;
 		this.z = z;
-	}
+	};
 
 	setFlight(fly)
 	{
 		this.straightFlight = fly;
-	}
+	};
 
 
 	update(currTime)

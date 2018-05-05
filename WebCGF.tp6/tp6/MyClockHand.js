@@ -19,7 +19,7 @@ class MyClockHand extends CGFobject
 		this.size = 1;
 		this.sizeBack = 0.15;
 
-	}
+	};
 
 	setAngle(angle)
 	{

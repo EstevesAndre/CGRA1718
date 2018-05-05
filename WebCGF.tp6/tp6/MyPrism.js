@@ -12,9 +12,7 @@ class MyPrism extends CGFobject
 		this.slices = slices;
 		this.stacks = stacks;
 		this.initBuffers();
-	}
-
-
+	};
 
 	initBuffers() 
 	{
@@ -46,11 +44,6 @@ class MyPrism extends CGFobject
 				this.normals.push(Math.cos((i * angle) + angle / 2), Math.sin((i * angle) + angle / 2), 0);
 			}
 		}
-		
-		console.log(division);
-		console.log(this.vertices.length);
-		console.log(this.indices.length);
-		console.log(this.normals.length);
 	
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
