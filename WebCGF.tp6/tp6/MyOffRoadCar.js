@@ -22,7 +22,7 @@ class MyOffRoadCar extends CGFobject
 		this.chassiAppearance = new CGFappearance(this.scene);
 		this.chassiAppearance.loadTexture("../resources/images/chassi.jpg");
 		this.chassiAppearance.setAmbient(0.25,0.25,0.25,1);
-		this.chassiAppearance.setDiffuse(0.1,0.1,0.1,1);
+		this.chassiAppearance.setDiffuse(0,0,0,1);
 
 	};
 

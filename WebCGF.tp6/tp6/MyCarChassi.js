@@ -191,7 +191,7 @@ class MyCarChassi extends CGFobject
 				this.scene.translate(-6.6,1.5,2);
 				this.scene.rotate(Math.PI/4.0,1,0,0);
 				this.scene.rotate(Math.PI,0,1,0)
-				this.scene.scale(0.1,0.1,1.5/Math.cos(Math.PI/4.0));
+				this.scene.scale(0.1,0.1,1.3/Math.cos(Math.PI/4.0));
 				this.bar.display();
 			this.scene.popMatrix();
 			
@@ -220,9 +220,9 @@ class MyCarChassi extends CGFobject
 			this.red.apply();
 		
 			this.scene.pushMatrix();			
-				this.scene.translate(-6.6,3,0.5);
-				this.scene.rotate(Math.PI/12.0,1,0,0);				
-				this.scene.rotate(Math.PI/3,0,1,0);
+				this.scene.translate(-6.6,2.8,0.67);
+				this.scene.rotate(Math.PI/35.0,1,0,0);				
+				this.scene.rotate(Math.PI/2.8,0,1,0);
 				this.scene.scale(0.1,0.1,1.8);
 				this.bar.display();
 			this.scene.popMatrix();
@@ -276,7 +276,7 @@ class MyCarChassi extends CGFobject
 			this.scene.popMatrix();
 			this.scene.pushMatrix();				
 				this.scene.translate(0,5.5,2.8);
-				this.scene.rotate(19*Math.PI/20,1,0,0);
+				this.scene.rotate(Math.PI,1,0,0);
 				this.scene.scale(0.1,0.1,2.35);
 				this.bar.display();
 			this.scene.popMatrix();
@@ -286,10 +286,10 @@ class MyCarChassi extends CGFobject
 		
 			this.scene.pushMatrix();
 				this.scene.translate(-1.5,3,1);
-				this.scene.rotate(-Math.PI/14,1,0,0);
+				this.scene.rotate(-Math.PI/15,1,0,0);
 				this.scene.rotate(Math.PI/3.3,0,0,1);
 				this.scene.rotate(Math.PI/2.0,0,1,0);
-				this.scene.scale(0.05,0.05,2.6);
+				this.scene.scale(0.05,0.05,3);
  				this.bar.display();
 			this.scene.popMatrix();
 			
@@ -300,10 +300,31 @@ class MyCarChassi extends CGFobject
 				this.scene.translate(-5.05,2.75,1.37);
 				this.scene.rotate(Math.PI/70,0,0,1);
 				this.scene.rotate(Math.PI/2-Math.PI/8.2,0,1,0);
-				this.scene.scale(0.1,0.1,3.85);
+				this.scene.scale(0.1,0.1,1.7);
 				this.bar.display();
 			this.scene.popMatrix();
 
+		if(this.color)
+			this.green.apply();
+		
+			this.scene.pushMatrix();
+				this.scene.translate(-3.5,2.83,2);
+				this.scene.rotate(Math.PI/2,0,1,0);
+				this.scene.scale(0.1,0.1,0.95);
+				this.bar.display();
+			this.scene.popMatrix();
+
+		if(this.color)
+			this.green.apply();
+		
+			this.scene.pushMatrix();
+				this.scene.translate(-2.6,2.83,1.99);
+				this.scene.rotate(Math.PI/40,0,0,1);
+				this.scene.rotate(Math.PI/2-Math.PI/5,0,1,0);
+				this.scene.scale(0.1,0.1,1.4);
+				this.bar.display();
+			this.scene.popMatrix();
+			
 		if(this.color)
 			this.yellow.apply();
 		

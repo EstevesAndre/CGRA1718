@@ -151,6 +151,12 @@ class LightingScene extends CGFscene
 		this.popMatrix();
 
 		// ---- END Scene drawing section
+
+		// test
+		this.pushMatrix();		
+			//this.model.display();
+		this.popMatrix();
+		
 	};
 
 	update(currTime)
