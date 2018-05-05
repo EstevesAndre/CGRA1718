@@ -29,6 +29,5 @@ class MySeat extends CGFobject
 		this.scene.popMatrix();
 		this.back.display();
 
-
 	};
 };
