@@ -6,120 +6,184 @@
 
 class MyCarModel extends CGFobject
 {
-	constructor(scene,texture,texture2,texture3)
+	constructor(scene,	textureSide,
+						textureSideDown,
+						textureDown,
+						textureFrontTop,
+						textureInside,
+						textureInsideDown,
+						textureTop,
+						textureLights )
 	{
 		super(scene);
 
-		texture = typeof texture !== 'undefined' ? texture : "flames.jpg";
-		texture2 = typeof texture2 !== 'undefined' ? texture2 : "yellow.jpg";
-		texture3 = typeof texture3 !== 'undefined' ? texture3 : "grey.jpg";
-		
-		this.modelTexture = new CGFappearance(this.scene);
-		this.modelTexture.loadTexture("../resources/images/"+texture);
-		this.modelTexture.setAmbient(0.4,0.4,0.4,1);
-		this.modelTexture.setDiffuse(0.1,0.1,0.1,1);
+		textureSide = (	(typeof textureSide !== 'undefined') && 
+						(textureSide !== "")
+						) ? textureSide : "flames.jpg";	
+				this.modelSideTexture = new CGFappearance(this.scene);
+				this.modelSideTexture.loadTexture("../resources/images/"+textureSide);
+				this.modelSideTexture.setAmbient(0.4,0.4,0.4,1);
+				this.modelSideTexture.setDiffuse(0.1,0.1,0.1,1);
 
-		this.modelhexsTexture = new CGFappearance(this.scene);
-		this.modelhexsTexture.loadTexture("../resources/images/carrr.jpg");
-		this.modelhexsTexture.setAmbient(0.2,0.2,0.2,1);
-		this.modelhexsTexture.setDiffuse(0,0,0,1);
+
+		textureSideDown = ( (typeof textureSideDown !== 'undefined') &&
+							(textureSideDown !== "")
+							) ? textureSideDown : "yellow.jpg";
+				this.modelSideDownTexture = new CGFappearance(this.scene);
+				this.modelSideDownTexture.loadTexture("../resources/images/"+textureSideDown);
+				this.modelSideDownTexture.setAmbient(0.4,0.4,0.4,1);
+				this.modelSideDownTexture.setDiffuse(0.4,0.4,0.4,1);
+
+
+		textureDown = ( (typeof textureDown !== 'undefined') &&
+						(textureDown !== "")
+						) ? textureDown : "grey.jpg";		
+				this.modelDownTexture = new CGFappearance(this.scene);
+				this.modelDownTexture.loadTexture("../resources/images/"+textureDown);
+				this.modelDownTexture.setAmbient(0.4,0.4,0.4,1);
+				this.modelDownTexture.setDiffuse(0.1,0.1,0.1,1);
+
+
+		textureFrontTop = typeof textureFrontTop !== 'undefined' ? textureFrontTop : "";
+				if(textureFrontTop == "")
+				{
+					this.modelFrontTopTexture = new CGFappearance(this.scene);
+					this.modelFrontTopTexture.setAmbient(0.05,0.05,0.05,1);
+					this.modelFrontTopTexture.setDiffuse(0,0,0,1);
+				}
+				else
+				{
+					this.modelFrontTopTexture = new CGFappearance(this.scene);
+					this.modelFrontTopTexture.loadTexture("../resources/images/"+textureFrontTop);
+					this.modelFrontTopTexture.setAmbient(0.5,0.5,0.5,1);
+					this.modelFrontTopTexture.setDiffuse(0.2,0.2,0.2,1);
+				}
+
+		textureTop = typeof textureTop !== 'undefined' ? textureTop : "";
+				if(textureTop == "")
+				{
+					this.modelTopTexture = new CGFappearance(this.scene);
+					this.modelTopTexture.setAmbient(0.05,0.05,0.05,1);
+					this.modelTopTexture.setDiffuse(0,0,0,1);
+				}
+				else
+				{
+					this.modelTopTexture = new CGFappearance(this.scene);
+					this.modelTopTexture.loadTexture("../resources/images/"+textureTop);
+					this.modelTopTexture.setAmbient(0.5,0.5,0.5,1);
+					this.modelTopTexture.setDiffuse(0.2,0.2,0.2,1);
+				}
+
+
+		textureInside = ( (typeof textureInside !== 'undefined') &&
+						  (textureInside !== "")
+						  ) ? textureInside : "cylinder.png";
+				this.modelInsideTexture = new CGFappearance(this.scene);
+				this.modelInsideTexture.loadTexture("../resources/images/"+textureInside);
+				this.modelInsideTexture.setAmbient(0.5,0.5,0.5,1);
+				this.modelInsideTexture.setDiffuse(0,0,0,1);
+
+
+		textureInsideDown = ( (typeof textureInsideDown !== 'undefined') &&
+							  (textureInsideDown !== "")
+							  ) ? textureInsideDown : "floor.png";
+				this.modelInsideDownTexture = new CGFappearance(this.scene);
+				this.modelInsideDownTexture.loadTexture("../resources/images/"+textureInsideDown);
+				this.modelInsideDownTexture.setAmbient(0.5,0.5,0.5,1);
+				this.modelInsideDownTexture.setDiffuse(0,0,0,1);
+
 	
-		this.modelYellowTexture = new CGFappearance(this.scene);
-		this.modelYellowTexture.loadTexture("../resources/images/"+texture2);
-		this.modelYellowTexture.setAmbient(0.4,0.4,0.4,1);
-		this.modelYellowTexture.setDiffuse(0.1,0.1,0.1,1);
+		textureLights = ( (typeof textureLights !== 'undefined') &&
+						  (textureLights !== "")
+						  ) ? textureLights : "lights.jpg";
+				this.modelLigtsFrontTexture = new CGFappearance(this.scene);
+				this.modelLigtsFrontTexture.loadTexture("../resources/images/"+textureLights);
+				this.modelLigtsFrontTexture.setAmbient(0.3,0.3,0.3,1);
+				this.modelLigtsFrontTexture.setDiffuse(0.2,0.2,0.2,1);
 
-		this.modelGreyTexture = new CGFappearance(this.scene);
-		this.modelGreyTexture.loadTexture("../resources/images/"+texture3);
-		this.modelGreyTexture.setAmbient(0.4,0.4,0.4,1);
-		this.modelGreyTexture.setDiffuse(0.1,0.1,0.1,1);
 
-		this.modelFrontTexture = new CGFappearance(this.scene);
-		this.modelFrontTexture.loadTexture("../resources/images/lights.jpg");
-		this.modelFrontTexture.setAmbient(0.3,0.3,0.3,1);
-		this.modelFrontTexture.setDiffuse(0.2,0.2,0.2,1);
+		// generic detail
+				this.modelhexsTexture = new CGFappearance(this.scene);
+				this.modelhexsTexture.loadTexture("../resources/images/hex.jpg");
+				this.modelhexsTexture.setAmbient(0.4,0.4,0.4,1);
+				this.modelhexsTexture.setDiffuse(0.4,0.4,0.4,1);
+	
 
-		this.modelInsideTexture = new CGFappearance(this.scene);
-		this.modelInsideTexture.setAmbient(0.05,0.05,0.05,1);
-		this.modelInsideTexture.setDiffuse(0,0,0,1);
-
-		this.modelUpsideTexture = new CGFappearance(this.scene);
-		this.modelUpsideTexture.setAmbient(0.05,0.05,0.05,1);
-		this.modelUpsideTexture.setDiffuse(0,0,0,1);
-
-		// modelTexture
-		this.sidehex1 = new MyTrapezium(this.scene,2.05,3.5,2.04,0.01,-0.5);
-		this.sidehex2 = new MyTrapezium(this.scene,1.9,0,1.8,0.01,1.35);
-		this.sidehex3 = new MyTrapezium(this.scene,2.05,2.05,2.04,0.01,-0.5);
-		this.sideup4 = new MyTrapezium(this.scene,4,5.5,1.7,0.01,-0.8);
-		this.sideup5 = new MyTrapezium(this.scene,1.9,0,1.83,0.01,0.95);
-		this.sideup6 = new MyTrapezium(this.scene,2.05,2.05,1.6,0.01,0);
-		this.sideup7 = new MyTrapezium(this.scene,0,1.42,1.6,0.01,0);
-		this.sideup8 = new MyTrapezium(this.scene,1.57,2.5,1.6,0.01,0);
-		this.inside8 = new MyTrapezium(this.scene,1.65,2.4,1.3,0.01,0);
+		// modelSideTexture
+		this.sideUpMiddle = new MyTrapezium(this.scene,2.05,3.5,2.04,0.01,-0.5);
+		this.sideUpMiddleBack = new MyTrapezium(this.scene,1.9,0,1.8,0.01,1.35);
+		this.sideUpSideWheel = new MyTrapezium(this.scene,2.05,2.05,2.04,0.01,-0.5);
 		
-		// modelYellowTexture
-		this.middle2 = new MyTrapezium(this.scene,1.5,2,0.85,0.01,-0.5);
-		this.middle3 = new MyTrapezium(this.scene,1.5,2.05,0.85,0.01,0);
-		this.middle4 = new MyTrapezium(this.scene,2,3,0.5,0.01,-0.5);
+		this.sideUpSideBack = new MyTrapezium(this.scene,4,5.5,1.7,0.01,-0.8);
+		this.sideUpMiddleFront = new MyTrapezium(this.scene,1.9,0,1.83,0.01,0.95);
+		this.sideUpFront = new MyTrapezium(this.scene,2.05,2.05,1.6,0.01,0);
+		this.sideUpNearFront = new MyTrapezium(this.scene,0,1.42,1.6,0.01,0);
+		this.sideUpBack = new MyTrapezium(this.scene,1.57,2.5,1.6,0.01,0);
+		this.divisionSeatsBag = new MyTrapezium(this.scene,1.65,2.4,1.3,0.01,0);
+		
+		// modelSideDownTexture
+		this.sideMiddleLeft = new MyTrapezium(this.scene,1.5,2,0.85,0.01,-0.5);
+		this.sideMiddleRight = new MyTrapezium(this.scene,1.5,2.05,0.85,0.01,0);
+		this.sideDown = new MyTrapezium(this.scene,2,3,0.5,0.01,-0.5);
+		
+		//those are commented
 		this.middle5 = new MyTrapezium(this.scene,0.4,1.9,0.85,0.01,0.55);
 		this.middle6 = new MyTrapezium(this.scene,0,2,0.5,0.01,0.5);
 
-		// modelGreyTexture
-		this.down1 = new MyTrapezium(this.scene,2.05,2.05,1.57,0.01,0);
-		this.down2 = new MyTrapezium(this.scene,3,3,1.57,0.01,0);
-		this.down3 = new MyTrapezium(this.scene,1.05,1.05,1.57,0.01,0);
-		this.down4 = new MyTrapezium(this.scene,3,3,1.57,0.01,0);
-		this.down5 = new MyTrapezium(this.scene,4.05,4.05,1.57,0.01,0);
+		// modelDownTexture
+		this.downMiddle = new MyTrapezium(this.scene,2.05,2.05,1.57,0.01,0);
+		this.downMiddleSides = new MyTrapezium(this.scene,3,3,1.57,0.01,0);
+		this.downMiddleBack = new MyTrapezium(this.scene,1.05,1.05,1.57,0.01,0);
+		this.downBack = new MyTrapezium(this.scene,3,3,1.57,0.01,0);
+		this.downFront = new MyTrapezium(this.scene,4.05,4.05,1.57,0.01,0);
 
 		// modelhexsTexture
-		this.hex1 = new MyTrapezium(this.scene,0.4,0.4,2.4,0.01,0.5);
-		this.hex2 = new MyTrapezium(this.scene,0.4,0.4,2,0.01,0);
+		this.upBar = new MyTrapezium(this.scene,0.4,0.4,2.4,0.01,0.5);
+		this.sideBar = new MyTrapezium(this.scene,0.4,0.4,2,0.01,0);
 
-		// modelFrontTexture
+		// modelLigtsFrontTexture
 		this.front = new MyTrapezium(this.scene,1.6,1.6,1.6,0.01,0);
 
-		// modelUpsideTexture
-		this.up1 = new MyTrapezium(this.scene,1.61,1.61,4,0.01,0);
-		this.up2 = new MyTrapezium(this.scene,1.61,2.45,1.2,0.01,0);
-		this.up3 = new MyTrapezium(this.scene,2.3,2.3,4,0.01,0);
+		// modelFrontTopTexture
+		this.frontUp = new MyTrapezium(this.scene,1.61,1.61,4,0.01,0);
+		this.frontUpBack = new MyTrapezium(this.scene,1.61,2.45,1.2,0.01,0);
 		
+		// modelTopTexture
+		this.roof = new MyTrapezium(this.scene,2.3,2.3,4,0.01,0);
+
 		// modelInsideTexture
-		this.inside1 = new MyTrapezium(this.scene,2.3,2.3,1.5,0.01,0);
-		this.inside2 = new MyTrapezium(this.scene,2.3,2.1,2.1,0.01,-0.5);
-		this.inside3 = new MyTrapezium(this.scene,1.5,1.5,1.8,0.01,0);
-		this.inside4 = new MyTrapezium(this.scene,1.5,1.5,3,0.01,0);
-		this.inside5 = new MyTrapezium(this.scene,1.5,1.5,2,0.01,0);
-		this.inside6 = new MyTrapezium(this.scene,1.5,1.5,0.9,0.01,0);
-		this.inside7 = new MyTrapezium(this.scene,1.5,1.5,3.2,0.01,0);
+		this.insideAtWheel = new MyTrapezium(this.scene,2.2,2.2,1.5,0.01,0);
+		this.insideUnderWheel = new MyTrapezium(this.scene,2.2,2.1,2.1,0.01,-0.5);
 		
-		
-		// aux
-		this.chassi = new MyCarChassi(this.scene,1);	
-		
+		// modelInsideDownTexture
+		this.insideDownFront = new MyTrapezium(this.scene,1.5,1.5,1.8,0.01,0);
+		this.insideDownBackSeat = new MyTrapezium(this.scene,1.5,1.5,3,0.01,0);
+		this.insideDownUnderSeats = new MyTrapezium(this.scene,1.5,1.5,2,0.01,0);
+		this.insideBack = new MyTrapezium(this.scene,1.5,1.5,0.9,0.01,0);
+		this.insideUnderCrate = new MyTrapezium(this.scene,1.5,1.5,3.2,0.01,0);
 
 	};
 
 
 	display() 
 	{	
-		this.modelTexture.apply();
+		this.modelSideTexture.apply();
 
 		this.scene.pushMatrix();
 			this.scene.translate(0,0.9,2.4);
-			this.sidehex1.display();
+			this.sideUpMiddle.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 			this.scene.translate(-2.05,0.9,2.4);
-			this.sidehex3.display();
+			this.sideUpSideWheel.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 			this.scene.translate(3.64,1.4,1.55);
 			this.scene.rotate(-Math.PI/42,0,0,1);
 			this.scene.rotate(Math.PI/5.8,1,0,0);
-			this.sideup4.display();
+			this.sideUpSideBack.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
@@ -127,7 +191,7 @@ class MyCarModel extends CGFobject
 			this.scene.rotate(Math.PI/6.5,0,1,0);
 			this.scene.rotate(Math.PI/11,0,0,1);
 			this.scene.rotate(Math.PI/11.4,1,0,0);
-			this.sidehex2.display();
+			this.sideUpMiddleBack.display();
 		this.scene.popMatrix();
 		
 		this.scene.pushMatrix();
@@ -135,27 +199,27 @@ class MyCarModel extends CGFobject
 			this.scene.rotate(Math.PI/13,1,0,0);
 			this.scene.rotate(-Math.PI/18,0,0,1);
 			this.scene.rotate(-Math.PI/6,0,1,0);
-			this.sideup5.display();
+			this.sideUpMiddleFront.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 			this.scene.translate(-7.7,1.4,1.6);
-			this.sideup6.display();
+			this.sideUpFront.display();
 			this.scene.translate(2.05,0,0);			
-			this.sideup6.display();
+			this.sideUpFront.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 			this.scene.translate(-3.61,1.39,1.61);
 			this.scene.rotate(-Math.PI/5,0,1,0);
-			this.sideup7.display();
+			this.sideUpNearFront.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 			this.scene.translate(7.65,1.1,0);
 			this.scene.rotate(-Math.PI/6.0,0,0,1);
 			this.scene.rotate(-Math.PI/2.0,0,1,0);
-			this.sideup8.display();
+			this.sideUpBack.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
@@ -163,27 +227,27 @@ class MyCarModel extends CGFobject
 			this.scene.rotate(9.8*Math.PI/16.0,0,0,1);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.inside8.display();
+			this.divisionSeatsBag.display();
 		this.scene.popMatrix();	
 
-		this.modelYellowTexture.apply();
+		this.modelSideDownTexture.apply();
 
 		this.scene.pushMatrix();
 			this.scene.translate(-1.5,0.16,2);
 			this.scene.rotate(Math.PI/6.1,1,0,0);
-			this.middle2.display();
+			this.sideMiddleLeft.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 			this.scene.translate(0,0.16,2);
 			this.scene.rotate(Math.PI/6.1,1,0,0);
-			this.middle3.display();
+			this.sideMiddleRight.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 			this.scene.translate(-1,-0.09,1.57);
 			this.scene.rotate(Math.PI/3,1,0,0);
-			this.middle4.display();
+			this.sideDown.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
@@ -204,62 +268,62 @@ class MyCarModel extends CGFobject
 			//this.middle6.display();
 		this.scene.popMatrix();
 
-		this.modelGreyTexture.apply();
+		this.modelDownTexture.apply();
 
 		this.scene.pushMatrix();
 			this.scene.translate(-1.05,-0.11,1.57);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
-			this.down1.display();
+			this.downMiddle.display();
 		this.scene.popMatrix();	
 
 		this.scene.pushMatrix();
 			this.scene.translate(-3.65,1.4,1.57);
 			this.scene.rotate(-Math.PI/6.0,0,0,1);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
-			this.down2.display();
+			this.downMiddleSides.display();
 		this.scene.popMatrix();	
 
 		this.scene.pushMatrix();
 			this.scene.translate(1.0,-0.107,0);
 			this.scene.rotate(Math.PI/6.0,0,0,1);
 			this.scene.rotate(Math.PI/2.0,1,0,0);
-			this.down2.display();
+			this.downMiddleSides.display();
 		this.scene.popMatrix();	
 		
 		this.scene.pushMatrix();
 			this.scene.translate(3.60,1.38,1.57);
 			this.scene.rotate(-Math.PI/45,0,0,1);				
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
-			this.down3.display();
+			this.downMiddleBack.display();
 		this.scene.popMatrix();	
 
 		this.scene.pushMatrix();
 			this.scene.translate(4.64,1.31,1.57);
 			this.scene.rotate(-Math.PI/45,0,0,1);				
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
-			this.down4.display();
+			this.downBack.display();
 		this.scene.popMatrix();	
 
 		this.scene.pushMatrix();
 			this.scene.translate(-7.7,1.4,1.57);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
-			this.down5.display();
+			this.downFront.display();
 		this.scene.popMatrix();	
 
 		this.modelhexsTexture.apply();
 		
 		this.scene.pushMatrix();
 			this.scene.translate(2.5,3,2.3);
-			this.hex1.display();
+			this.upBar.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 			this.scene.translate(3,5.5,2.2);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
-			this.hex2.display();
+			this.sideBar.display();
 		this.scene.popMatrix();
 		
-		this.modelFrontTexture.apply();
+		this.modelLigtsFrontTexture.apply();
 
 		this.scene.pushMatrix();
 			this.scene.translate(-7.7,1.4,0);
@@ -267,27 +331,29 @@ class MyCarModel extends CGFobject
 			this.front.display();
 		this.scene.popMatrix();
 
-		this.modelUpsideTexture.apply();
+		this.modelFrontTopTexture.apply();
 
 		this.scene.pushMatrix();
 			this.scene.translate(-7.7,3,0);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.up1.display();
+			this.frontUp.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 			this.scene.translate(-3.7,3,0);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.up2.display();
+			this.frontUpBack.display();
 		this.scene.popMatrix();
+
+		this.modelTopTexture.apply();
 
 		this.scene.pushMatrix();
 			this.scene.translate(-1,5.6,0);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.up3.display();
+			this.roof.display();
 		this.scene.popMatrix();
 
 		this.modelInsideTexture.apply();
@@ -297,7 +363,7 @@ class MyCarModel extends CGFobject
 			this.scene.rotate(-Math.PI/8,0,0,1);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.inside1.display();
+			this.insideAtWheel.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
@@ -305,15 +371,17 @@ class MyCarModel extends CGFobject
 			this.scene.rotate(-3*Math.PI/4,0,0,1);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.inside2.display();
+			this.insideUnderWheel.display();
 		this.scene.popMatrix();
 
+		this.modelInsideDownTexture.apply();
+		
 		this.scene.pushMatrix();
 			this.scene.translate(-1,0.12,0);
 			this.scene.rotate(13.3*Math.PI/16,0,0,1);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.inside3.display();
+			this.insideDownFront.display();
 		this.scene.popMatrix();
 		
 		this.scene.pushMatrix();
@@ -321,21 +389,21 @@ class MyCarModel extends CGFobject
 			this.scene.rotate(2.7*Math.PI/16.0,0,0,1);	
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.inside4.display();
+			this.insideDownBackSeat.display();
 		this.scene.popMatrix();
 		
 		this.scene.pushMatrix();
 			this.scene.translate(-1.0,0.1,0);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.inside5.display();
+			this.insideDownUnderSeats.display();
 		this.scene.popMatrix();
 		
 		this.scene.pushMatrix();
 			this.scene.translate(3.55,1.6,0);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.inside6.display();
+			this.insideBack.display();
 		this.scene.popMatrix();	
 
 		this.scene.pushMatrix();
@@ -343,7 +411,7 @@ class MyCarModel extends CGFobject
 			this.scene.rotate(-Math.PI/45.0,0,0,1);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.inside7.display();
+			this.insideUnderCrate.display();
 		this.scene.popMatrix();	
 
 	};
