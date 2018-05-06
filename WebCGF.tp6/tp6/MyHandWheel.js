@@ -12,7 +12,7 @@ class MyHandWheel extends CGFobject
 		super(scene);
 
 		this.wheelTex = typeof wheelTex !== 'undefined' ? wheelTex : "handWheel.jpg";
-		this.metalTex = typeof metalTex !== 'undefined' ? metalTex : "metal2.jpg";
+		this.metalTex = typeof metalTex !== 'undefined' ? metalTex : "metal.jpg";
 		
 		this.angle = 0;
 

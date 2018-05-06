@@ -15,13 +15,13 @@ class MyOffRoadCar extends CGFobject
 		
 		this.chassi = new MyCarChassi(this.scene,0);	
 
-		this.model = new MyCarModel(this.scene);//"camouflageTex.jpg",
-											   //"camouflageTex.jpg",
-											   //"camouflageTex.jpg");
+		this.model = new MyCarModel(this.scene);
 
 		this.handWheel = new MyHandWheel(this.scene);
 
 		this.seat = new MySeat(this.scene);
+
+		this.wheelDamper = new MyWheelDamper(this.scene);
 
 		this.crate = new MyUnitCubeQuad(this.scene);
 
@@ -39,33 +39,67 @@ class MyOffRoadCar extends CGFobject
 	display() 
 	{					
 		this.scene.pushMatrix();
-			this.scene.translate(-1.5,0.51,-1.1);			
+			this.scene.translate(-1.2,0.51,-1.1);			
 			this.scene.scale(0.45,0.45,0.45);
 			this.scene.rotate(this.wheel.angle,0,0,1);	
 			this.wheel.display();
 		this.scene.popMatrix();
 
+		this.scene.pushMatrix();				
+			this.scene.translate(-1.2,0.52,-0.68);			
+			this.scene.scale(0.3,0.3,0.3);
+			this.scene.rotate(-Math.PI/5,1,0,0);
+			this.scene.rotate(this.wheel.angle/2.0,0,0,1);				
+			this.wheelDamper.display();
+		this.scene.popMatrix();
+
 		this.scene.pushMatrix();			
-			this.scene.translate(1.4,0.51,-1.1);			
+			this.scene.translate(1.2,0.51,-1.1);			
 			this.scene.scale(0.45,0.45,0.45);
 			this.scene.rotate(this.wheel.angle,0,0,1);	
 			this.wheel.display();
 		this.scene.popMatrix();	
 			
+		this.scene.pushMatrix();				
+			this.scene.translate(1.2,0.51,-0.68);			
+			this.scene.scale(0.3,0.3,0.3);
+			this.scene.rotate(-Math.PI/5,1,0,0);
+			this.scene.rotate(this.wheel.angle/2.0,0,0,1);				
+			this.wheelDamper.display();
+		this.scene.popMatrix();
+
 		this.scene.pushMatrix();	
-			this.scene.translate(1.4,0.51,1.1);			
+			this.scene.translate(1.2,0.51,1.1);			
 			this.scene.scale(0.45,0.45,0.45);
 			this.scene.rotate(Math.PI,1,0,0);			
 			this.scene.rotate(-this.wheel.angle,0,0,1);	
 			this.wheel.display();
 		this.scene.popMatrix();
 
+		this.scene.pushMatrix();				
+			this.scene.translate(1.2,0.51,0.68);				
+			this.scene.scale(0.3,0.3,0.3);
+			this.scene.rotate(Math.PI,1,0,0);
+			this.scene.rotate(Math.PI/5,1,0,0);
+			this.scene.rotate(-this.wheel.angle/2.0,0,0,1);				
+			this.wheelDamper.display();
+		this.scene.popMatrix();
+
 		this.scene.pushMatrix();			
-			this.scene.translate(-1.5,0.51,1.1);			
+			this.scene.translate(-1.2,0.51,1.1);			
 			this.scene.scale(0.45,0.45,0.45);
 			this.scene.rotate(Math.PI,1,0,0);	
 			this.scene.rotate(-this.wheel.angle,0,0,1);	
 			this.wheel.display();
+		this.scene.popMatrix();
+
+		this.scene.pushMatrix();							
+			this.scene.translate(-1.2,0.51,0.68);							
+			this.scene.scale(0.3,0.3,0.3);
+			this.scene.rotate(Math.PI,1,0,0);
+			this.scene.rotate(Math.PI/5,1,0,0);
+			this.scene.rotate(-this.wheel.angle/2.0,0,0,1);				
+			this.wheelDamper.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();				
@@ -112,6 +146,7 @@ class MyOffRoadCar extends CGFobject
 		this.scene.popMatrix();
 		
 		
+		
 	};
 
 	update(currTime)
@@ -119,16 +154,16 @@ class MyOffRoadCar extends CGFobject
 		this.wheel.update(currTime);
 		this.handWheel.setAngle(this.handWheel.angle + currTime/1000);
 	};
-	
+
 	setPaint(Paint)
 	{
-		if(Paint == 'Flames')
+		if(Paint == 'Flames') // STANDARD
 		{
-			this.model = new MyCarModel(this.scene);
+			this.model = new MyCarModel(this.scene,"","");
 		}
-		else
-		{
-			this.model = new MyCarModel(this.scene, "camouflageTex.jpg", "camouflageTex.jpg");
+		else // CAMO
+		{			
+			this.model = new MyCarModel(this.scene, "camouflageTex.jpg","camouflageTex.jpg");
 		}
 	};
 };

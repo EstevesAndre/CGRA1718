@@ -43,33 +43,19 @@ class LightingScene extends CGFscene
 		this.floor = new MyTerrain(this,20, 0,10,0,10);
 		this.car = new MyOffRoadCar(this);
 		
-		//test
-		this.trapezium = new MyTrapezium(this,5,0,0.1,2,0);
-		this.wheel = new MyHandWheel(this);
-		this.chassi = new MyCarChassi(this,1);
-		this.model = new MyCarModel(this,"flames.jpg");
-
-
 
 		// Materials
+		this.materialDefault = new CGFappearance(this);
+		this.materialDefault.setDiffuse(0.25,0.25,0.25,1);
+		this.materialDefault.setAmbient(0.2,0.2,0.2,1);
 		
 
 		// Textures
 		this.enableTextures(true);
 
-		this.materialDefault = new CGFappearance(this);
-		this.materialDefault.loadTexture("../resources/images/lamptext.jpg");
-		//this.materialDefault.setDiffuse(0,0,0.25,1);
-		this.materialDefault.setAmbient(0.2,0.2,0.2,1);
-		
-		this.flame = new CGFappearance(this);
-		this.flame.loadTexture("../resources/images/flames.jpg");
-		//this.materialDefault.setDiffuse(0,0,0.25,1);
-		this.flame.setAmbient(0.2,0.2,0.2,1);
-
 		this.terrainAppearance = new CGFappearance(this);
 		this.terrainAppearance.loadTexture("../resources/images/terrain.png");
-	
+		this.terrainAppearance.setAmbient(0.4,0.4,0.4,1);
 		
 		this.setUpdatePeriod(1000/FPS);
 	};
@@ -138,7 +124,7 @@ class LightingScene extends CGFscene
 			this.terrainAppearance.apply();
 			this.rotate(-90 * degToRad, 1, 0, 0);
 			this.scale(50, 50, 0);
-			//this.floor.display();
+			this.floor.display();
 		this.popMatrix();
 		
 		this.pushMatrix();
@@ -152,11 +138,7 @@ class LightingScene extends CGFscene
 
 		// ---- END Scene drawing section
 
-		// test
-		this.pushMatrix();		
-			
-		this.popMatrix();
-		
+	
 	};
 
 	update(currTime)
