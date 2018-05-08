@@ -109,7 +109,7 @@ class MyHandWheel extends CGFobject
 		this.scene.pushMatrix();
 			this.scene.translate(0,0,-0.18);
 			this.scene.rotate(Math.PI,0,1,0);			
-			this.scene.scale(0.1,0.1,0.62);
+			this.scene.scale(0.1,0.1,1);
 			this.cylinder.display();
 		this.scene.popMatrix();
 		

@@ -43,6 +43,8 @@ class LightingScene extends CGFscene
 		this.floor = new MyTerrain(this,20, 0,10,0,10);
 		this.car = new MyOffRoadCar(this);
 		
+		// test
+		this.chassi = new MyCarModel(this);
 
 		// Materials
 		this.materialDefault = new CGFappearance(this);
@@ -136,6 +138,9 @@ class LightingScene extends CGFscene
 			this.car.display();
 		this.popMatrix();
 
+		this.pushMatrix();
+			//this.chassi.display();
+		this.popMatrix();
 		// ---- END Scene drawing section
 
 	
