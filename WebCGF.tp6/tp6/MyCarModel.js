@@ -77,7 +77,7 @@ class MyCarModel extends CGFobject
 
 		textureInside = ( (typeof textureInside !== 'undefined') &&
 						  (textureInside !== "")
-						  ) ? textureInside : "cylinder.png";
+						  ) ? textureInside : "interior.jpg";
 				this.modelInsideTexture = new CGFappearance(this.scene);
 				this.modelInsideTexture.loadTexture("../resources/images/"+textureInside);
 				this.modelInsideTexture.setAmbient(0.5,0.5,0.5,1);
@@ -86,7 +86,7 @@ class MyCarModel extends CGFobject
 
 		textureInsideDown = ( (typeof textureInsideDown !== 'undefined') &&
 							  (textureInsideDown !== "")
-							  ) ? textureInsideDown : "floor.png";
+							  ) ? textureInsideDown : "interiorGround.jpg";
 				this.modelInsideDownTexture = new CGFappearance(this.scene);
 				this.modelInsideDownTexture.loadTexture("../resources/images/"+textureInsideDown);
 				this.modelInsideDownTexture.setAmbient(0.5,0.5,0.5,1);
@@ -127,8 +127,9 @@ class MyCarModel extends CGFobject
 		this.sideDown = new MyTrapezium(this.scene,2,3,0.5,0.01,-0.5);
 		
 		//those are commented
-		this.middle5 = new MyTrapezium(this.scene,0.4,1.9,0.85,0.01,0.55);
-		this.middle6 = new MyTrapezium(this.scene,0,2,0.5,0.01,0.5);
+		this.sideDownLR = new MyTrapezium(this.scene,1,1.9,0.85,0.01,0.45);
+		this.sideDownLeft = new MyTrapezium(this.scene,0,1.08,0.64,0.01,0.3);
+		this.sideDownRight = new MyTrapezium(this.scene,0,1,0.62,0.01,0.3);
 
 		// modelDownTexture
 		this.downMiddle = new MyTrapezium(this.scene,2.05,2.05,1.57,0.01,0);
@@ -152,8 +153,8 @@ class MyCarModel extends CGFobject
 		this.roof = new MyTrapezium(this.scene,2.3,2.3,4,0.01,0);
 
 		// modelInsideTexture
-		this.insideAtWheel = new MyTrapezium(this.scene,2.2,2.2,1.5,0.01,0);
-		this.insideUnderWheel = new MyTrapezium(this.scene,2.2,2.1,2.1,0.01,-0.5);
+		this.insideAtHandWheel = new MyTrapezium(this.scene,2.4,2.4,1.5,0.01,0);
+		this.insideUnderWheel = new MyTrapezium(this.scene,2.4,1.5,2.1,0.01,0);
 		
 		// modelInsideDownTexture
 		this.insideDownFront = new MyTrapezium(this.scene,1.5,1.5,1.8,0.01,0);
@@ -251,21 +252,39 @@ class MyCarModel extends CGFobject
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
-			this.scene.translate(1.5,0.15,2);
-			this.scene.rotate(Math.PI/5,1,0,0);	
-			this.scene.rotate(Math.PI/15,0,0,1);		
-			this.scene.rotate(Math.PI/15,0,1,0);
-			this.scene.rotate(Math.PI/6.1,1,0,0);	
-			//this.middle5.display();
+			this.scene.translate(1.52,0.17,2.02);
+			this.scene.rotate(Math.PI/5.5,1,0,0);	
+			this.scene.rotate(Math.PI/5.6,0,1,0);
+			this.scene.rotate(Math.PI/10.4,1,0,0);	
+			this.sideDownLR.display();
+		this.scene.popMatrix();
+		
+		this.scene.pushMatrix();
+			this.scene.translate(-1.47,0.14,2.04);
+			this.scene.rotate(Math.PI,0,1,0);	
+			this.scene.rotate(-Math.PI/4.8,1,0,0);	
+			this.scene.rotate(-Math.PI/5.9,0,1,0);
+			this.scene.rotate(-Math.PI/14,1,0,0);	
+			this.sideDownLR.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
-			this.scene.translate(1,-0.09,1.57);
-			this.scene.rotate(-Math.PI/25,1,0,0);	
-			this.scene.rotate(Math.PI/6.5,0,0,1);		
-			this.scene.rotate(Math.PI/40,0,1,0);
-			this.scene.rotate(Math.PI/1.8,1,0,0);	
-			//this.middle6.display();
+			this.scene.translate(1,-0.1,1.57);
+			this.scene.rotate(Math.PI/25,1,1,0);	
+			this.scene.rotate(-Math.PI/3.5,1,0,0);	
+			this.scene.rotate(Math.PI/7,0,0,1);	
+			this.scene.rotate(Math.PI/1.45,1,0,0);	
+			this.sideDownRight.display();
+		this.scene.popMatrix();
+		
+		this.scene.pushMatrix();
+			this.scene.translate(-1,-0.118,1.58);
+			this.scene.rotate(Math.PI,0,1,0);	
+			this.scene.rotate(-Math.PI/20,1,1,0);	
+			this.scene.rotate(Math.PI/3.5,1,0,0);	
+			this.scene.rotate(Math.PI/7,0,0,1);	
+			this.scene.rotate(-Math.PI/1.45,1,0,0);	
+			this.sideDownLeft.display();
 		this.scene.popMatrix();
 
 		this.modelDownTexture.apply();
@@ -363,12 +382,12 @@ class MyCarModel extends CGFobject
 			this.scene.rotate(-Math.PI/8,0,0,1);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
-			this.insideAtWheel.display();
+			this.insideAtHandWheel.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 			this.scene.translate(-1.1,2.45,0);
-			this.scene.rotate(-3*Math.PI/4,0,0,1);
+			this.scene.rotate(-3.02*Math.PI/4.0,0,0,1);
 			this.scene.rotate(-Math.PI/2.0,1,0,0);
 			this.scene.rotate(-Math.PI/2.0,0,0,1);
 			this.insideUnderWheel.display();
