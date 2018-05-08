@@ -163,7 +163,15 @@ class MyOffRoadCar extends CGFobject
 		}
 		else // CAMO
 		{			
-			this.model = new MyCarModel(this.scene, "camouflageTex.jpg","camouflageTex.jpg");
+			this.model = new MyCarModel(this.scene, 
+						"camouflageTex.jpg",
+						"camouflageTex.jpg",
+						"",
+						"camouflageTex.jpg",
+						"",
+						"",
+						"camouflageTex.jpg"
+						);
 		}
 	};
 };
