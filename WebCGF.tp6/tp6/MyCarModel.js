@@ -253,17 +253,17 @@ class MyCarModel extends CGFobject
 
 		this.scene.pushMatrix();
 			this.scene.translate(1.52,0.17,2.02);
-			this.scene.rotate(Math.PI/5.5,1,0,0);	
-			this.scene.rotate(Math.PI/5.6,0,1,0);
+			this.scene.rotate(Math.PI/5.4,1,0,0);	
+			this.scene.rotate(Math.PI/5.4,0,1,0);
 			this.scene.rotate(Math.PI/10.4,1,0,0);	
 			this.sideDownLR.display();
 		this.scene.popMatrix();
 		
 		this.scene.pushMatrix();
-			this.scene.translate(-1.47,0.14,2.04);
+			this.scene.translate(-1.47,0.16,2.04);
 			this.scene.rotate(Math.PI,0,1,0);	
 			this.scene.rotate(-Math.PI/4.8,1,0,0);	
-			this.scene.rotate(-Math.PI/5.9,0,1,0);
+			this.scene.rotate(-Math.PI/6.1,0,1,0);
 			this.scene.rotate(-Math.PI/14,1,0,0);	
 			this.sideDownLR.display();
 		this.scene.popMatrix();
@@ -278,12 +278,12 @@ class MyCarModel extends CGFobject
 		this.scene.popMatrix();
 		
 		this.scene.pushMatrix();
-			this.scene.translate(-1,-0.118,1.58);
+			this.scene.translate(-1,-0.15,1.64);
 			this.scene.rotate(Math.PI,0,1,0);	
 			this.scene.rotate(-Math.PI/20,1,1,0);	
-			this.scene.rotate(Math.PI/3.5,1,0,0);	
+			this.scene.rotate(Math.PI/3.3,1,0,0);	
 			this.scene.rotate(Math.PI/7,0,0,1);	
-			this.scene.rotate(-Math.PI/1.45,1,0,0);	
+			this.scene.rotate(-Math.PI/1.5,1,0,0);	
 			this.sideDownLeft.display();
 		this.scene.popMatrix();
 
