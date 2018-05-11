@@ -152,7 +152,7 @@ class MyOffRoadCar extends CGFobject
 	update(currTime)
 	{
 		this.wheel.update(currTime);
-		this.handWheel.setAngle(this.handWheel.angle + currTime/1000);
+		//this.handWheel.setAngle(this.handWheel.angle + currTime/1000);
 	};
 
 	setPaint(Paint)
