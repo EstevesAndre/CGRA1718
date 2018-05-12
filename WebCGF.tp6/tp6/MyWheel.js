@@ -7,7 +7,7 @@
 class MyWheel extends CGFobject
 {
 
-	constructor(scene)
+	constructor(scene, rotate)
 	{
 		super(scene);
 
@@ -25,7 +25,10 @@ class MyWheel extends CGFobject
 		this.angle = 0;
 		this.xRot = 0;
 		this.yRot = 0;
-		this.zRot = 0;		
+		this.zRot = 0;
+				
+		this.rotate = rotate || false;
+		this.direction = 0.0;
 
 		this.wheelText = new CGFappearance(this.scene);
 		this.wheelText.loadTexture("../resources/images/texture.jpg");
@@ -166,4 +169,12 @@ class MyWheel extends CGFobject
 	{
 		//this.angle+=(Math.PI/80.0 * currTime/50.0)%(2*Math.PI);
 	};
+
+	updateDirection(direction)
+	{
+		if(this.rotate)
+		{
+			this.direction = direction;
+		}
+	}
 };

@@ -153,7 +153,7 @@ class MyCarModel extends CGFobject
 		this.roof = new MyTrapezium(this.scene,2.3,2.3,4,0.01,0);
 
 		// modelInsideTexture
-		this.insideAtHandWheel = new MyTrapezium(this.scene,2.4,2.4,1.5,0.01,0);
+		this.insideAtHandWheel = new MyTrapezium(this.scene,2.2,2.3,1.5,0.01,0);
 		this.insideUnderWheel = new MyTrapezium(this.scene,2.4,1.5,2.1,0.01,0);
 		
 		// modelInsideDownTexture

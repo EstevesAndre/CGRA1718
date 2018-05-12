@@ -11,7 +11,9 @@ class MyOffRoadCar extends CGFobject
 	{
 		super(scene);
 
-		this.wheel = new MyWheel(this.scene,12,1);
+		this.wheelRot = new MyWheel(this.scene,true);
+		
+		this.wheelBack = new MyWheel(this.scene,false);
 		
 		this.chassi = new MyCarChassi(this.scene,0);	
 
@@ -33,7 +35,77 @@ class MyOffRoadCar extends CGFobject
 		this.crateTex = new CGFappearance(this.scene);
 		this.crateTex.loadTexture("../resources/images/crate.jpg");
 
+		this.xPos = 0.0;
+		this.zPos = 0.0;
+		this.speed = 0.0;
+		this.directionCar = Math.PI;
+		this.wheelDirection = 0.0;
+	};
 
+
+	setSpeed(speed_Constant)
+	{
+		this.speed += speed_Constant;
+
+		if(this.speed > SPEED_MAX)
+			this.speed = SPEED_MAX;
+
+		else if(this.speed < -SPEED_MAX_BACK)
+			this.speed = -SPEED_MAX_BACK;
+	};
+
+	setWheelDirection(wheel_Direction_Constant)
+	{
+		this.wheelDirection += wheel_Direction_Constant;
+
+		if(this.wheelDirection > WHEEL_DIRECTION_MAX)
+		{
+			this.wheelDirection = WHEEL_DIRECTION_MAX;
+		}
+		else if (this.wheelDirection < - WHEEL_DIRECTION_MAX)
+		{
+			this.wheelDirection = - WHEEL_DIRECTION_MAX;
+		}
+
+		this.wheelRot.updateDirection(this.wheelDirection);
+	};
+
+	setDirectionCar()
+	{
+		this.directionCar += this.wheelDirection/10;
+	};
+
+	updatePos()
+	{		
+		this.xPos += this.speed * Math.cos(this.directionCar);
+		this.zPos -= this.speed * Math.sin(this.directionCar);
+
+		if(this.xPos > GROUND_SIZE_WIDTH/2.0 - 1.5)
+		{
+			this.xPos = GROUND_SIZE_WIDTH/2.0 - 1.5;
+			this.speed = 0.0;
+		}
+
+		else if(this.xPos < -GROUND_SIZE_WIDTH/2.0 + 1.5)
+		{
+			this.xPos = -GROUND_SIZE_WIDTH/2.0 + 1.5;
+			this.speed = 0.0;
+		}
+
+		else if (this.zPos > GROUND_SIZE_WEIGHT/2.0 - 1.5)
+		{
+			this.zPos = GROUND_SIZE_WEIGHT/2.0 - 1.5;
+			this.speed = 0.0;
+		}
+
+		else if (this.zPos < -GROUND_SIZE_WEIGHT/2.0 + 1.5)
+		{
+			this.zPos = -GROUND_SIZE_WEIGHT/2.0 + 1.5;			
+			this.speed = 0.0;
+		}
+		
+		if(this.speed != 0)
+			this.setDirectionCar();
 	};
 
 	display() 
@@ -41,30 +113,31 @@ class MyOffRoadCar extends CGFobject
 		this.scene.pushMatrix();
 			this.scene.translate(-1.2,0.51,-1.1);			
 			this.scene.scale(0.45,0.45,0.45);
-			this.scene.rotate(this.wheel.angle,0,0,1);	
-			this.wheel.display();
+			this.scene.rotate(this.wheelRot.angle,0,0,1);	
+			this.scene.rotate(this.wheelRot.direction,0,1,0);
+			this.wheelRot.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();				
 			this.scene.translate(-1.2,0.52,-0.68);			
 			this.scene.scale(0.3,0.3,0.3);
 			this.scene.rotate(-Math.PI/5,1,0,0);
-			this.scene.rotate(this.wheel.angle/2.0,0,0,1);				
+			this.scene.rotate(this.wheelRot.angle/2.0,0,0,1);				
 			this.wheelDamper.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();			
 			this.scene.translate(1.2,0.51,-1.1);			
 			this.scene.scale(0.45,0.45,0.45);
-			this.scene.rotate(this.wheel.angle,0,0,1);	
-			this.wheel.display();
+			this.scene.rotate(this.wheelBack.angle,0,0,1);	
+			this.wheelBack.display();
 		this.scene.popMatrix();	
 			
 		this.scene.pushMatrix();				
 			this.scene.translate(1.2,0.51,-0.68);			
 			this.scene.scale(0.3,0.3,0.3);
 			this.scene.rotate(-Math.PI/5,1,0,0);
-			this.scene.rotate(this.wheel.angle/2.0,0,0,1);				
+			this.scene.rotate(this.wheelBack.angle/2.0,0,0,1);				
 			this.wheelDamper.display();
 		this.scene.popMatrix();
 
@@ -72,8 +145,8 @@ class MyOffRoadCar extends CGFobject
 			this.scene.translate(1.2,0.51,1.1);			
 			this.scene.scale(0.45,0.45,0.45);
 			this.scene.rotate(Math.PI,1,0,0);			
-			this.scene.rotate(-this.wheel.angle,0,0,1);	
-			this.wheel.display();
+			this.scene.rotate(-this.wheelBack.angle,0,0,1);	
+			this.wheelBack.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();				
@@ -81,7 +154,7 @@ class MyOffRoadCar extends CGFobject
 			this.scene.scale(0.3,0.3,0.3);
 			this.scene.rotate(Math.PI,1,0,0);
 			this.scene.rotate(Math.PI/5,1,0,0);
-			this.scene.rotate(-this.wheel.angle/2.0,0,0,1);				
+			this.scene.rotate(-this.wheelBack.angle/2.0,0,0,1);				
 			this.wheelDamper.display();
 		this.scene.popMatrix();
 
@@ -89,8 +162,9 @@ class MyOffRoadCar extends CGFobject
 			this.scene.translate(-1.2,0.51,1.1);			
 			this.scene.scale(0.45,0.45,0.45);
 			this.scene.rotate(Math.PI,1,0,0);	
-			this.scene.rotate(-this.wheel.angle,0,0,1);	
-			this.wheel.display();
+			this.scene.rotate(-this.wheelRot.angle,0,0,1);	
+			this.scene.rotate(-this.wheelRot.direction,0,1,0);
+			this.wheelRot.display();
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();							
@@ -98,7 +172,7 @@ class MyOffRoadCar extends CGFobject
 			this.scene.scale(0.3,0.3,0.3);
 			this.scene.rotate(Math.PI,1,0,0);
 			this.scene.rotate(Math.PI/5,1,0,0);
-			this.scene.rotate(-this.wheel.angle/2.0,0,0,1);				
+			this.scene.rotate(-this.wheelRot.angle/2.0,0,0,1);				
 			this.wheelDamper.display();
 		this.scene.popMatrix();
 
@@ -144,14 +218,12 @@ class MyOffRoadCar extends CGFobject
 			this.scene.rotate(-Math.PI/45.0,0,0,1);
 			this.crate.display();
 		this.scene.popMatrix();
-		
-		
-		
 	};
 
 	update(currTime)
 	{
-		this.wheel.update(currTime);
+		this.wheelRot.update(currTime);
+		this.wheelBack.update(currTime);		
 		//this.handWheel.setAngle(this.handWheel.angle + currTime/1000);
 	};
 
