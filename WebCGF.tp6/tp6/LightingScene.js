@@ -48,8 +48,20 @@ class LightingScene extends CGFscene
 
 		this.axis = new CGFaxis(this);
 
+		this.altimetry= [[ 2.0 , 3.0 , 2.0, 4.0, 2.5, 2.4, 2.3, 1.3, 0.0 ],
+						[ 2.0 , 3.0 , 2.0, 4.0, 7.5, 6.4, 4.3, 1.3, 0.0 ],
+						[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
+						[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
+						[ 0.0 , 0.0 , 2.0, 4.0, 2.5, 2.4, 0.0, 0.0, 0.0 ],
+						[ 0.0 , 0.0 , 2.0, 4.0, 3.5, 2.4, 0.0, 0.0, 0.0 ],
+						[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
+						[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
+						[ 2.0 , 3.0 , 2.0, 1.0, 2.5, 2.4, 2.3, 1.3, 0.0 ]
+						];
+
+
 		// Scene elements
-		this.floor = new MyTerrain(this,20, 0,10,0,10);
+		this.floor = new MyTerrain(this,8, 0,10,0,10, this.altimetry);
 		this.car = new MyOffRoadCar(this);
 		
 		// Materials
@@ -130,7 +142,7 @@ class LightingScene extends CGFscene
 		this.pushMatrix();		
 			this.terrainAppearance.apply();
 			this.rotate(-90 * degToRad, 1, 0, 0);
-			this.scale(GROUND_SIZE_WIDTH, GROUND_SIZE_WEIGHT, 0);
+			this.scale(GROUND_SIZE_WIDTH, GROUND_SIZE_WEIGHT, 1);
 			this.floor.display();
 		this.popMatrix();
 			
