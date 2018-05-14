@@ -17,6 +17,7 @@ class MyWheel extends CGFobject
 		this.smallPeace = new MyTrapezium(this.scene,0.1,0.1,0.1,0.6,0);
 		this.center = new MySemiSphere(this.scene,8,4);
 		this.alloy = new MyObjectsFrontCircule(this.scene,24,0.6);
+		this.speed = 0;
 
 		this.x = 0;
 		this.y = 0;
@@ -167,7 +168,7 @@ class MyWheel extends CGFobject
 
 	update(currTime)
 	{
-		//this.angle+=(Math.PI/80.0 * currTime/50.0)%(2*Math.PI);
+		this.angle+=(Math.PI * this.speed)%(2*Math.PI);
 	};
 
 	updateDirection(direction)

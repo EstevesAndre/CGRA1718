@@ -52,6 +52,9 @@ class MyOffRoadCar extends CGFobject
 
 		else if(this.speed < -SPEED_MAX_BACK)
 			this.speed = -SPEED_MAX_BACK;
+
+		this.wheelRot.speed = this.speed;
+		this.wheelBack.speed = this.speed;
 	};
 
 	setWheelDirection(wheel_Direction_Constant)
@@ -119,8 +122,8 @@ class MyOffRoadCar extends CGFobject
 		this.scene.pushMatrix();
 			this.scene.translate(-1.2,0.51,-1.1);			
 			this.scene.scale(0.45,0.45,0.45);
-			this.scene.rotate(this.wheelRot.angle,0,0,1);	
 			this.scene.rotate(this.wheelRot.direction,0,1,0);
+			this.scene.rotate(this.wheelRot.angle,0,0,1);	
 			this.wheelRot.display();
 		this.scene.popMatrix();
 
@@ -167,9 +170,9 @@ class MyOffRoadCar extends CGFobject
 		this.scene.pushMatrix();			
 			this.scene.translate(-1.2,0.51,1.1);			
 			this.scene.scale(0.45,0.45,0.45);
-			this.scene.rotate(Math.PI,1,0,0);	
+			this.scene.rotate(Math.PI,1,0,0);
+			this.scene.rotate(-this.wheelRot.direction,0,1,0);	
 			this.scene.rotate(-this.wheelRot.angle,0,0,1);	
-			this.scene.rotate(-this.wheelRot.direction,0,1,0);
 			this.wheelRot.display();
 		this.scene.popMatrix();
 
