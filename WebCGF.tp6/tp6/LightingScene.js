@@ -8,12 +8,12 @@ var BOARD_B_DIVISIONS = 100;
 
 var FPS = 50;
 
-var SPEED_CONSTANT = 0.01;
-var SPEED_MAX = 0.3;
-var SPEED_MAX_BACK = 0.2;
+var SPEED_CONSTANT = 0.0005;
+var SPEED_MAX = 0.2;
+var SPEED_MAX_BACK = 0.1;
 
-var WHEEL_DIRECTION_CONSTANT = Math.PI/50.0;
-var WHEEL_DIRECTION_MAX = Math.PI/5.0;
+var WHEEL_DIRECTION_CONSTANT = Math.PI/1800.0;
+var WHEEL_DIRECTION_MAX = Math.PI/8.0;
 
 var GROUND_SIZE_WIDTH = 50;
 var GROUND_SIZE_WEIGHT = 50;
@@ -39,6 +39,7 @@ class LightingScene extends CGFscene
 		this.Sun = true;
 		this.CarLights = true;
 		this.axisDisplay = false;
+		this.testDisplay = false;
 
 		this.gl.clearColor(0.7, 0.7, 1.0, 1.0);
 		this.gl.clearDepth(100.0);
@@ -63,11 +64,19 @@ class LightingScene extends CGFscene
 		// Scene elements
 		this.floor = new MyTerrain(this,8, 0,10,0,10, this.altimetry);
 		this.car = new MyOffRoadCar(this);
+
+		// Test elements
+		this.cylinder = new MyCylinderwCover(this,24,6);
+		this.trapezium = new MyTrapezium(this,2,1,1,1,0.5);
 		
 		// Materials
 		this.materialDefault = new CGFappearance(this);
 		this.materialDefault.setDiffuse(0.25,0.25,0.25,1);
 		this.materialDefault.setAmbient(0.2,0.2,0.2,1);
+		
+		this.materialTest = new CGFappearance(this);
+		this.materialTest.loadTexture("../resources/images/feup.png");
+
 		
 		// Textures
 		this.enableTextures(true);
@@ -138,27 +147,47 @@ class LightingScene extends CGFscene
 
 		// ---- BEGIN Scene drawing section
 		
-		// Floor
-		this.pushMatrix();		
-			this.terrainAppearance.apply();
-			this.rotate(-90 * degToRad, 1, 0, 0);
-			this.scale(GROUND_SIZE_WIDTH, GROUND_SIZE_WEIGHT, 1);
-			this.floor.display();
-		this.popMatrix();
-			
 		this.pushMatrix();
-			if(this.Paint != this.PaintControl)
+
+			this.scale(3,3,3);
+
+			// Floor
+			this.pushMatrix();		
+				this.terrainAppearance.apply();
+				this.rotate(-90 * degToRad, 1, 0, 0);
+				this.scale(GROUND_SIZE_WIDTH, GROUND_SIZE_WEIGHT, 1);
+				this.floor.display();
+			this.popMatrix();
+
+			this.pushMatrix();
+				if(this.Paint != this.PaintControl)
+				{
+					this.car.setPaint(this.Paint);
+					this.PaintControl = this.Paint;
+				}
+				this.car.updatePos();
+				this.translate(this.car.xPos,0,this.car.zPos);
+				this.rotate(this.car.directionCar - Math.PI,0,1,0);			
+				this.lights[1].setPosition(-2 + this.car.xPos, 1, this.car.zPos, 1);					
+				this.car.display();
+			this.popMatrix();
+
+			this.materialTest.apply();
+
+			if(this.testDisplay) 
 			{
-				this.car.setPaint(this.Paint);
-				this.PaintControl = this.Paint;
+				this.pushMatrix();
+					this.translate(0,2.5,0);
+					this.trapezium.display();
+					this.translate(-2,3.3,2);
+					this.rotate(Math.PI/2.0,1,0,0);
+					this.scale(1,1,3);
+					this.cylinder.display();
+				this.popMatrix();
 			}
-			this.car.updatePos();
-			this.translate(this.car.xPos,0,this.car.zPos);
-			this.rotate(this.car.directionCar - Math.PI,0,1,0);			
-			this.lights[1].setPosition(-2 + this.car.xPos, 1, this.car.zPos, 1);					
-			this.car.display();
+
 		this.popMatrix();
-		
+
 		// ---- END Scene drawing section	
 	};
 
@@ -173,14 +202,19 @@ class LightingScene extends CGFscene
 		if(this.deltaTime <= 1000)
 		{
 			this.car.update(this.deltaTime);		
+			this.checkKeys(this.deltaTime);		
 		}		
-
-		this.checkKeys();		
+		
 	};
 
 	toggleAxis()
 	{
 		this.axisDisplay = !this.axisDisplay;
+	};
+
+	toggleTestObjects()
+	{
+		this.testDisplay = !this.testDisplay;
 	};
 
 	evalLights()
@@ -204,7 +238,7 @@ class LightingScene extends CGFscene
 		}
 	};
 
-	checkKeys ()
+	checkKeys (deltaTime)
 	{
 		var text="Keys pressed: ";
 		var keysPressed=false;
@@ -212,28 +246,28 @@ class LightingScene extends CGFscene
 		if (this.gui.isKeyPressed("KeyW"))
 		{
 			text+=" W ";
-			this.car.setSpeed(SPEED_CONSTANT);
+			this.car.setSpeed(SPEED_CONSTANT*deltaTime);
 			keysPressed=true;
 		}
 
 		if (this.gui.isKeyPressed("KeyS"))
 		{
 			text+=" S ";
-			this.car.setSpeed(-SPEED_CONSTANT);
+			this.car.setSpeed(-SPEED_CONSTANT*deltaTime);
 			keysPressed=true;
 		}
 
 		if (this.gui.isKeyPressed("KeyD"))
 		{
 			text+=" D ";
-			this.car.setWheelDirection(-WHEEL_DIRECTION_CONSTANT);
+			this.car.setWheelDirection(-WHEEL_DIRECTION_CONSTANT*deltaTime);
 			keysPressed=true;
 		}
 
 		if (this.gui.isKeyPressed("KeyA"))
 		{
 			text+=" A ";
-			this.car.setWheelDirection(WHEEL_DIRECTION_CONSTANT);
+			this.car.setWheelDirection(WHEEL_DIRECTION_CONSTANT*deltaTime);
 			keysPressed=true;
 		}
 
