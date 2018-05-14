@@ -72,7 +72,10 @@ class MyOffRoadCar extends CGFobject
 
 	setDirectionCar()
 	{
-		this.directionCar += this.wheelDirection/10;
+		if(this.speed < 0)			
+			this.directionCar -= this.wheelDirection/10;
+		else
+			this.directionCar += this.wheelDirection/10;			
 	};
 
 	updatePos()
@@ -104,8 +107,11 @@ class MyOffRoadCar extends CGFobject
 			this.speed = 0.0;
 		}
 		
-		if(this.speed != 0)
+		if(this.speed >= 0.01 || this.speed <= -0.01) 
+		{
 			this.setDirectionCar();
+		}
+		
 	};
 
 	display() 
