@@ -6,11 +6,12 @@
 
 class MySemiSphere extends CGFobject
 {
-	constructor(scene, slices, stacks)
+	constructor(scene, slices, stacks, debug)
 	{
 		super(scene);
 		this.slices = slices;
 		this.stacks = stacks;
+		this.debug = debug || false;
 		
 		this.initBuffers();
 	};
@@ -34,35 +35,38 @@ class MySemiSphere extends CGFobject
 			{
 				this.vertices.push(Math.cos((this.slices-1) * angle)*Math.cos(Math.asin(division*(k))), Math.sin((this.slices-1) * angle)*Math.cos(Math.asin(division*(k))), k * division);
 				this.normals.push(Math.cos((this.slices-1) * angle), Math.sin((this.slices-1) * angle), Math.cos(Math.asin(division*(k))));
-				this.texCoords.push(0,0);
+				this.texCoords.push(0.5,0.5);
 					
-				for(let i = 0; i < this.slices; i++)
+				for(let i = 0; i <= this.slices; i++)
 				{
-					this.indices.push(this.slices*k, this.slices*(k-1) + i - 1, this.slices*(k-1) + i);
-					
-					if(i == (this.slices - 1))
-					{
-						this.indices.push(this.slices * (k-1) + i, this.slices * (k - 1), this.slices*k);
-					}
+					this.indices.push((this.slices+1)*k,(this.slices+1)*(k-1) + i, (this.slices+1)*(k-1) + i + 1);				
 				}	
 			}
 			else
 			{
-				for(let i = 0; i < this.slices; i++)
+				if(this.debug)
+					console.log("Stack = " + (k + 1));
+				
+				for(let i = 0; i <= this.slices; i++)
 				{
 					this.vertices.push(Math.cos(i * angle)*Math.cos(Math.asin(division*(k))), Math.sin(i * angle)*Math.cos(Math.asin(division*(k))), k * division);
 					this.normals.push(Math.cos(i * angle), Math.sin(i * angle), Math.cos(Math.asin(division*(k))));
-					this.texCoords.push(i/this.slices,k * division);
+									
+					this.texCoords.push( (Math.cos(i * angle)*Math.cos(Math.asin(division*(k))) ) / 2.0 + 0.5, -(Math.sin(i * angle)*Math.cos(Math.asin(division*(k))) ) / 2.0 + 0.5);					
+						
+					if(this.debug)
+					{		
+						console.log("Slice = " + i);			
+						console.log("3s -> " + ((Math.cos(i * angle)*Math.cos(Math.asin(division*(k))) ) / 2.0 + 0.5));
+						console.log("3t -> " + (-(Math.sin(i * angle)*Math.cos(Math.asin(division*(k))) ) / 2.0 + 0.5));				
+					}
 					
+
 					if(k != 0 && i != 0)
 					{
-						this.indices.push(this.slices*k + i - 1, this.slices*(k-1) + i - 1, this.slices*(k-1) + i);
-						this.indices.push(this.slices*k + i - 1, this.slices*(k-1) + i , this.slices*k + i);
-						if(i == (this.slices - 1))
-						{
-							this.indices.push(this.slices * (k-1) + i, this.slices * (k - 1), this.slices*k+i);
-							this.indices.push(this.slices*k+i, this.slices*(k-1), this.slices*k);
-						}
+						this.indices.push((this.slices+1)*k + i - 1, (this.slices+1)*(k-1) + i - 1, (this.slices+1)*(k-1) + i);
+						this.indices.push((this.slices+1)*k + i - 1, (this.slices+1)*(k-1) + i , (this.slices+1)*k + i);
+						
 					}
 				}
 			}
