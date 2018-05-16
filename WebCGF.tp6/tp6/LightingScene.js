@@ -103,7 +103,7 @@ class LightingScene extends CGFscene
 						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 5.0 ],
 						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 5.0 ]				             
 						 ];
-						 
+
 		let sizeTerrain = (this.altimetry[0].length - 1) || 0;
 
 		// Scene elements
@@ -111,8 +111,10 @@ class LightingScene extends CGFscene
 		this.car = new MyOffRoadCar(this, this.MaxFrontSpeed, this.MaxBackSpeed);
 
 		// Test elements
-		this.cylinder = new MyCylinderwCover(this,24,6, false);
+		this.cylinder = new MyCylinderwCover(this,24,6);
 		this.trapezium = new MyTrapezium(this,2,1,1,1,0.5);
+		this.semiSphere = new MySemiSphere(this,24,10,false);
+		this.cover = new MyObjectsFront(this,24,0);
 		
 		// Materials
 		this.materialDefault = new CGFappearance(this);
@@ -228,6 +230,13 @@ class LightingScene extends CGFscene
 					this.rotate(Math.PI/2.0,1,0,0);
 					this.scale(1,1,3);
 					this.cylinder.display();
+				this.popMatrix();
+
+				this.pushMatrix();
+					this.translate(4,4,0);
+					this.semiSphere.display();
+					this.rotate(Math.PI,0,1,0);
+					this.cover.display();
 				this.popMatrix();
 			}
 

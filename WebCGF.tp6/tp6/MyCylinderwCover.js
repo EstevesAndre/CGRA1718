@@ -6,15 +6,13 @@
 
 class MyCylinderwCover extends CGFobject
 {
-	constructor(scene, slices, stacks, textureMap, side = 1)
+	constructor(scene, slices, stacks, side = 1)
 	{
 		super(scene);
 
 		this.cylinder = new MyCylinder(this.scene,slices,stacks);
-		if(textureMap)
-			this.cover = new MyObjectsFrontCircule(this.scene,slices,0);
-		else
-			this.cover = new MyObjectsFront(this.scene,slices,0);	
+		
+		this.cover = new MyObjectsFront(this.scene,slices,0);	
 		
 	};
 
