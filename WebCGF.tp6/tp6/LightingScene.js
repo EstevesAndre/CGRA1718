@@ -9,8 +9,6 @@ var BOARD_B_DIVISIONS = 100;
 var FPS = 50;
 
 var SPEED_CONSTANT = 0.0005;
-var SPEED_MAX = 0.2;
-var SPEED_MAX_BACK = 0.1;
 
 var WHEEL_DIRECTION_CONSTANT = Math.PI/1800.0;
 var WHEEL_DIRECTION_MAX = Math.PI/8.0;
@@ -41,6 +39,9 @@ class LightingScene extends CGFscene
 		this.axisDisplay = false;
 		this.testDisplay = false;
 
+		this.MaxFrontSpeed = 0.2;
+		this.MaxBackSpeed = 0.1;
+
 		this.gl.clearColor(0.7, 0.7, 1.0, 1.0);
 		this.gl.clearDepth(100.0);
 		this.gl.enable(this.gl.DEPTH_TEST);
@@ -63,7 +64,7 @@ class LightingScene extends CGFscene
 
 		// Scene elements
 		this.floor = new MyTerrain(this,8, 0,10,0,10, this.altimetry);
-		this.car = new MyOffRoadCar(this);
+		this.car = new MyOffRoadCar(this, this.MaxFrontSpeed, this.MaxBackSpeed);
 
 		// Test elements
 		this.cylinder = new MyCylinderwCover(this,24,6);
@@ -199,6 +200,16 @@ class LightingScene extends CGFscene
 
 		this.lastTime = currTime;
 		
+		if(this.car.MaxFrontSpeed != this.MaxFrontSpeed)
+		{
+			this.car.MaxFrontSpeed = this.MaxFrontSpeed;
+		}
+
+		if(this.car.MaxBackSpeed != this.MaxBackSpeed)
+		{
+			this.car.MaxBackSpeed = this.MaxBackSpeed;
+		}
+
 		if(this.deltaTime <= 1000)
 		{
 			this.car.update(this.deltaTime);		

@@ -7,9 +7,12 @@
 class MyOffRoadCar extends CGFobject
 {
 
-	constructor(scene)
+	constructor(scene, MaxFrontSpeed, MaxBackSpeed)
 	{
 		super(scene);
+
+		this.MaxFrontSpeed = MaxFrontSpeed;
+		this.MaxBackSpeed = MaxBackSpeed;
 
 		this.wheelRot = new MyWheel(this.scene,true);
 		
@@ -47,11 +50,11 @@ class MyOffRoadCar extends CGFobject
 	{
 		this.speed += speed_Constant;
 
-		if(this.speed > SPEED_MAX)
-			this.speed = SPEED_MAX;
+		if(this.speed > this.MaxFrontSpeed)
+			this.speed = this.MaxFrontSpeed;
 
-		else if(this.speed < -SPEED_MAX_BACK)
-			this.speed = -SPEED_MAX_BACK;
+		else if(this.speed < -this.MaxBackSpeed)
+			this.speed = -this.MaxBackSpeed;
 
 		this.wheelRot.speed = this.speed;
 		this.wheelBack.speed = this.speed;
