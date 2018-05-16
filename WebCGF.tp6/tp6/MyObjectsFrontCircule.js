@@ -6,14 +6,13 @@
 
 class MyObjectsFrontCircule extends CGFobject
 {
-	constructor(scene, slices, radius)
+	constructor(scene, slices)
 	{
 		super(scene);
 		this.slices = slices;
-		this.radius = radius;
 
 		this.initBuffers();
-	};
+	}
 
 
 	initBuffers() 
@@ -32,24 +31,32 @@ class MyObjectsFrontCircule extends CGFobject
 
 		var angle = (2* Math.PI) / this.slices;
 		
-		for(let i = 0; i <= this.slices; i++)
+		// Center
+		this.vertices.push(0,0,0);
+		this.texCoords.push(0.5,0.5); // middle
+		this.normals.push(0,0,1);
+
+		for(let i = 0; i < this.slices; i++)
 		{
 			this.vertices.push(Math.cos(i * angle), Math.sin(i * angle), 0);
-			this.normals.push(0,0,1);
-			//this.texCoords.push(0.5 + Math.cos(i * angle) / 2, 0.5 - Math.sin(i * angle) / 2);
-			this.texCoords.push(i/this.slices,0);
-			this.vertices.push(Math.cos(i * angle)*this.radius, Math.sin(i * angle)*this.radius, 0);
 			this.normals.push(0,0,1);			
-			//this.texCoords.push((0.5 + Math.cos(i * angle)/2)*this.radius, (0.5 - Math.sin(i * angle) / 2)*this.radius );
-			this.texCoords.push(i/this.slices,1);
+			// Place to texCoords				
+			this.texCoords.push(0.5 + Math.cos(i * angle) / 2, 0.5 - Math.sin(i * angle) / 2);
+
 			if(i != 0)
-			{			
-				this.indices.push(2*i,2*i-1,2*(i-1));
-				this.indices.push(2*i,2*i+1,2*i-1);
+			{
+				if(i == this.slices-1)
+				{
+					this.indices.push(0,i+1,1);
+				}
+				
+				this.indices.push(0,i,i+1);
 			}
 		}
+		
 		
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	};
 };
+
