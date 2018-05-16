@@ -20,6 +20,7 @@ serialInclude([
 	'MyTrapezium.js',
 	'MyWheel.js',
 	'MyObjectsFrontCircule.js',
+	'MyObjectsFront.js',
 	'MySemiCylinder.js',
 	'MySemiSphere.js',
 	'MyHandWheel.js',

@@ -20,7 +20,7 @@ class MyHandWheel extends CGFobject
 		this.cylinderExterior = new MyCylinder(this.scene, 24,1,1);
 		this.cylinderInterior = new MyCylinder(this.scene, 24,1,-1);
 		this.sphere = new MySemiSphere(this.scene,24,12);
-		this.cylinder = new MyCylinderwCover(this.scene,24,1);
+		this.cylinder = new MyCylinderwCover(this.scene,true,24,1);
 
 		this.handwheelText = new CGFappearance(this.scene);
 		this.handwheelText.loadTexture("../resources/images/" + this.wheelTex);

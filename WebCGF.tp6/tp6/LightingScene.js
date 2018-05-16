@@ -67,7 +67,7 @@ class LightingScene extends CGFscene
 		this.car = new MyOffRoadCar(this, this.MaxFrontSpeed, this.MaxBackSpeed);
 
 		// Test elements
-		this.cylinder = new MyCylinderwCover(this,24,6);
+		this.cylinder = new MyCylinderwCover(this,24,6, false);
 		this.trapezium = new MyTrapezium(this,2,1,1,1,0.5);
 		
 		// Materials

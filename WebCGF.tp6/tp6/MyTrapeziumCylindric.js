@@ -10,7 +10,7 @@ class MyTrapeziumCylindric extends CGFobject
 	{
 		super(scene);
 		
-		this.bar = new MyCylinderwCover(this.scene,12,1);
+		this.bar = new MyCylinderwCover(this.scene,12,true,1);
 
 		this.b = b || 1;
 		this.B = B || 1;
