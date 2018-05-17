@@ -46,7 +46,10 @@ class MyTerrain extends Plane{
 			{
 				this.vertices.push(xCoord, yCoord, this.altimetry[j][i]);
 				
-				this.normals.push(0,0,1);
+				if(this.altimetry[j][i] != 0)
+					this.normals.push(1,1,0);
+				else
+					this.normals.push(0,0,1);
 
 				this.texCoords.push(i * 1.0/this.nrDivs * (this.maxS - this.minS) + this.minS, 
 						j * 1.0/this.nrDivs  * (this.maxT - this.minT) + this.minT);
