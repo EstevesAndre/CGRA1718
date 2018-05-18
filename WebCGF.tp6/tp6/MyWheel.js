@@ -32,7 +32,7 @@ class MyWheel extends CGFobject
 		this.direction = 0.0;
 
 		this.wheelText = new CGFappearance(this.scene);
-		this.wheelText.loadTexture("../resources/images/texture.jpg");
+		this.wheelText.loadTexture("../resources/images/wheelTex.jpg");
 		this.wheelText.setAmbient(0.3,0.3,0.3,1);
 		this.wheelText.setDiffuse(0.5,0.5,0.5,1);
 		this.wheelText.setSpecular(1,1,1,1);

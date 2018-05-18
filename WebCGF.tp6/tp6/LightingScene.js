@@ -32,7 +32,7 @@ class LightingScene extends CGFscene
 		this.initLights();
 
 		this.Paint = "Flames";
-		this.PaintControl = "";
+		this.PaintControl = this.Paint;
 
 		this.Sun = true;
 		this.CarLights = true;

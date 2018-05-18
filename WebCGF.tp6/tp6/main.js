@@ -8,15 +8,8 @@ serialInclude([
 	'LightingScene.js',
 	'MyQuad.js',
 	'MyUnitCubeQuad.js',
-	'MyTable.js',
 	'Plane.js',
-	'MyChair.js',
-	'MyPrism.js',
 	'MyCylinder.js',
-	'MyClock.js',
-	'MyClockHand.js',
-	'MyPaperPlane.js',
-	// TP6 CLASSES
 	'MyTrapezium.js',
 	'MyWheel.js',
 	'MyObjectsFrontCircule.js',
@@ -33,6 +26,7 @@ serialInclude([
 	'MyTerrain.js',
 	'MySeat.js',
 	'MyWheelDamper.js',
+	'MyCrane.js',
 	
 	main=function() {
 		var app = new CGFapplication(document.body);

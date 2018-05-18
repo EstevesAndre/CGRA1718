@@ -17,90 +17,16 @@ class MyCarModel extends CGFobject
 	{
 		super(scene);
 
-		textureSide = (	(typeof textureSide !== 'undefined') && 
-						(textureSide !== "")
-						) ? textureSide : "flames.jpg";	
-				this.modelSideTexture = new CGFappearance(this.scene);
-				this.modelSideTexture.loadTexture("../resources/images/"+textureSide);
-				this.modelSideTexture.setAmbient(0.4,0.4,0.4,1);
-				this.modelSideTexture.setDiffuse(0.1,0.1,0.1,1);
+		this.textureSide = textureSide;			
+		this.textureSideDown = textureSideDown;
+		this.textureDown = textureDown;
+		this.textureFrontTop = textureFrontTop;
+		this.textureInside = textureInside;
+		this.textureInsideDown = textureInsideDown;
+		this.textureTop = textureTop;
+		this.textureLights = textureLights;
 
-
-		textureSideDown = ( (typeof textureSideDown !== 'undefined') &&
-							(textureSideDown !== "")
-							) ? textureSideDown : "yellow.jpg";
-				this.modelSideDownTexture = new CGFappearance(this.scene);
-				this.modelSideDownTexture.loadTexture("../resources/images/"+textureSideDown);
-				this.modelSideDownTexture.setAmbient(0.4,0.4,0.4,1);
-				this.modelSideDownTexture.setDiffuse(0.4,0.4,0.4,1);
-
-
-		textureDown = ( (typeof textureDown !== 'undefined') &&
-						(textureDown !== "")
-						) ? textureDown : "grey.jpg";		
-				this.modelDownTexture = new CGFappearance(this.scene);
-				this.modelDownTexture.loadTexture("../resources/images/"+textureDown);
-				this.modelDownTexture.setAmbient(0.4,0.4,0.4,1);
-				this.modelDownTexture.setDiffuse(0.1,0.1,0.1,1);
-
-
-		textureFrontTop = typeof textureFrontTop !== 'undefined' ? textureFrontTop : "";
-				if(textureFrontTop == "")
-				{
-					this.modelFrontTopTexture = new CGFappearance(this.scene);
-					this.modelFrontTopTexture.setAmbient(0.05,0.05,0.05,1);
-					this.modelFrontTopTexture.setDiffuse(0,0,0,1);
-				}
-				else
-				{
-					this.modelFrontTopTexture = new CGFappearance(this.scene);
-					this.modelFrontTopTexture.loadTexture("../resources/images/"+textureFrontTop);
-					this.modelFrontTopTexture.setAmbient(0.5,0.5,0.5,1);
-					this.modelFrontTopTexture.setDiffuse(0.2,0.2,0.2,1);
-				}
-
-		textureTop = typeof textureTop !== 'undefined' ? textureTop : "";
-				if(textureTop == "")
-				{
-					this.modelTopTexture = new CGFappearance(this.scene);
-					this.modelTopTexture.setAmbient(0.05,0.05,0.05,1);
-					this.modelTopTexture.setDiffuse(0,0,0,1);
-				}
-				else
-				{
-					this.modelTopTexture = new CGFappearance(this.scene);
-					this.modelTopTexture.loadTexture("../resources/images/"+textureTop);
-					this.modelTopTexture.setAmbient(0.5,0.5,0.5,1);
-					this.modelTopTexture.setDiffuse(0.2,0.2,0.2,1);
-				}
-
-
-		textureInside = ( (typeof textureInside !== 'undefined') &&
-						  (textureInside !== "")
-						  ) ? textureInside : "interior.jpg";
-				this.modelInsideTexture = new CGFappearance(this.scene);
-				this.modelInsideTexture.loadTexture("../resources/images/"+textureInside);
-				this.modelInsideTexture.setAmbient(0.5,0.5,0.5,1);
-				this.modelInsideTexture.setDiffuse(0,0,0,1);
-
-
-		textureInsideDown = ( (typeof textureInsideDown !== 'undefined') &&
-							  (textureInsideDown !== "")
-							  ) ? textureInsideDown : "interiorGround.jpg";
-				this.modelInsideDownTexture = new CGFappearance(this.scene);
-				this.modelInsideDownTexture.loadTexture("../resources/images/"+textureInsideDown);
-				this.modelInsideDownTexture.setAmbient(0.5,0.5,0.5,1);
-				this.modelInsideDownTexture.setDiffuse(0,0,0,1);
-
-	
-		textureLights = ( (typeof textureLights !== 'undefined') &&
-						  (textureLights !== "")
-						  ) ? textureLights : "lights.jpg";
-				this.modelLigtsFrontTexture = new CGFappearance(this.scene);
-				this.modelLigtsFrontTexture.loadTexture("../resources/images/"+textureLights);
-				this.modelLigtsFrontTexture.setAmbient(0.3,0.3,0.3,1);
-				this.modelLigtsFrontTexture.setDiffuse(0.2,0.2,0.2,1);
-
+		this.createAppearances();
 
 		// generic detail
 				this.modelhexsTexture = new CGFappearance(this.scene);
@@ -165,6 +91,114 @@ class MyCarModel extends CGFobject
 
 	};
 
+	setTextures(textureSide,
+				textureSideDown,
+				textureDown,
+				textureFrontTop,
+				textureInside,
+				textureInsideDown,
+				textureTop,
+				textureLights)
+	{
+		this.textureSide = textureSide || "";			
+		this.textureSideDown = textureSideDown || "";
+		this.textureDown = textureDown || "";
+		this.textureFrontTop = textureFrontTop || "";
+		this.textureInside = textureInside || "";
+		this.textureInsideDown = textureInsideDown || "";
+		this.textureTop = textureTop || "";
+		this.textureLights = textureLights || "";
+		
+		this.createAppearances();
+	};
+
+	createAppearances()
+	{
+		this.textureSide = (	(typeof this.textureSide !== 'undefined') && 
+						(this.textureSide !== "")
+						) ? this.textureSide : "flames.jpg";	
+				this.modelSideTexture = new CGFappearance(this.scene);
+				this.modelSideTexture.loadTexture("../resources/images/"+this.textureSide);
+				this.modelSideTexture.setAmbient(0.4,0.4,0.4,1);
+				this.modelSideTexture.setDiffuse(0.1,0.1,0.1,1);
+
+
+		this.textureSideDown = ( (typeof this.textureSideDown !== 'undefined') &&
+							(this.textureSideDown !== "")
+							) ? this.textureSideDown : "yellow.jpg";
+				this.modelSideDownTexture = new CGFappearance(this.scene);
+				this.modelSideDownTexture.loadTexture("../resources/images/"+this.textureSideDown);
+				this.modelSideDownTexture.setAmbient(0.4,0.4,0.4,1);
+				this.modelSideDownTexture.setDiffuse(0.4,0.4,0.4,1);
+
+
+		this.textureDown = ( (typeof this.textureDown !== 'undefined') &&
+						(this.textureDown !== "")
+						) ? this.textureDown : "grey.jpg";		
+				this.modelDownTexture = new CGFappearance(this.scene);
+				this.modelDownTexture.loadTexture("../resources/images/"+this.textureDown);
+				this.modelDownTexture.setAmbient(0.4,0.4,0.4,1);
+				this.modelDownTexture.setDiffuse(0.1,0.1,0.1,1);
+
+
+		this.textureFrontTop = typeof this.textureFrontTop !== 'undefined' ? this.textureFrontTop : "";
+				if(this.textureFrontTop == "")
+				{
+					this.modelFrontTopTexture = new CGFappearance(this.scene);
+					this.modelFrontTopTexture.setAmbient(0.05,0.05,0.05,1);
+					this.modelFrontTopTexture.setDiffuse(0,0,0,1);
+				}
+				else
+				{
+					this.modelFrontTopTexture = new CGFappearance(this.scene);
+					this.modelFrontTopTexture.loadTexture("../resources/images/"+this.textureFrontTop);
+					this.modelFrontTopTexture.setAmbient(0.5,0.5,0.5,1);
+					this.modelFrontTopTexture.setDiffuse(0.2,0.2,0.2,1);
+				}
+
+		this.textureTop = typeof this.textureTop !== 'undefined' ? this.textureTop : "";
+				if(this.textureTop == "")
+				{
+					this.modelTopTexture = new CGFappearance(this.scene);
+					this.modelTopTexture.setAmbient(0.05,0.05,0.05,1);
+					this.modelTopTexture.setDiffuse(0,0,0,1);
+				}
+				else
+				{
+					this.modelTopTexture = new CGFappearance(this.scene);
+					this.modelTopTexture.loadTexture("../resources/images/"+this.textureTop);
+					this.modelTopTexture.setAmbient(0.5,0.5,0.5,1);
+					this.modelTopTexture.setDiffuse(0.2,0.2,0.2,1);
+				}
+
+
+		this.textureInside = ( (typeof this.textureInside !== 'undefined') &&
+						  (this.textureInside !== "")
+						  ) ? this.textureInside : "interior.jpg";
+				this.modelInsideTexture = new CGFappearance(this.scene);
+				this.modelInsideTexture.loadTexture("../resources/images/"+this.textureInside);
+				this.modelInsideTexture.setAmbient(0.5,0.5,0.5,1);
+				this.modelInsideTexture.setDiffuse(0,0,0,1);
+
+
+		this.textureInsideDown = ( (typeof this.textureInsideDown !== 'undefined') &&
+							  (this.textureInsideDown !== "")
+							  ) ? this.textureInsideDown : "interiorGround.jpg";
+				this.modelInsideDownTexture = new CGFappearance(this.scene);
+				this.modelInsideDownTexture.loadTexture("../resources/images/"+this.textureInsideDown);
+				this.modelInsideDownTexture.setAmbient(0.5,0.5,0.5,1);
+				this.modelInsideDownTexture.setDiffuse(0,0,0,1);
+
+	
+		this.textureLights = ( (typeof this.textureLights !== 'undefined') &&
+						  (this.textureLights !== "")
+						  ) ? this.textureLights : "lights.jpg";
+				this.modelLigtsFrontTexture = new CGFappearance(this.scene);
+				this.modelLigtsFrontTexture.loadTexture("../resources/images/"+this.textureLights);
+				this.modelLigtsFrontTexture.setAmbient(0.3,0.3,0.3,1);
+				this.modelLigtsFrontTexture.setDiffuse(0.2,0.2,0.2,1);
+	
+	};
 
 	display() 
 	{	

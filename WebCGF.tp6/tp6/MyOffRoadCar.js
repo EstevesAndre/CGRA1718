@@ -236,18 +236,17 @@ class MyOffRoadCar extends CGFobject
 	{
 		this.wheelRot.update(currTime);
 		this.wheelBack.update(currTime);		
-		//this.handWheel.setAngle(this.handWheel.angle + currTime/1000);
 	};
 
 	setPaint(Paint)
 	{
 		if(Paint == 'Flames') // STANDARD
 		{
-			this.model = new MyCarModel(this.scene,"","");
+			this.model.setTextures();
 		}
 		else // CAMO
 		{			
-			this.model = new MyCarModel(this.scene, 
+			this.model.setTextures(
 						"camouflageTex.jpg",
 						"camouflageTex.jpg",
 						"",
