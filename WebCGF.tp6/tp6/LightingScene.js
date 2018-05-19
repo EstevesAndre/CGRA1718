@@ -52,62 +52,64 @@ class LightingScene extends CGFscene
 
 		let ccc = 0.0;
 		
-		this.altimetry= [[ 4.0, 4.0, 3.0, 3.0, 4.0, 4.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 2.0, 4.0, 4.0, 6.0, 6.0, 6.0, 4.0, 4.0, 2.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 4.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0 ],
-						 [ 4.0, 4.0, 3.0, 3.0, 4.0, 4.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 2.0, 4.0, 4.0, 6.0, 6.0, 6.0, 4.0, 4.0, 2.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 4.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0 ],
-						 [ 3.0, 3.0, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 3.0, 4.5, 5.0 ],
-						 [ 3.0, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 3.5, 4.5, 5.0 ],
-						 [ 3.0, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 3.5, 4.5, 5.0 ],
-						 [ 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 4.5, 5.5, 6.0 ],
-						 [ 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 4.5, 5.5, 6.0 ],
-						 [ 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 4.5, 3.5, 4.0 ],
-				   /*09*/[ 5.5, 2.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 4.5, 3.5, 4.0 ],
-						 [ 5.5, 4.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.5, 3.0 ],
-						 [ 6.0, 3.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.5, 3.0 ],
-						 [ 6.0, 4.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.5, 3.0 ],
-						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.5, 3.0 ],
-				   /*14*/[ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.5, 3.0 ],
-						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 3.5, 4.5, 5.0 ],
-						 [ 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-						 [ 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-						 [ 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0 ],
-						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0 ],
-						 [ 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0 ],
-						 [ 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0 ],
-						 [ 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-				   /*24*/[ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-						 [ 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-						 [ 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0 ],
-						 [ 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0 ],
-						 [ 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0 ],
-						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0 ],
-						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0 ],
-						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0 ],
-						 [ 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0 ],
-				   /*34*/[ 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-						 [ 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-						 [ 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0 ],
-						 [ 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0 ],
-						 [ 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 4.5, 5.5, 6.0 ],
-						 [ 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, 4.5, 5.5, 6.0 ],
-						 [ 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, 3.5, 4.5, 5.0 ],
-						 [ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, 3.5, 4.5, 5.0 ],
-				   /*44*/[ 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, 3.5, 4.5, 5.0 ],
-						 [ 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, 5.5, 6.5, 7.0 ],
-						 [ 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, 5.5, 6.5, 7.0 ],
-						 [ 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, 5.5, 6.5, 7.0 ],
-						 [ 3.5, 3.5, 2.5, 1.0, 1.0, 2.0, 2.0, 2.0, 2.5, 2.5, 3.5, 3.5, 3.5, 5.5, 5.5, 5.5, 5.5, 5.5, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 5.5, 5.5, 5.5, 5.5, 3.5, 3.5, 3.5, 3.5, 2.5, 2.5, 2.5, 2.5, 1.0, 1.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 3.0, 3.5, 5.0, 5.0 ],
-						 [ 3.5, 3.5, 2.5, 2.5, 2.5, 3.5, 3.5, 3.5, 4.0, 4.0, 5.0, 5.0, 5.0, 7.0, 7.0, 7.0, 7.0, 7.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 7.0, 7.0, 7.0, 7.0, 7.0, 5.0, 5.0, 5.0, 5.0, 4.0, 4.0, 4.0, 4.0, 3.5, 3.5, 5.5, 5.5, 5.5, 5.5, 4.5, 4.5, 4.5, 3.5, 3.5, 5.0, 5.0 ],
-						 [ 3.5, 3.5, 2.5, 2.5, 2.5, 3.5, 3.5, 3.5, 4.0, 4.0, 5.0, 5.0, 5.0, 7.0, 7.0, 7.0, 7.0, 7.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 7.0, 7.0, 7.0, 7.0, 7.0, 5.0, 5.0, 5.0, 5.0, 4.0, 4.0, 4.0, 4.0, 3.5, 3.5, 5.5, 5.5, 5.5, 5.5, 4.5, 4.5, 4.5, 3.5, 3.5, 5.0, 5.0 ]				             
+		this.altimetry= [[ ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc ],
+						 [ ccc, 4.0, 4.0, 3.0, 4.0, 4.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 2.0, 4.0, 4.0, 6.0, 6.0, 6.0, 4.0, 4.0, 2.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0, ccc ],
+						 [ ccc, 4.0, 4.0, 3.0, 4.0, 4.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 2.0, 4.0, 4.0, 6.0, 6.0, 6.0, 4.0, 4.0, 2.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0, ccc ],
+						 [ ccc, 3.0, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 3.0, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 4.5, 5.5, 6.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 4.5, 5.5, 6.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 4.5, 3.5, 4.0, ccc ],
+				   /*09*/[ ccc, 5.5, 2.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 4.5, 3.5, 4.0, ccc ],
+						 [ ccc, 5.5, 4.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.5, 3.0, ccc ],
+						 [ ccc, 6.0, 3.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.5, 3.0, ccc ],
+						 [ ccc, 6.0, 4.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.5, 3.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.5, 3.0, ccc ],
+				   /*14*/[ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.5, 3.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0, ccc ],
+						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0, ccc ],
+						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0, ccc ],
+						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+				   /*24*/[ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0, ccc ],
+						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0, ccc ],
+						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0, ccc ],
+						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0, ccc ],
+				   /*34*/[ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0, ccc ],
+						 [ ccc, 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 4.5, 5.5, 6.0, ccc ],
+						 [ ccc, 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 4.5, 5.5, 6.0, ccc ],
+						 [ ccc, 6.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 3.5, 4.5, 5.0, ccc ],
+				   /*44*/[ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 3.5, 4.5, 5.0, ccc ],
+						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 5.5, 6.5, 7.0, ccc ],
+						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 5.5, 6.5, 7.0, ccc ],
+						 [ ccc, 3.5, 3.5, 2.5, 1.0, 2.0, 2.0, 2.0, 2.5, 2.5, 3.5, 3.5, 3.5, 5.5, 5.5, 5.5, 5.5, 5.5, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 5.5, 5.5, 5.5, 5.5, 3.5, 3.5, 3.5, 3.5, 2.5, 2.5, 2.5, 2.5, 1.0, 1.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 3.5, 5.0, 5.0, ccc ],
+						 [ ccc, 3.5, 3.5, 2.5, 2.5, 3.5, 3.5, 3.5, 4.0, 4.0, 5.0, 5.0, 5.0, 7.0, 7.0, 7.0, 7.0, 7.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 7.0, 7.0, 7.0, 7.0, 7.0, 5.0, 5.0, 5.0, 5.0, 4.0, 4.0, 4.0, 4.0, 3.5, 3.5, 5.5, 5.5, 5.5, 5.5, 4.5, 4.5, 4.5, 3.5, 5.0, 5.0, ccc ],
+						 [ ccc, 3.5, 3.5, 2.5, 2.5, 3.5, 3.5, 3.5, 4.0, 4.0, 5.0, 5.0, 5.0, 7.0, 7.0, 7.0, 7.0, 7.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 7.0, 7.0, 7.0, 7.0, 7.0, 5.0, 5.0, 5.0, 5.0, 4.0, 4.0, 4.0, 4.0, 3.5, 3.5, 5.5, 5.5, 5.5, 5.5, 4.5, 4.5, 4.5, 3.5, 5.0, 5.0, ccc ],				             
+						 [ ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc ]    
 						 ];
 
 		let sizeTerrain = (this.altimetry[0].length - 1) || 0;
 
 		// Scene elements
 		this.floor = new MyTerrain(this,sizeTerrain, 0,10,0,10, this.altimetry);
+		this.floorBack = new MyTerrain(this,sizeTerrain, 0,10,0,10);
+		
 		this.car = new MyOffRoadCar(this, this.MaxFrontSpeed, this.MaxBackSpeed);
 
 		// Test elements
@@ -124,7 +126,9 @@ class LightingScene extends CGFscene
 		this.materialTest = new CGFappearance(this);
 		this.materialTest.loadTexture("../resources/images/feup.png");
 
-		
+	//testDisplay
+		this.crane = new MyCrane(this);	
+	
 		// Textures
 		this.enableTextures(true);
 
@@ -147,14 +151,14 @@ class LightingScene extends CGFscene
 		this.lights[0].setPosition(0, 50, 0, 1);
 		this.lights[0].setVisible(true);
 		
-		this.lights[0].setAmbient(1.0, 1.0, 1.0, 1);
+		this.lights[0].setAmbient(1.0, 1.0, 0.8, 1);
 		this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[0].enable();
 
 		this.lights[1].setPosition(-2, 1, 0, 1);
 		this.lights[1].setVisible(true);
 		
-		this.lights[1].setAmbient(1.0, 1.0, 0.0, 1);
+		this.lights[1].setAmbient(1.0, 1.0, 0.4, 1);
 		this.lights[1].setDiffuse(1.0, 1.0, 0.0, 1.0);
 		this.lights[1].enable();
 	};
@@ -202,6 +206,14 @@ class LightingScene extends CGFscene
 			this.floor.display();
 		this.popMatrix();
 
+		
+		this.pushMatrix();		
+			this.terrainAppearance.apply();
+			this.rotate(90 * degToRad, 1, 0, 0);
+			this.scale(GROUND_SIZE_WIDTH, GROUND_SIZE_WEIGHT, 1);
+			this.floorBack.display();
+		this.popMatrix();
+
 		this.pushMatrix();
 			if(this.Paint != this.PaintControl)
 			{
@@ -243,6 +255,12 @@ class LightingScene extends CGFscene
 			this.popMatrix();
 		}
 
+		this.pushMatrix();
+			this.translate(-17,2.5,-18);
+			this.rotate(-Math.PI/2.0,1,0,0);			
+			this.crane.display();
+		this.popMatrix();
+		
 		// ---- END Scene drawing section	
 	};
 
@@ -267,7 +285,8 @@ class LightingScene extends CGFscene
 		if(this.deltaTime <= 1000)
 		{
 			this.car.update(this.deltaTime);		
-			this.checkKeys(this.deltaTime);		
+			this.checkKeys(this.deltaTime);
+			this.crane.update(this.deltaTime);	
 		}		
 		
 	};

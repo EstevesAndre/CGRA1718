@@ -56,6 +56,9 @@ class MyOffRoadCar extends CGFobject
 		else if(this.speed < -this.MaxBackSpeed)
 			this.speed = -this.MaxBackSpeed;
 
+		if(this.speed < 0.01 && this.speed > -0.01)
+			this.speed = 0;
+	
 		this.wheelRot.speed = this.speed;
 		this.wheelBack.speed = this.speed;
 	};
