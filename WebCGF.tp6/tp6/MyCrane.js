@@ -18,20 +18,13 @@ class MyCrane extends CGFobject
 		this.craneDivisionUp   = new MyTrapeziumCylindric(this.scene, 4,0.01,4,0);
 		this.craneDivisionDown = new MyTrapeziumCylindric(this.scene, 0.01,4,4,0);
 		
-		this.spearUp   = new MyTrapeziumCylindric(this.scene,3,0.01,3,0);
-		this.spearDown = new MyTrapeziumCylindric(this.scene,0.01,3,3,0);
+		this.lanceUp   = new MyTrapeziumCylindric(this.scene,3,0.01,3,0);
+		this.lanceDown = new MyTrapeziumCylindric(this.scene,0.01,3,3,0);
 		
 		this.triangle = new MyTrapeziumCylindric(this.scene,3,0.01,3,1.5);
 		this.rope = new MyCylinderwCover(this.scene,8,2);
 		
 		this.iman = new MyCylinderwCover(this.scene,24,1);
-
-		this.baseAngle = 0;
-		this.spearAngle = 0;
-		this.isOnMove = false;
-
-		this.spearConstantMov = Math.PI/20000;
-		this.baseConstantMov = Math.PI/20000;
 
 		this.metalTexture = new CGFappearance(this.scene);
 		this.metalTexture.loadTexture("../resources/images/metal.jpg");
@@ -86,6 +79,21 @@ class MyCrane extends CGFobject
 		this.gridCrane2 = this.craneGrid2Texture;
 		this.gridCrane3 = this.craneGrid3Texture;
 		this.chooseParts();
+
+		this.baseAngle = 0;
+		this.lanceAngle = 0;
+
+		this.lanceConstantMov = Math.PI/20000;
+		this.baseConstantMov = Math.PI/20000;
+				
+		this.carAtPos = false;
+		this.isMoving = false;
+		this.carAttached = false;
+
+		//states
+		this.moveToCar = false;
+		this.takeCarToDestination = false;
+			
 	};
 
 	display() 
@@ -174,10 +182,10 @@ class MyCrane extends CGFobject
 			this.basePart();
 		this.scene.popMatrix();
 		
-		// upside part, spear
+		// upside part, lance
 		this.scene.pushMatrix();		
 			this.scene.rotate(this.baseAngle,0,0,1);
-			this.spearPart();
+			this.lancePart();
 		this.scene.popMatrix();						
 
 		// rope part
@@ -218,8 +226,8 @@ class MyCrane extends CGFobject
 
 						this.scene.scale(0.5,0.5,0.5);
 
-						if(i % 2) this.spearUp.display(0x0111);
-						else this.spearDown.display(0x0111);
+						if(i % 2) this.lanceUp.display(0x0111);
+						else this.lanceDown.display(0x0111);
 
 					this.scene.popMatrix();
 				}
@@ -227,7 +235,7 @@ class MyCrane extends CGFobject
 		}
 	};
 	
-	spearPart()
+	lancePart()
 	{
 		// support concrete
 		this.concreteTexture.apply();
@@ -235,7 +243,7 @@ class MyCrane extends CGFobject
 			this.scene.translate(-1,-9.2,22.5);
 			this.scene.rotate(Math.PI/6.0,1,0,0);			
 			this.scene.rotate(Math.PI/2.0,0,1,0);		
-			this.scene.rotate(this.spearAngle,0,0,1);	
+			this.scene.rotate(this.lanceAngle,0,0,1);	
 			this.scene.scale(1.3,1.3,2);
 			this.support.display();
 		this.scene.popMatrix();
@@ -247,7 +255,7 @@ class MyCrane extends CGFobject
 			this.scene.translate(0,3.5,0.5);
 			this.scene.rotate(Math.PI/6.0,1,0,0);	
 			this.scene.translate(0,0,25.4);
-			this.scene.rotate(this.spearAngle + Math.PI/3,1,0,0);			
+			this.scene.rotate(this.lanceAngle + Math.PI/3,1,0,0);			
 			this.scene.translate(0,0,-25.4);
 
 			for(let i = 0; i < 11; i++, alt += 1.5)
@@ -266,8 +274,8 @@ class MyCrane extends CGFobject
 
 						this.scene.scale(0.5,0.5,0.5);
 
-						if(i % 2) this.spearUp.display(0x0111);
-						else this.spearDown.display(0x0111);
+						if(i % 2) this.lanceUp.display(0x0111);
+						else this.lanceDown.display(0x0111);
 					this.scene.popMatrix();
 				}
 			}		
@@ -316,13 +324,13 @@ class MyCrane extends CGFobject
 			this.scene.translate(0,3.5,0.5);
 			this.scene.rotate(Math.PI/6.0,1,0,0);	
 			this.scene.translate(0,0,25.4);
-			this.scene.rotate(this.spearAngle + Math.PI/3,1,0,0);			
+			this.scene.rotate(this.lanceAngle + Math.PI/3,1,0,0);			
 			this.scene.translate(0,0.01,18.9);
-			this.scene.rotate(Math.PI/2 - this.spearAngle,1,0,0);
+			this.scene.rotate(Math.PI/2 - this.lanceAngle,1,0,0);
 			
 			this.scene.pushMatrix();
 				this.scene.scale(0.05,0.05,1);
-				for(let i = 0; i < 7; i++)
+				for(let i = 0; i < 9; i++)
 				{	
 					if(i % 4) this.gridCrane2.apply();
 					else if(i % 3) this.gridCrane3.apply();
@@ -334,31 +342,36 @@ class MyCrane extends CGFobject
 			this.scene.popMatrix();
 			
 			this.imanTexture.apply();
-			this.scene.translate(0,0,7);
+			this.scene.translate(0,0,9);
 			this.scene.scale(1,1,0.5);
 			this.iman.display();
 		this.scene.popMatrix();
 	};
 
-	incSpearAngle(currTime)
+	setLanceAngle(currTime)
 	{
-		this.spearAngle += this.spearConstantMov * currTime;		
+		this.lanceAngle += this.lanceConstantMov * currTime;		
 	};
 
-	incBaseAngle(currTime)
+	setBaseAngle(currTime)
 	{
 		this.baseAngle += this.baseConstantMov * currTime;
 	};
 
-	setIsOnMove(value)
+	setIsMoving(value)
 	{
-		this.isOnMove = value || false;	
+		this.isMoving = value || false;
 	};
+
+	setCarAtPos(value)
+	{
+		this.carAtPos = value || false;
+	};	
 
 	chooseParts()
 	{
 		let random = Math.floor(Math.random() * 3 + 1);
-		console.log(random);
+		
 		if(random == 1)
 		{		
 			this.gridCrane1 = this.craneGrid3Texture;
@@ -381,16 +394,65 @@ class MyCrane extends CGFobject
 
 	update(currTime)
 	{
-		this.incBaseAngle(currTime);
-		
-		if(this.spearAngle > Math.PI/4.0)
-			this.spearConstantMov = this.spearConstantMov < 0 ? this.spearConstantMov : -this.spearConstantMov;
-		
-		else if(this.spearAngle < - Math.PI/4.0)
-			this.spearConstantMov =  this.spearConstantMov > 0 ? this.spearConstantMov : -this.spearConstantMov;
-		
-		this.incSpearAngle(currTime);
+		if(!this.isMoving && this.carAtPos)
+		{
+			this.setIsMoving(true);
+		}
 
-		this.baseAngle = this.baseAngle % (2*Math.PI);
+		if(this.isMoving)
+		{
+
+				let i = craneMovement(0,0);
+				console.log(i);
+			if(this.moveToCatchCar)
+			{
+				let i = craneMovement(0,0);
+			}
+
+			else if (this.takeCarToDestination)
+			{
+				
+			}
+			
+			this.setBaseAngle(currTime);
+
+			if(this.lanceAngle > Math.PI/4.0)
+				this.lanceConstantMov = this.lanceConstantMov < 0 ? this.lanceConstantMov : -this.lanceConstantMov;
+
+			else if(this.lanceAngle < - Math.PI/4.0)
+				this.lanceConstantMov =  this.lanceConstantMov > 0 ? this.lanceConstantMov : -this.lanceConstantMov;
+
+			this.setLanceAngle(currTime);
+
+			this.baseAngle = this.baseAngle % (2*Math.PI);
+		}
+		
+
+			
+		let i = craneMovement(0,0);
+		console.log("0");
+	
+		this.baseAngle = 0;//-Math.PI/4.0;
+		this.lanceAngle = Math.PI/4.0;
+	};
+
+	checkCarPos(xPos,yPos,zPos)
+	{
+		if(xPos <= -16 && xPos >= -18 && yPos == 0 &&
+		   zPos >= 3.5 && zPos <= 5.5)
+		{
+			if(!this.carAtPos)
+				this.carAtPos = true;	
+		}	
+		else if(this.carAtPos)
+			this.carAtPos = false;
+	};
+
+	craneMovement(baseAngle, lanceAngle)
+	{
+		let baseAlpha = alpha || -Math.PI/4.0;
+		let lanceBeta = beta  || Math.PI/8.0;
+
+		return 20;
 	};
 };
