@@ -39,6 +39,7 @@ class MyOffRoadCar extends CGFobject
 		this.crateTex.loadTexture("../resources/images/crate.jpg");
 
 		this.xPos = 0.0;
+		this.yPos = 0.0;
 		this.zPos = -9.0;
 		this.speed = 0.0;
 		this.directionCar = Math.PI;
@@ -137,7 +138,6 @@ class MyOffRoadCar extends CGFobject
 			this.scene.translate(-1.2,0.52,-0.68);			
 			this.scene.scale(0.3,0.3,0.3);
 			this.scene.rotate(-Math.PI/5,1,0,0);
-			this.scene.rotate(this.wheelRot.angle/2.0,0,0,1);				
 			this.wheelDamper.display();
 		this.scene.popMatrix();
 
@@ -151,8 +151,7 @@ class MyOffRoadCar extends CGFobject
 		this.scene.pushMatrix();				
 			this.scene.translate(1.2,0.51,-0.68);			
 			this.scene.scale(0.3,0.3,0.3);
-			this.scene.rotate(-Math.PI/5,1,0,0);
-			this.scene.rotate(this.wheelBack.angle/2.0,0,0,1);				
+			this.scene.rotate(-Math.PI/5,1,0,0);			
 			this.wheelDamper.display();
 		this.scene.popMatrix();
 
@@ -168,8 +167,7 @@ class MyOffRoadCar extends CGFobject
 			this.scene.translate(1.2,0.51,0.68);				
 			this.scene.scale(0.3,0.3,0.3);
 			this.scene.rotate(Math.PI,1,0,0);
-			this.scene.rotate(Math.PI/5,1,0,0);
-			this.scene.rotate(-this.wheelBack.angle/2.0,0,0,1);				
+			this.scene.rotate(Math.PI/5,1,0,0);			
 			this.wheelDamper.display();
 		this.scene.popMatrix();
 
@@ -186,8 +184,7 @@ class MyOffRoadCar extends CGFobject
 			this.scene.translate(-1.2,0.51,0.68);							
 			this.scene.scale(0.3,0.3,0.3);
 			this.scene.rotate(Math.PI,1,0,0);
-			this.scene.rotate(Math.PI/5,1,0,0);
-			this.scene.rotate(-this.wheelRot.angle/2.0,0,0,1);				
+			this.scene.rotate(Math.PI/5,1,0,0);			
 			this.wheelDamper.display();
 		this.scene.popMatrix();
 
