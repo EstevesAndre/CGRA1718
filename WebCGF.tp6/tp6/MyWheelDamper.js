@@ -14,11 +14,11 @@ class MyWheelDamper extends CGFobject
 		this.cover = new MyObjectsFrontCircule(this.scene,24,0);
 		this.wheel = new MyObjectsFrontCircule(this.scene,24,0.2);
 
-		this.red = new CGFappearance(this.scene);
-		this.red.setAmbient(0.1,1,0.3,1);
-		this.red.setDiffuse(1,0,0,1);
-		this.red.setSpecular(1,1,1,1);
-		this.red.setShininess(120);	
+		this.green = new CGFappearance(this.scene);
+		this.green.setAmbient(0.1,1,0.3,1);
+		this.green.setDiffuse(0,0,0,1);
+		this.green.setSpecular(1,1,1,1);
+		this.green.setShininess(120);	
 
 		this.metal = new CGFappearance(this.scene);
 		this.metal.setAmbient(0.05,0.05,0.05,1);
@@ -48,7 +48,7 @@ class MyWheelDamper extends CGFobject
 			}									
 		this.scene.popMatrix();
 
-		this.red.apply();
+		this.green.apply();
 
 		for(let i = 0.1; i < 2; i+=0.2)
 		{

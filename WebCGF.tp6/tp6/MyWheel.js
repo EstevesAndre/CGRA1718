@@ -89,7 +89,7 @@ class MyWheel extends CGFobject
 			}
 		this.scene.popMatrix();
 
-		this.wheelText.apply();
+		this.metal.apply();
 		
 		this.scene.pushMatrix();
 			this.scene.scale(1,1,0.73);
@@ -168,7 +168,8 @@ class MyWheel extends CGFobject
 
 	update(currTime)
 	{
-		this.angle+=(Math.PI * this.speed * currTime)%(2*Math.PI);
+		this.angle += Math.PI * this.speed * currTime / 50;
+		this.angle = this.angle%(2*Math.PI);
 	};
 
 	updateDirection(direction)

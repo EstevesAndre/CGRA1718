@@ -126,7 +126,7 @@ class LightingScene extends CGFscene
 		this.materialTest = new CGFappearance(this);
 		this.materialTest.loadTexture("../resources/images/feup.png");
 
-	//testDisplay
+		//testDisplay
 		this.crane = new MyCrane(this);	
 	
 		// Textures
@@ -223,7 +223,13 @@ class LightingScene extends CGFscene
 			this.car.updatePos();
 			this.translate(this.car.xPos,0,this.car.zPos);
 			this.rotate(this.car.directionCar - Math.PI,0,1,0);			
-			this.lights[1].setPosition(this.car.xPos,2.2, this.car.zPos, 1);					
+			this.lights[1].setPosition(this.car.xPos,2.2, this.car.zPos, 1);
+			
+			if(this.car.speed == 0)	
+				this.crane.checkCarPos(this.car.xPos,this.car.yPos,this.car.zPos);
+			else if(this.crane.isMoving)
+				this.crane.isMoving = false;
+				
 			this.car.display();
 		this.popMatrix();
 
@@ -259,8 +265,8 @@ class LightingScene extends CGFscene
 			this.translate(-17,2.5,-18);
 			this.rotate(-Math.PI/2.0,1,0,0);			
 			this.crane.display();
-		this.popMatrix();
-		
+		this.popMatrix();		
+
 		// ---- END Scene drawing section	
 	};
 

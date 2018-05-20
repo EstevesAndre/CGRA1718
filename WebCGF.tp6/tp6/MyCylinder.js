@@ -54,7 +54,7 @@ class MyCylinder extends CGFobject
 								  0);
 			
 				// Place to texCoords				
-				this.texCoords.push(i/this.slices,k*division);
+				this.texCoords.push(1-i/this.slices,k*division);
 				
 				if(k != 0 && i != 0)
 				{
