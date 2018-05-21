@@ -38,9 +38,9 @@ class MyOffRoadCar extends CGFobject
 		this.crateTex = new CGFappearance(this.scene);
 		this.crateTex.loadTexture("../resources/images/crate.jpg");
 
-		this.xPos = -17.0; // 0.0
+		this.xPos = 0.0;
 		this.yPos = 0.0;
-		this.zPos = 4.5; // -9.0
+		this.zPos = 0.0;
 		this.speed = 0.0;
 		this.directionCar = Math.PI;
 		this.wheelDirection = 0.0;
