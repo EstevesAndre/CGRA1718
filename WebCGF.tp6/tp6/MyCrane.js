@@ -80,20 +80,20 @@ class MyCrane extends CGFobject
 		this.gridCrane3 = this.craneGrid3Texture;
 		this.chooseParts();
 
-		this.baseAngle = 0;
+		this.baseAngle = Math.PI/2.0;
 		this.lanceAngle = 0;
 
-		this.lanceConstantMov = Math.PI/20000;
-		this.baseConstantMov = Math.PI/20000;
+		this.lanceConstantMov = Math.PI/20 * 1/1000;
+		this.baseConstantMov = Math.PI/20 * 1/1000;
 				
 		this.carAtPos = false;
 		this.isMoving = false;
 		this.carAttached = false;
 
 		//states
-		this.moveToCar = false;
+		this.moveToCatchCar = false;
 		this.takeCarToDestination = false;
-			
+		this.moveDownOnDestination = false;
 	};
 
 	display() 
@@ -341,10 +341,19 @@ class MyCrane extends CGFobject
 				}			
 			this.scene.popMatrix();
 			
-			this.imanTexture.apply();
-			this.scene.translate(0,0,9);
-			this.scene.scale(1,1,0.5);
-			this.iman.display();
+			this.scene.pushMatrix();			
+				this.imanTexture.apply();
+				this.scene.translate(0,0,9);
+				this.scene.scale(1,1,0.5);
+				this.iman.display();
+			this.scene.popMatrix();
+			
+			if(this.carAttached)
+			{	
+				this.scene.translate(0,0,11.55);
+				this.scene.rotate(-Math.PI/2.0,1,0,0);
+				this.scene.car.display();
+			}
 		this.scene.popMatrix();
 	};
 
@@ -397,43 +406,40 @@ class MyCrane extends CGFobject
 		if(!this.isMoving && this.carAtPos)
 		{
 			this.setIsMoving(true);
+			this.moveToCatchCar = true;
 		}
 
 		if(this.isMoving)
 		{
-
-				let i = craneMovement(0,0);
-				console.log(i);
 			if(this.moveToCatchCar)
 			{
-				let i = craneMovement(0,0);
+				if(this.craneMovement(currTime,0,Math.PI/4.0) == 1) 
+				{
+					this.carAttached = true;
+					this.moveToCatchCar = false;
+					this.takeCarToDestination = true;
+				}
 			}
-
 			else if (this.takeCarToDestination)
 			{
-				
-			}
-			
-			this.setBaseAngle(currTime);
-
-			if(this.lanceAngle > Math.PI/4.0)
-				this.lanceConstantMov = this.lanceConstantMov < 0 ? this.lanceConstantMov : -this.lanceConstantMov;
-
-			else if(this.lanceAngle < - Math.PI/4.0)
-				this.lanceConstantMov =  this.lanceConstantMov > 0 ? this.lanceConstantMov : -this.lanceConstantMov;
-
-			this.setLanceAngle(currTime);
-
-			this.baseAngle = this.baseAngle % (2*Math.PI);
-		}
-		
-
-			
-		let i = craneMovement(0,0);
-		console.log("0");
-	
-		this.baseAngle = 0;//-Math.PI/4.0;
-		this.lanceAngle = Math.PI/4.0;
+				if(this.craneMovement(currTime,Math.PI/2.0,0) == 1)
+				{
+					this.takeCarToDestination = false;
+					this.moveDownOnDestination = true;
+				}
+			}		
+			else if (this.moveDownOnDestination)
+			{
+				if(this.craneMovement(currTime,Math.PI/2.0,Math.PI/10.0) == 1)
+				{
+					this.takeCarToDestination = false;
+					this.carAttached = false;
+					this.scene.car.xPos = 0.0;
+					this.scene.car.yPos = 0.0;
+					this.scene.car.zPos = 20.0;
+				}
+			}				
+		}	
 	};
 
 	checkCarPos(xPos,yPos,zPos)
@@ -445,14 +451,77 @@ class MyCrane extends CGFobject
 				this.carAtPos = true;	
 		}	
 		else if(this.carAtPos)
+		{
 			this.carAtPos = false;
+			if(this.isMoving)
+				this.isMoving = false;
+		}
 	};
 
-	craneMovement(baseAngle, lanceAngle)
+	craneMovement(currTime, baseAngle, lanceAngle)
 	{
-		let baseAlpha = alpha || -Math.PI/4.0;
-		let lanceBeta = beta  || Math.PI/8.0;
+		if(this.lanceAngle < lanceAngle - Math.abs(this.lanceConstantMov)*currTime/2.0 &&
+		   this.baseAngle != baseAngle)
+		{
+			this.moveBase(currTime,baseAngle);			
+		}
+		else if(this.lanceAngle > lanceAngle + Math.abs(this.lanceConstantMov)*currTime/2.0 &&
+				this.lanceAngle != lanceAngle)
+		{
+			this.moveLance(currTime,lanceAngle);
+		}	
+		else if(this.lanceAngle < lanceAngle + Math.abs(this.lanceConstantMov)*currTime/2.0 && 
+				this.lanceAngle > lanceAngle - Math.abs(this.lanceConstantMov)*currTime/2.0 &&
+				this.baseAngle != baseAngle)
+		{
+			this.moveBase(currTime,baseAngle);
+		}
+		else if(this.baseAngle < baseAngle + Math.abs(this.baseConstantMov)*currTime/2.0 && 
+				this.baseAngle > baseAngle - Math.abs(this.baseConstantMov)*currTime/2.0 &&
+				this.lanceAngle != lanceAngle)
+		{
+			this.moveLance(currTime,lanceAngle);
+		}
+		else
+			return 1;
 
-		return 20;
+		return 0;
+	};
+
+	moveLance(currTime,lanceAngle)
+	{
+		if(this.lanceAngle > lanceAngle + Math.abs(this.lanceConstantMov)*currTime/2.0)
+		{
+			this.lanceConstantMov = this.lanceConstantMov < 0 ? this.lanceConstantMov : -this.lanceConstantMov;
+			this.setLanceAngle(currTime);		
+		}
+		else if(this.lanceAngle < lanceAngle - Math.abs(this.lanceConstantMov)*currTime/2.0)
+		{
+			this.lanceConstantMov =  this.lanceConstantMov > 0 ? this.lanceConstantMov : -this.lanceConstantMov;
+			this.setLanceAngle(currTime);		
+		}
+		else
+		{
+			this.lanceAngle = lanceAngle;
+		}
+
+	};
+
+	moveBase(currTime, baseAngle)
+	{
+		if(this.baseAngle > baseAngle + Math.abs(this.baseConstantMov)*currTime/2.0)
+		{
+			this.baseConstantMov = this.baseConstantMov < 0 ? this.baseConstantMov : -this.baseConstantMov;			
+			this.setBaseAngle(currTime);
+		}
+		else if(this.baseAngle < baseAngle - Math.abs(this.baseConstantMov)*currTime/2.0)
+		{
+			this.baseConstantMov =  this.baseConstantMov > 0 ? this.baseConstantMov : -this.baseConstantMov;
+			this.setBaseAngle(currTime);
+		}
+		else
+		{
+			this.baseAngle = baseAngle;
+		}
 	};
 };
