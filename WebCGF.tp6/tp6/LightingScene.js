@@ -212,7 +212,6 @@ class LightingScene extends CGFscene
 			this.scale(GROUND_SIZE_WIDTH, GROUND_SIZE_WEIGHT, 1);
 			this.floor.display();
 		this.popMatrix();
-
 		
 		this.pushMatrix();		
 			this.terrainAppearance.apply();
