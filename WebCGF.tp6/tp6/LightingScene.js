@@ -134,7 +134,7 @@ class LightingScene extends CGFscene
 
 		//testDisplay
 		this.crane = new MyCrane(this);	
-		this.startPlatform = new MyUnitCubeQuad(this);
+		this.platform = new MyUnitCubeQuad(this);
 	
 		// Textures
 		this.enableTextures(true);
@@ -227,25 +227,22 @@ class LightingScene extends CGFscene
 				this.car.setPaint(this.Paint);
 				this.PaintControl = this.Paint;
 			}
-			this.car.updatePos();
-			this.translate(this.car.xPos,0,this.car.zPos);
-			this.rotate(this.car.directionCar - Math.PI,0,1,0);			
 			
+			if(!this.crane.carAttached)
+			{				
+				this.car.updatePos();
+				this.translate(this.car.xPos,this.car.yPos,this.car.zPos);
+				this.rotate(this.car.directionCar - Math.PI,0,1,0);			
+				this.lights[1].setPosition(this.car.xPos,this.car.yPos + 2.2, this.car.zPos, 1);
+				this.car.display();
+			}
+
+
 			if(this.car.speed == 0)	
 				this.crane.checkCarPos(this.car.xPos,this.car.yPos,this.car.zPos);
 			else if(this.crane.isMoving)
 				this.crane.isMoving = false;
 			
-			if(!this.crane.carAttached)
-			{
-				this.lights[1].setPosition(this.car.xPos,2.2, this.car.zPos, 1);
-				this.car.display();
-			}
-			else
-			{
-				this.lights[1].setPosition(-17,3.7,-18);
-			}
-
 		this.popMatrix();
 
 		this.materialTest.apply();
@@ -284,10 +281,20 @@ class LightingScene extends CGFscene
 
 		this.pushMatrix();
 			this.translate(-17,0,4.5);
+			this.rotate(Math.PI,0,1,0);
 			this.scale(5, 0.1, 3);
 			this.materialStartPlatform.apply();
-			this.startPlatform.display();
+			this.platform.display();
 		this.popMatrix();
+
+		this.pushMatrix();
+			this.translate(10,0,-18);
+			this.rotate(-Math.PI/2.0,0,1,0);
+			this.scale(5, 0.1, 3);
+			this.materialEndPlatform.apply();
+			this.platform.display();
+		this.popMatrix();
+
 		// ---- END Scene drawing section	
 	};
 

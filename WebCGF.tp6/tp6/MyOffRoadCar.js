@@ -49,7 +49,7 @@ class MyOffRoadCar extends CGFobject
 
 	setSpeed(speed_Constant)
 	{
-		if(this.scene.crane.carAttached)
+		if(this.scene.crane.carAttached || this.yPos != 0)
 		{
 			this.speed = 0;
 		}
@@ -242,7 +242,18 @@ class MyOffRoadCar extends CGFobject
 	update(currTime)
 	{
 		this.wheelRot.update(currTime);
-		this.wheelBack.update(currTime);		
+		this.wheelBack.update(currTime);
+		
+		if(this.yPos != 0)
+			this.fall(currTime);		
+	};
+
+	fall(currTime)
+	{
+		this.yPos -= 10 * currTime / 1000;
+		
+		if(this.yPos < 0)
+			this.yPos = 0.0;
 	};
 
 	setPaint(Paint)

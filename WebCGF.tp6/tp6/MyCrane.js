@@ -83,8 +83,8 @@ class MyCrane extends CGFobject
 		this.baseAngle = Math.PI/2.0;
 		this.lanceAngle = 0;
 
-		this.lanceConstantMov = Math.PI/20 * 1/1000;
-		this.baseConstantMov = Math.PI/20 * 1/1000;
+		this.lanceConstantMov = 1.5*Math.PI/10 * 1/1000;
+		this.baseConstantMov = 1.5*Math.PI/10 * 1/1000;
 				
 		this.carAtPos = false;
 		this.isMoving = false;
@@ -434,9 +434,10 @@ class MyCrane extends CGFobject
 				{
 					this.takeCarToDestination = false;
 					this.carAttached = false;
-					this.scene.car.xPos = 0.0;
-					this.scene.car.yPos = 0.0;
-					this.scene.car.zPos = 20.0;
+					this.scene.car.xPos = 10.0;
+					this.scene.car.yPos = 7.6;
+					this.scene.car.zPos = -18.0;
+					this.scene.car.directionCar += Math.PI/2.0;
 				}
 			}				
 		}	
