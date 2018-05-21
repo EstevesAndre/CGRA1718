@@ -262,7 +262,7 @@ class MyOffRoadCar extends CGFobject
 		{
 			this.model.setTextures();
 		}
-		else // CAMO
+		else if(Paint == 'Camo') // CAMO
 		{			
 			this.model.setTextures(
 						"camouflageTex.jpg",
@@ -272,6 +272,18 @@ class MyOffRoadCar extends CGFobject
 						"",
 						"",
 						"camouflageTex.jpg"
+						);
+		}
+		else // Prof
+		{
+			this.model.setTextures(
+						"carTexture3.jpg",
+						"carTexture3.jpg",
+						"",
+						"carTexture3.jpg",
+						"",
+						"",
+						"carTexture3.jpg"
 						);
 		}
 	};

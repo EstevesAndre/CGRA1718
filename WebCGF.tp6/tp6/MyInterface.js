@@ -33,7 +33,7 @@ class MyInterface extends CGFinterface {
 		var groupCar=this.gui.addFolder("Car");
 		groupCar.open();
 
-		groupCar.add(this.scene, 'Paint', [ 'Flames', 'Camo' ]);
+		groupCar.add(this.scene, 'Paint', [ 'Flames', 'Camo' , 'Prof']);
 		groupCar.add(this.scene, 'MaxFrontSpeed', 0.0, 0.5);
 		groupCar.add(this.scene, 'MaxBackSpeed', 0.0, 0.5);
 
