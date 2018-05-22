@@ -168,7 +168,7 @@ class MyWheel extends CGFobject
 
 	update(currTime)
 	{
-		this.angle += Math.PI * this.speed * currTime / 50;
+		this.angle += this.speed * currTime / 15;
 		this.angle = this.angle%(2*Math.PI);
 	};
 
