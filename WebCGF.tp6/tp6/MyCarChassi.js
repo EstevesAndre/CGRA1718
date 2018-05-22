@@ -13,7 +13,7 @@ class MyCarChassi extends CGFobject
 		this.color = color || 0;
 
 		// yellow
-		this.bar = new MyCylinderwCover(this.scene,true,12,1);
+		this.bar = new MyCylinderwCover(this.scene,12,1);
 
 		// red
 		this.barDown = new MyTrapeziumCylindric(this.scene,2,2,1.5,0);
