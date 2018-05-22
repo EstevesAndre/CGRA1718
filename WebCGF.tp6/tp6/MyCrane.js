@@ -80,8 +80,8 @@ class MyCrane extends CGFobject
 		this.gridCrane3 = this.craneGrid3Texture;
 		this.chooseParts();
 
-		this.baseAngle = Math.PI/2.0;
-		this.lanceAngle = 0;
+		this.baseAngle = Math.PI/3.0;
+		this.lanceAngle = Math.PI/10.0;
 
 		this.lanceConstantMov = 1.5*Math.PI/10 * 1/1000;
 		this.baseConstantMov = 1.5*Math.PI/10 * 1/1000;
@@ -352,6 +352,7 @@ class MyCrane extends CGFobject
 			{	
 				this.scene.translate(0,0,11.55);
 				this.scene.rotate(-Math.PI/2.0,1,0,0);
+				this.scene.rotate(this.scene.car.directionCar - Math.PI,0,1,0);
 				this.scene.car.display();
 			}
 		this.scene.popMatrix();
@@ -365,11 +366,6 @@ class MyCrane extends CGFobject
 	setBaseAngle(currTime)
 	{
 		this.baseAngle += this.baseConstantMov * currTime;
-	};
-
-	setIsMoving(value)
-	{
-		this.isMoving = value || false;
 	};
 
 	setCarAtPos(value)
@@ -405,19 +401,19 @@ class MyCrane extends CGFobject
 	{
 		if(!this.isMoving && this.carAtPos)
 		{
-			this.setIsMoving(true);
+			this.isMoving = true;
 			this.moveToCatchCar = true;
 		}
-
-		if(this.isMoving)
-		{
+		
+		if(this.isMoving || this.carAttached)
+		{			
 			if(this.moveToCatchCar)
 			{
 				if(this.craneMovement(currTime,0,Math.PI/4.0) == 1) 
 				{
 					this.carAttached = true;
-					this.moveToCatchCar = false;
 					this.takeCarToDestination = true;
+					this.moveToCatchCar = false;
 				}
 			}
 			else if (this.takeCarToDestination)
@@ -440,13 +436,17 @@ class MyCrane extends CGFobject
 					this.scene.car.directionCar += Math.PI/2.0;
 				}
 			}				
+		}
+		else
+		{
+			this.craneMovement(currTime,this.scene.BaseAngle,this.scene.LanceAngle);
 		}	
 	};
 
 	checkCarPos(xPos,yPos,zPos)
 	{
-		if(xPos <= -16 && xPos >= -18 && yPos == 0 &&
-		   zPos >= 3.5 && zPos <= 5.5)
+		if(xPos <= -15 && xPos >= -19 && yPos == 0 &&
+		   zPos >= 5 && zPos <= 7)
 		{
 			if(!this.carAtPos)
 				this.carAtPos = true;	
@@ -484,7 +484,9 @@ class MyCrane extends CGFobject
 			this.moveLance(currTime,lanceAngle);
 		}
 		else
+		{
 			return 1;
+		}
 
 		return 0;
 	};

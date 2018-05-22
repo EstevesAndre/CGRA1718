@@ -43,6 +43,12 @@ class MyInterface extends CGFinterface {
 		groupLights.add(this.scene, 'Sun');
 		groupLights.add(this.scene, 'CarLights');
 		
+		var groupCrane=this.gui.addFolder("Crane");
+		groupCrane.open();
+
+		groupCrane.add(this.scene, 'BaseAngle', 0.0,2*Math.PI);
+		groupCrane.add(this.scene, 'LanceAngle', -0.8, 0.65);
+
 		this.initKeys();
 		
 		return true;
