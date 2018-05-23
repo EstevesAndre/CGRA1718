@@ -10,11 +10,13 @@ class MyUnitCubeQuad extends CGFobject
 	{
 		super(scene);
 		
-		this.quad=new MyQuad(this.scene);
-		
-		this.quad.initBuffers();
+		// Object
+			this.quad=new MyQuad(this.scene);
 	};
-	
+
+	/*
+		Render of the Cube
+	*/	
 	display()
 	{
 		this.scene.pushMatrix();

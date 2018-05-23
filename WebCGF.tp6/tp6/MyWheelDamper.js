@@ -2,6 +2,7 @@
  * MyWheelDamper
  * @param gl {WebGLRenderingContext}
  * @constructor
+ * Wheel Damper for the offroad Car
  */
 
 class MyWheelDamper extends CGFobject
@@ -10,23 +11,24 @@ class MyWheelDamper extends CGFobject
 	{
 		super(scene);
 		
-		this.cylinder = new MyCylinder(this.scene,24,1);
-		this.cover = new MyObjectsFrontCircule(this.scene,24,0);
-		this.wheel = new MyObjectsFrontCircule(this.scene,24,0.2);
+		// elements
+			this.cylinder = new MyCylinder(this.scene,24,1);
+			this.cover = new MyObjectsFrontCircule(this.scene,24,0);
+			this.wheel = new MyObjectsFrontCircule(this.scene,24,0.2);
 
-		this.green = new CGFappearance(this.scene);
-		this.green.setAmbient(0.1,1,0.3,1);
-		this.green.setDiffuse(0,0,0,1);
-		this.green.setSpecular(1,1,1,1);
-		this.green.setShininess(120);	
+		// materials
+			this.green = new CGFappearance(this.scene);
+			this.green.setAmbient(0.1,1,0.3,1);
+			this.green.setDiffuse(0,0,0,1);
+			this.green.setSpecular(1,1,1,1);
+			this.green.setShininess(120);	
 
-		this.metal = new CGFappearance(this.scene);
-		this.metal.setAmbient(0.05,0.05,0.05,1);
-		this.metal.setDiffuse(0.2,0.2,0.7,1);
-		this.metal.setSpecular(1,1,1,1);
-		this.metal.setShininess(120);			
+			this.metal = new CGFappearance(this.scene);
+			this.metal.setAmbient(0.05,0.05,0.05,1);
+			this.metal.setDiffuse(0.2,0.2,0.7,1);
+			this.metal.setSpecular(1,1,1,1);
+			this.metal.setShininess(120);			
 	};
-
 
 	display() 
 	{

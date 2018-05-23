@@ -9,44 +9,52 @@ class MyTrapezium extends CGFobject
 	constructor(scene, B, b, h, H, offset) 
 	{
 		super(scene);
+		
+		// Given parameters
+			this.b = b;
+			this.B = B;
+			this.h = h;
+			this.H = H;
+			this.offset = offset;
 
-		this.b = b;
-		this.B = B;
-		this.h = h;
-		this.H = H;
-		this.offset = offset;
+		// Initialized angles for the sides of Trapezium
+			this.angle_R = 0;
+			this.angle_L = 0;
 		
-		this.angle_R = 0;
-		this.angle_L = 0;
-		
-		if(b+offset > B)
-		{
-			this.angle_R = -Math.atan((b+offset-B)/h);
-		}
-		else
-		{			
-			this.angle_R = Math.atan((B-(b+offset))/h);
-		}
+		// Change right and left angle variables	
+			if(b+offset > B)
+			{
+				this.angle_R = -Math.atan((b+offset-B)/h);
+			}
+			else
+			{			
+				this.angle_R = Math.atan((B-(b+offset))/h);
+			}
 
-		if(offset > 0)
-		{			
-			this.angle_L = Math.atan(h/offset) + Math.PI/2.0;
-		}
-		else
-		{			
-			this.angle_L = Math.atan(-offset/h) + Math.PI;
-		}
+			if(offset > 0)
+			{			
+				this.angle_L = Math.atan(h/offset) + Math.PI/2.0;
+			}
+			else
+			{			
+				this.angle_L = Math.atan(-offset/h) + Math.PI;
+			}
 		
-		this.xRight = Math.cos(this.angle_R);
-		this.yRight = Math.sin(this.angle_R);
-		this.xLeft = Math.cos(this.angle_L);
-		this.yLeft = Math.sin(this.angle_L);
+		// x and y values for side normals
+			this.xRight = Math.cos(this.angle_R);
+			this.yRight = Math.sin(this.angle_R);
+			this.xLeft = Math.cos(this.angle_L);
+			this.yLeft = Math.sin(this.angle_L);
 
 		this.initBuffers();
 	};
 
 	initBuffers() 
 	{
+		/*
+			24 vertices, 8 unique
+		 	Each vertice is on 3 faces so the number of unique vertices is times three
+		*/
 		this.vertices = [
 				0,0,0,
 				0,0,0,
@@ -74,7 +82,10 @@ class MyTrapezium extends CGFobject
 				this.B , 0,this.H,
 				this.B , 0,this.H,				
 			];
-
+	
+		/*
+			Indices to create each of the 6 faces
+		*/
 		this.indices = [
 				// left side
 				0,3,6,
@@ -95,7 +106,10 @@ class MyTrapezium extends CGFobject
 				20,23,8,
 				8,23,11
 			];
-
+		
+		/*
+			Normals of the 24 vertices
+		*/
 		this.normals = [
 				0,0,-1,// 0
 				0,-1,0,// 1
@@ -123,7 +137,9 @@ class MyTrapezium extends CGFobject
 				this.xRight,this.yRight,0  // 23					
 			];
 			
-		
+		/*
+			Texture Coordinates
+		*/
 		this.texCoords = [
 				1,1,//0
 				0,1,//1
