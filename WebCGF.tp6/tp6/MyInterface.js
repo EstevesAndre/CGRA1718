@@ -49,6 +49,11 @@ class MyInterface extends CGFinterface {
 		groupCrane.add(this.scene, 'BaseAngle', 0.0,2*Math.PI);
 		groupCrane.add(this.scene, 'LanceAngle', -0.8, 0.65);
 
+		var groupTerrain=this.gui.addFolder("Terrain");
+		groupTerrain.open();
+
+		groupTerrain.add(this.scene, 'floorHeight', 0.1,2.0);
+
 		this.initKeys();
 		
 		return true;

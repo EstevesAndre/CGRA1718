@@ -10,7 +10,9 @@ class MyTerrain extends Plane{
 			this.fillDefaultAltimetry(nrDivs);
 	
 
-		this.redoBuffers();
+		this.redoBuffers(1);
+
+		this.path = this.preparePath();
 	};
 
 	fillDefaultAltimetry(nrDivs)
@@ -28,7 +30,7 @@ class MyTerrain extends Plane{
 		}
 	};
 
-	redoBuffers()
+	redoBuffers(scale)
 	{
 		this.vertices = [];
 		this.normals = [];		
@@ -44,10 +46,10 @@ class MyTerrain extends Plane{
 			var xCoord = -0.5;
 			for (var i = 0; i <= this.nrDivs; i++) 
 			{
-				this.vertices.push(xCoord, yCoord, this.altimetry[j][i]);
+				this.vertices.push(xCoord, yCoord, this.altimetry[j][i] * scale);
 				
 				if(this.altimetry[j][i] != 0)
-					this.normals.push(1,1,0);
+					this.normals.push(1,0,1);
 				else
 					this.normals.push(0,0,1);
 
@@ -81,6 +83,33 @@ class MyTerrain extends Plane{
 		
 		this.primitiveType = this.scene.gl.TRIANGLE_STRIP;
 		this.initGLBuffers();
+	};
+
+	preparePath()
+	{
+		let path = [];
+
+		for(let i = 0; i < this.altimetry.length - 1; i++)
+		{
+			let line = [];
+			for(let j = 0; j < this.altimetry[i].length - 1; j++)
+			{
+				if(this.altimetry[i][j] == 0 &&
+					this.altimetry[i][j+1] == 0 &&
+					this.altimetry[i+1][j] == 0 &&
+					this.altimetry[i+1][j+1] == 0)
+				{
+					line.push(0);
+				}
+				else
+				{					
+					line.push(1);
+				}
+			}
+			path.push(line);
+		}
+
+		return path;	
 	};
 
 };
