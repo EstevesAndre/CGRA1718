@@ -101,7 +101,7 @@ class MyOffRoadCar extends CGFobject
 	{				
 		this.xPos += this.speed * Math.cos(this.directionCar);
 		this.zPos -= this.speed * Math.sin(this.directionCar);
-
+		let ratio = path.length / GROUND_SIZE_WIDTH;
 		let x = 0;
 		let z = 0;
 				
@@ -109,40 +109,40 @@ class MyOffRoadCar extends CGFobject
 		{
 			if(this.directionCar > 3*Math.PI/2.0 || this.directionCar < Math.PI/2.0)
 			{
-				x = Math.round( (this.xPos + GROUND_SIZE_WIDTH/2.0) * 0.8 + Math.abs(Math.cos(this.directionCar)) - 0.1);
+				x = Math.round( (this.xPos + GROUND_SIZE_WIDTH/2.0) * ratio + Math.abs(Math.cos(this.directionCar)) - 0.1);
 			}
 			else
 			{
-				x = Math.round( (this.xPos + GROUND_SIZE_WIDTH/2.0) * 0.8 - Math.abs(Math.cos(this.directionCar)) - 0.6);
+				x = Math.round( (this.xPos + GROUND_SIZE_WIDTH/2.0) * ratio - Math.abs(Math.cos(this.directionCar)) - 0.6);
 			}
 
 			if(this.directionCar > Math.PI && this.directionCar < 2*Math.PI)
 			{
-				z = Math.round( (this.zPos + GROUND_SIZE_WEIGHT/2.0) * 0.8 + Math.abs(Math.sin(this.directionCar))  - 0.1);
+				z = Math.round( (this.zPos + GROUND_SIZE_WEIGHT/2.0) * ratio + Math.abs(Math.sin(this.directionCar))  - 0.1);
 			}
 			else
 			{
-				z = Math.round( (this.zPos + GROUND_SIZE_WEIGHT/2.0) * 0.8 - Math.abs(Math.sin(this.directionCar)) - 0.6);
+				z = Math.round( (this.zPos + GROUND_SIZE_WEIGHT/2.0) * ratio - Math.abs(Math.sin(this.directionCar)) - 0.6);
 			}
 		}
 		else
 		{
 			if(this.directionCar > 3*Math.PI/2.0 || this.directionCar < Math.PI/2.0)
 			{
-				x = Math.round( (this.xPos + GROUND_SIZE_WIDTH/2.0) * 0.8 - Math.abs(Math.cos(this.directionCar)) - 0.8);
+				x = Math.round( (this.xPos + GROUND_SIZE_WIDTH/2.0) * ratio - Math.abs(Math.cos(this.directionCar)) - 0.8);
 			}
 			else
 			{
-				x = Math.round( (this.xPos + GROUND_SIZE_WIDTH/2.0) * 0.8 + Math.abs(Math.cos(this.directionCar)));
+				x = Math.round( (this.xPos + GROUND_SIZE_WIDTH/2.0) * ratio + Math.abs(Math.cos(this.directionCar)));
 			}
 
 			if(this.directionCar > Math.PI && this.directionCar < 2*Math.PI)
 			{
-				z = Math.round( (this.zPos + GROUND_SIZE_WEIGHT/2.0) * 0.8 - Math.abs(Math.sin(this.directionCar)) - 0.8);
+				z = Math.round( (this.zPos + GROUND_SIZE_WEIGHT/2.0) * ratio - Math.abs(Math.sin(this.directionCar)) - 0.8);
 			}
 			else
 			{
-				z = Math.round( (this.zPos + GROUND_SIZE_WEIGHT/2.0) * 0.8 + Math.abs(Math.sin(this.directionCar)) - 0.2);
+				z = Math.round( (this.zPos + GROUND_SIZE_WEIGHT/2.0) * ratio + Math.abs(Math.sin(this.directionCar)) - 0.2);
 			}
 		}
 

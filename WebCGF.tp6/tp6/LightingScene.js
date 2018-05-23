@@ -34,17 +34,46 @@ class LightingScene extends CGFscene
 		this.Paint = "Flames";
 		this.PaintControl = this.Paint;
 
+		/*
+			Sun Light, starts at true
+		*/
 		this.Sun = true;
+
+		/*
+			Car Lights, starts at true
+		*/
 		this.CarLights = true;
+
+		/*
+			Axis, starts at false, i.e. not displayed on Scene
+		*/
 		this.axisDisplay = false;
+
+		/*
+			Test Objects, starts at false, i.e. not displayed on Scene
+		*/
 		this.testDisplay = false;
 
-		this.MaxFrontSpeed = 0.35;
-		this.MaxBackSpeed = 0.1;
+		/*
+			Limits for Car speed
+		*/
+		this.MaxFrontSpeed = 0.3;
+		this.MaxBackSpeed = 0.2;
 
+		/*
+			Inicial angles for Crane (Base and Lance)
+		*/
 		this.BaseAngle = Math.PI/3.0;
 		this.LanceAngle = Math.PI/10.0;
 
+		/*
+			Inicial multiplier for altimetry
+		*/
+		this.floorHeight = 1;
+		
+		/*
+			Clear Color, light blue
+		*/
 		this.gl.clearColor(0.7, 0.7, 1.0, 1.0);
 		this.gl.clearDepth(100.0);
 		this.gl.enable(this.gl.DEPTH_TEST);
@@ -53,68 +82,80 @@ class LightingScene extends CGFscene
 
 		this.axis = new CGFaxis(this);
 
-		let ccc = 0.0;
-
-		this.altimetry= [[ ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc ],
-						 [ ccc, 4.0, 4.0, 3.0, 4.0, 4.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 2.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0, ccc ],
-						 [ ccc, 4.0, 4.0, 3.0, 4.0, 4.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 2.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0, ccc ],
-						 [ ccc, 3.0, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 3.0, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0, ccc ],
-						 [ ccc, 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0, ccc ],
-						 [ ccc, 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 3.5, 4.0, ccc ],
-				   		 [ ccc, 5.5, 2.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 3.5, 4.0, ccc ],
-						 [ ccc, 5.5, 4.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 2.5, 3.0, ccc ],
-						 [ ccc, 6.0, 3.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 2.5, 3.0, ccc ],
-						 [ ccc, 6.0, 4.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 1.5, 2.5, 3.0, ccc ],
-						 [ ccc, 6.5, 4.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 6.5, 4.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0, ccc ],
-						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0, ccc ],
-						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0, ccc ],
-						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 6.5, 7.0, ccc ],
-						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
-				         [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0, ccc ],
-						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0, ccc ],
-						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, 4.5, 5.5, 6.0, ccc ],
-						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0, ccc ],
-						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0, ccc ],
-						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0, ccc ],
-						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.5, 3.5, 4.0, ccc ],
-				         [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 5.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 3.5, 4.5, 5.0, ccc ],
-				         [ ccc, 4.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 3.5, 4.5, 5.0, ccc ],
-						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 5.5, 6.5, 7.0, ccc ],
-						 [ ccc, 3.5, 3.0, 2.5, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 5.5, 6.5, 7.0, ccc ],
-						 [ ccc, 3.5, 3.5, 2.5, 2.5, 2.5, 3.5, 3.5, 3.5, 5.5, 5.5, 5.5, 5.5, 5.5, ccc, ccc, ccc, ccc, ccc, ccc, 5.5, 5.5, 5.5, 5.5, 5.5, 3.5, 3.5, 3.5, 3.5, 2.5, 2.5, 2.5, 2.5, 4.0, 3.0, 3.0, 3.0, 3.5, 5.0, 5.0, ccc ],
-						 [ ccc, 3.5, 3.5, 2.5, 4.0, 4.0, 5.0, 5.0, 5.0, 7.0, 7.0, 7.0, 7.0, 7.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 7.0, 7.0, 7.0, 7.0, 7.0, 5.0, 5.0, 5.0, 5.0, 4.0, 4.0, 4.0, 4.0, 4.5, 4.5, 4.5, 4.5, 3.5, 5.0, 5.0, ccc ],
-						 [ ccc, 3.5, 3.5, 2.5, 4.0, 4.0, 5.0, 5.0, 5.0, 7.0, 7.0, 7.0, 7.0, 7.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 7.0, 7.0, 7.0, 7.0, 7.0, 5.0, 5.0, 5.0, 5.0, 4.0, 4.0, 4.0, 4.0, 4.5, 4.5, 4.5, 4.5, 3.5, 5.0, 5.0, ccc ],				             
-						 [ ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc, ccc ]    
+		/*	
+			Altimetry of terrain
+		*/
+		this.altimetry= [[ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
+						 [ 0.0, 4.0, 4.0, 3.0, 4.0, 4.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 2.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0, 0.0 ],
+						 [ 0.0, 4.0, 4.0, 3.0, 4.0, 4.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 2.0, 2.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 2.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0, 0.0 ],
+						 [ 0.0, 3.0, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 3.0, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.5, 5.5, 6.0, 0.0 ],
+						 [ 0.0, 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.5, 5.5, 6.0, 0.0 ],
+						 [ 0.0, 4.5, 3.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.5, 3.5, 4.0, 0.0 ],
+				   		 [ 0.0, 5.5, 2.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.5, 3.5, 4.0, 0.0 ],
+						 [ 0.0, 5.5, 4.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 2.5, 3.0, 0.0 ],
+						 [ 0.0, 6.0, 3.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 2.5, 3.0, 0.0 ],
+						 [ 0.0, 6.0, 4.0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 2.5, 3.0, 0.0 ],
+						 [ 0.0, 6.5, 4.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 6.5, 4.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 4.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.5, 6.5, 7.0, 0.0 ],
+						 [ 0.0, 4.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.5, 6.5, 7.0, 0.0 ],
+						 [ 0.0, 5.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.5, 6.5, 7.0, 0.0 ],
+						 [ 0.0, 5.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.5, 6.5, 7.0, 0.0 ],
+						 [ 0.0, 5.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 4.5, 5.0, 0.0 ],
+				         [ 0.0, 4.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 4.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 4.0, 4.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 3.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 4.0, 4.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 3.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 4.0, 4.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.5, 5.5, 6.0, 0.0 ],
+						 [ 0.0, 3.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.5, 5.5, 6.0, 0.0 ],
+						 [ 0.0, 3.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.5, 5.5, 6.0, 0.0 ],
+						 [ 0.0, 4.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.5, 3.5, 4.0, 0.0 ],
+						 [ 0.0, 4.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.5, 3.5, 4.0, 0.0 ],
+						 [ 0.0, 4.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.5, 3.5, 4.0, 0.0 ],
+						 [ 0.0, 5.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.5, 3.5, 4.0, 0.0 ],
+				         [ 0.0, 5.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 5.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 4.0, 4.0, 4.0, 4.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 5.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 4.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 4.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 3.5, 4.5, 5.0, 0.0 ],
+				         [ 0.0, 4.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 3.5, 4.5, 5.0, 0.0 ],
+						 [ 0.0, 3.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 5.5, 6.5, 7.0, 0.0 ],
+						 [ 0.0, 3.5, 3.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 2.0, 5.5, 6.5, 7.0, 0.0 ],
+						 [ 0.0, 3.5, 3.5, 2.5, 2.5, 2.5, 3.5, 3.5, 3.5, 5.5, 5.5, 5.5, 5.5, 5.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.5, 5.5, 5.5, 5.5, 5.5, 3.5, 3.5, 3.5, 3.5, 2.5, 2.5, 2.5, 2.5, 4.0, 3.0, 3.0, 3.0, 3.5, 5.0, 5.0, 0.0 ],
+						 [ 0.0, 3.5, 3.5, 2.5, 4.0, 4.0, 5.0, 5.0, 5.0, 7.0, 7.0, 7.0, 7.0, 7.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 7.0, 7.0, 7.0, 7.0, 7.0, 5.0, 5.0, 5.0, 5.0, 4.0, 4.0, 4.0, 4.0, 4.5, 4.5, 4.5, 4.5, 3.5, 5.0, 5.0, 0.0 ],
+						 [ 0.0, 3.5, 3.5, 2.5, 4.0, 4.0, 5.0, 5.0, 5.0, 7.0, 7.0, 7.0, 7.0, 7.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 7.0, 7.0, 7.0, 7.0, 7.0, 5.0, 5.0, 5.0, 5.0, 4.0, 4.0, 4.0, 4.0, 4.5, 4.5, 4.5, 4.5, 3.5, 5.0, 5.0, 0.0 ],				             
+						 [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]    
 						 ];
 
-		let sizeTerrain = (this.altimetry[0].length - 1) || 0;
-
-		this.possiblePath = this.preparePath(this.altimetry);
+		/*
+			Size of Terrain
+		*/
+		let sizeTerrain = (this.altimetry.length - 1) || 0;
 
 
 		// Scene elements
-		this.floor = new MyTerrain(this,sizeTerrain, 0,10,0,10, this.altimetry);		
-		this.car = new MyOffRoadCar(this, this.MaxFrontSpeed, this.MaxBackSpeed);
-		this.crane = new MyCrane(this);	
-		this.platform = new MyUnitCubeQuad(this);
+			/*
+				Terrain with given altimetry
+			*/
+			this.terrain = new MyTerrain(this,sizeTerrain, 0,10,0,10, this.altimetry);		
+			/*
+				Offroad Car
+			*/
+			this.car = new MyOffRoadCar(this, this.MaxFrontSpeed, this.MaxBackSpeed);
+
+			/*
+				
+			*/
+			this.crane = new MyCrane(this);	
+			this.platform = new MyUnitCubeQuad(this);
 
 		// Test elements
 		this.cylinder = new MyCylinderwCover(this,24,6);
 		this.trapezium = new MyTrapezium(this,2,1,1,1,0.5);
 		this.semiSphere = new MySemiSphere(this,24,10,false);
 		this.cover = new MyObjectsFront(this,24,0);
-		
+	
 		// Materials
 		this.materialDefault = new CGFappearance(this);
 		this.materialDefault.setDiffuse(0.25,0.25,0.25,1);
@@ -141,7 +182,7 @@ class LightingScene extends CGFscene
 
 	initCameras() 
 	{
-		this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(30, 30, 30), vec3.fromValues(0, 0, 0));
+		this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(70, 70, 70), vec3.fromValues(0, 0, 0));
 	};
 
 	initLights() 
@@ -203,7 +244,7 @@ class LightingScene extends CGFscene
 			this.terrainAppearance.apply();
 			this.rotate(-90 * degToRad, 1, 0, 0);
 			this.scale(GROUND_SIZE_WIDTH, GROUND_SIZE_WEIGHT, 1);
-			this.floor.display();
+			this.terrain.display();
 		this.popMatrix();
 		
 		this.pushMatrix();
@@ -215,7 +256,7 @@ class LightingScene extends CGFscene
 			
 			if(!this.crane.carAttached)
 			{				
-				this.car.updatePos(this.possiblePath);
+				this.car.updatePos(this.terrain.path);
 				this.translate(this.car.xPos,this.car.yPos,this.car.zPos);
 				this.rotate(this.car.directionCar - Math.PI,0,1,0);			
 				this.lights[1].setPosition(this.car.xPos,this.car.yPos + 2.2, this.car.zPos, 1);
@@ -263,7 +304,15 @@ class LightingScene extends CGFscene
 			this.popMatrix();
 		}
 
-		this.pushMatrix();
+		this.pushMatrix();		
+			
+			this.pushMatrix();
+				this.translate(-17,1.25,-16);
+				this.scale(10, 2.5, 10);
+				this.terrainAppearance.apply();
+				this.platform.display();
+			this.popMatrix();
+			
 			this.translate(-17,2.5,-16);
 			this.rotate(-Math.PI/2.0,1,0,0);			
 			this.crane.display();
@@ -287,33 +336,6 @@ class LightingScene extends CGFscene
 
 		// ---- END Scene drawing section	
 	};
-
-	preparePath(altimetry)
-	{
-		let path = [];
-
-		for(let i = 0; i < altimetry.length - 1; i++)
-		{
-			let line = [];
-			for(let j = 0; j < altimetry[i].length - 1; j++)
-			{
-				if(altimetry[i][j] == 0 &&
-					altimetry[i][j+1] == 0 &&
-					altimetry[i+1][j] == 0 &&
-					altimetry[i+1][j+1] == 0)
-				{
-					line.push(0);
-				}
-				else
-				{					
-					line.push(1);
-				}
-			}
-			path.push(line);
-		}
-
-		return path;
-	}
 
 
 	update(currTime)
@@ -339,7 +361,9 @@ class LightingScene extends CGFscene
 			this.car.update(this.deltaTime);		
 			this.checkKeys(this.deltaTime);
 			this.crane.update(this.deltaTime);	
-		}		
+		}	
+
+		this.terrain.redoBuffers(this.floorHeight);	
 		
 	};
 
