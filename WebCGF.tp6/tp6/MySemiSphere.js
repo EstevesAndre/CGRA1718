@@ -9,8 +9,11 @@ class MySemiSphere extends CGFobject
 	constructor(scene, slices, stacks, debug)
 	{
 		super(scene);
+
 		this.slices = slices;
 		this.stacks = stacks;
+		
+		// debug variable used to confirm the initBuffers function
 		this.debug = debug || false;
 		
 		this.initBuffers();
@@ -31,6 +34,7 @@ class MySemiSphere extends CGFobject
 
 		for(let k = 0; k <= this.stacks; k++)
 		{
+			// last stack
 			if(k == this.stacks)
 			{
 				this.vertices.push(Math.cos((this.slices-1) * angle)*Math.cos(Math.asin(division*(k))), Math.sin((this.slices-1) * angle)*Math.cos(Math.asin(division*(k))), k * division);
@@ -70,8 +74,6 @@ class MySemiSphere extends CGFobject
 					}
 				}
 			}
-			
-		
 		}
 		this.primitiveType=this.scene.gl.TRIANGLES;
 		this.initGLBuffers();

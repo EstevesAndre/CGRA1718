@@ -1,20 +1,38 @@
 class MyTerrain extends Plane{
-
+	
 	constructor(scene, nrDivs, minS, maxS, minT, maxT, altimetry) 
 	{
 		super(scene, nrDivs, minS, maxS, minT, maxT);
 		
+		/*
+			if altimetry(parameter) is defined and the number of columns and rows are equal to nrDivs + 1, the altimetry of the terrain is the give argument
+			else the altimetry for terrain is a matrix of zeros, nrDivs+1 rows and columns 
+		*/
 		if(typeof altimetry !== 'undefined' && altimetry.length == nrDivs+1 && altimetry[0].length == nrDivs+1)			
 			this.altimetry = altimetry;
 		else
 			this.fillDefaultAltimetry(nrDivs);
 	
-
+		/*
+			Redefinition of the buffer of the terrain.
+			given argument is the scale on the z axis. when created is set to 1.
+		*/
 		this.redoBuffers(1);
-
+		
+		/*
+			Possible path to the car depending to the altimetry matrix.
+		*/
 		this.path = this.preparePath();
+
+		/*
+			current Scale
+		*/
+		this.scale = 1;
 	};
 
+	/*
+		Fills the altimetry with zeros, original plane.
+	*/
 	fillDefaultAltimetry(nrDivs)
 	{
 		this.altimetry = [];
@@ -30,6 +48,9 @@ class MyTerrain extends Plane{
 		}
 	};
 
+	/*
+		Redefines the buffers of the terrain given a scale on z axis [0.1,2].
+	*/
 	redoBuffers(scale)
 	{
 		this.vertices = [];
@@ -85,6 +106,9 @@ class MyTerrain extends Plane{
 		this.initGLBuffers();
 	};
 
+	/*
+		Creates the matrix of blocks to use on car colisions.
+	*/
 	preparePath()
 	{
 		let path = [];
@@ -94,6 +118,10 @@ class MyTerrain extends Plane{
 			let line = [];
 			for(let j = 0; j < this.altimetry[i].length - 1; j++)
 			{
+				/*
+					if the altimetry of the 4 vertices of the current block are zero '0' the value on the matrix will be zero, so the car can go through that block
+					otherwise the value on the matrix will be 1 and the car can't go to that place.
+				*/
 				if(this.altimetry[i][j] == 0 &&
 					this.altimetry[i][j+1] == 0 &&
 					this.altimetry[i+1][j] == 0 &&

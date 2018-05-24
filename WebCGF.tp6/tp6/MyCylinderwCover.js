@@ -9,11 +9,10 @@ class MyCylinderwCover extends CGFobject
 	constructor(scene, slices, stacks, side = 1)
 	{
 		super(scene);
-
-		this.cylinder = new MyCylinder(this.scene,slices,stacks);
-		
-		this.cover = new MyObjectsFront(this.scene,slices,0);	
-		
+	
+		// Objects
+			this.cylinder = new MyCylinder(this.scene,slices,stacks);		
+			this.cover = new MyObjectsFront(this.scene,slices,0);			
 	};
 
 

@@ -13,6 +13,10 @@ class MyCylinder extends CGFobject
 		this.stacks = stacks;		
 		this.side = side;
 		
+		/*
+			If the side is -1 the cylinder is turned, so the front face is inside
+			Otherwise is normal side equals to 1. Standard Cylinder
+		*/
 		if(side != -1 && side != 1)
 		{
 			this.side = 1;

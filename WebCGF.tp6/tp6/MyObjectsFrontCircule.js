@@ -10,6 +10,8 @@ class MyObjectsFrontCircule extends CGFobject
 	{
 		super(scene);
 		this.slices = slices;
+
+		// radius is the value for the inside circule. So we can create circules with a hole (radius value) in the center
 		this.radius = radius;
 
 		this.initBuffers();

@@ -10,6 +10,7 @@ class MyCarChassi extends CGFobject
 	{
 		super(scene);
 		
+		// boolean to display the color debug for the car chassi
 		this.color = color || 0;
 
 		// yellow
