@@ -313,17 +313,18 @@ class LightingScene extends CGFscene
 
 		// crane
 		this.pushMatrix();				
-			this.translate(-17,1.25,-16);
 
 			// if the terrain high is less that the high platform of the crane is displayed a support platform on the ground	
 			if(this.floorHeight < 1 || this.sizeTerrain == 0)
 			{
 				this.pushMatrix();
+					this.translate(-17,1.25,-16);
 					this.scale(10, 2.5, 10);
 					this.terrainAppearance.apply();
 					this.platform.display();
 				this.popMatrix();
-			}						
+			}					
+			this.translate(-17,2.5,-16);				
 			this.rotate(-Math.PI/2.0,1,0,0);			
 			this.crane.display();
 		this.popMatrix();		

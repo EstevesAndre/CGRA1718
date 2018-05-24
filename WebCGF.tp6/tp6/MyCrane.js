@@ -447,7 +447,7 @@ class MyCrane extends CGFobject
 
 					// sets position car to destination place
 					this.scene.car.xPos = 10.0;
-					this.scene.car.yPos = 7.6;
+					this.scene.car.yPos = 7.2;
 					this.scene.car.zPos = -18.0;
 
 					// angle of rotation of the crane movement
