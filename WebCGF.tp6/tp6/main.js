@@ -14,7 +14,6 @@ serialInclude([
 	'MyWheel.js',
 	'MyObjectsFrontCircule.js',
 	'MyObjectsFront.js',
-	'MySemiCylinder.js',
 	'MySemiSphere.js',
 	'MyHandWheel.js',
 	'MyCarChassi.js',
