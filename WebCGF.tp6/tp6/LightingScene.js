@@ -285,7 +285,7 @@ class LightingScene extends CGFscene
 		{
 			// trapezium
 			this.pushMatrix();
-				this.translate(-7,4,12.5);
+				this.translate(-7,4*this.floorHeight ,12.5); // keep trapezium on the top
 				this.rotate(Math.PI/2.0,0,1,0);
 				this.scale(2.5,2.5,2.5);
 				this.trapezium.display();
@@ -293,7 +293,7 @@ class LightingScene extends CGFscene
 
 			// cylinder
 			this.pushMatrix();
-				this.translate(15.5,12,18.5);
+				this.translate(15.5,12 + 4*(this.floorHeight-1),18.5); // keep cylinder on the top
 				this.rotate(Math.PI/2.0,0,1,0);
 				this.rotate(Math.PI/2.0,1,0,0);
 				this.scale(2,2,8);
@@ -302,7 +302,7 @@ class LightingScene extends CGFscene
 
 			// Semisphere and cover
 			this.pushMatrix();
-				this.translate(9.5,6,1.5);
+				this.translate(9.5,6 + 4*(this.floorHeight-1),1.5); // keep semiSphere on the top
 				this.rotate(-Math.PI/2.0,0,1,0);
 				this.scale(2,2,2);
 				this.semiSphere.display();
