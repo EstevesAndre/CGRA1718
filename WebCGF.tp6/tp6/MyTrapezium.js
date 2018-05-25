@@ -144,10 +144,12 @@ class MyTrapezium extends CGFobject
 				1,1,//0
 				0,1,//1
 				0,1,//2
-				1,0,//1-this.offset/this.B,0,//3 
+				//1,0,
+				1-this.offset/this.B,0,//3 
 				0,0,//4
 				0,0,//5
-				0,0,//this.offset/this.B,0,//6
+				//0,0,
+				this.offset/this.B,0,//6
 				1,0,//7
 				1,0,//8
 				0,1,//9
@@ -156,10 +158,12 @@ class MyTrapezium extends CGFobject
 				0,1,//12
 				0,0,//13
 				1,1,//14
-				0,0,//this.offset/this.B,0,//15
+				//0,0,
+				this.offset/this.B,0,//15
 				0,1,//16
 				1,0,//17
-				1,0,//1-this.offset/this.B,0,//18
+				//1,0,
+				1-this.offset/this.B,0,//18
 				1,1,//19
 				0,0,//20
 				1,1,//21

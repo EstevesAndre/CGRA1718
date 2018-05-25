@@ -173,7 +173,7 @@ class LightingScene extends CGFscene
 			this.terrainAppearance.setAmbient(0.4,0.4,0.4,1);
 
 			this.materialTest = new CGFappearance(this);
-			this.materialTest.loadTexture("../resources/images/feup.png");
+			this.materialTest.loadTexture("../resources/images/feup.png"); //text
 
 			this.materialStartPlatform = new CGFappearance(this);
 			this.materialStartPlatform.loadTexture("../resources/images/startPlatform.png");
@@ -340,7 +340,7 @@ class LightingScene extends CGFscene
 
 		// End platform
 		this.pushMatrix();
-			this.translate(10,0,-18);
+			this.translate(10,0,-16);
 			this.rotate(-Math.PI/2.0,0,1,0);
 			this.scale(5, 0.1, 3);
 			this.materialEndPlatform.apply();
