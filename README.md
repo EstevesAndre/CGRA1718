@@ -10,18 +10,22 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 
 * Done with [Luís Silva](https://github.com/luisdiogo98)
 
-### ScreenShots
+### Screenshots
 
 #### TP6 - Final Project
 
 * Final state
+
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp6/CGFImage-tp6-T3G10-7.3.png)
 
 * Car
+
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp6/CGFImage-tp6-T3G10-2.4.png)
 
 * GUI
+
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp6/GUI.png)
+
 
 
 #### TP5 - Animation
