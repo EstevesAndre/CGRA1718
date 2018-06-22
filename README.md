@@ -79,9 +79,9 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 
 * Illumination 2
 
-![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp2/CGFImage-tp2-T3G10-3.4.png)
+![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp2/CGFImage‐tp2‐T3G10‐3.4.png)
 
-* End of TP3 - Table and floor with materials
+* End of TP2 - Table and floor with materials
 
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp2/CGFImage‐tp2‐T3G10‐extra.png)
 
