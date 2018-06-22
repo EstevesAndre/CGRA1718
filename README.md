@@ -50,3 +50,16 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 
 ### TP3 - Shading and approximation of curved surfaces
 
+* Trapezium
+
+![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp3/CGFImage-tp3-T3G10-1.3.png)
+
+* Cylinder
+
+![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp3/CGFImage-tp3-T3G10-2.4.png)
+
+* End of TP3
+
+![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp3/CGFImage-tp3-T3G10-extra.png)
+
+
