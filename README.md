@@ -13,9 +13,8 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 ## Screenshots
 
 
-## -----------------------------------------------------------------------------------------------
-### TP6 - Final Project
-## -----------------------------------------------------------------------------------------------
+### TP6 - Final Project [Code](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp6/tp6)
+## ------------------------------------------------------------------------------
 
 
 * Final state
@@ -31,9 +30,8 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp6/GUI.png)
 
 
-## -----------------------------------------------------------------------------------------------
-### TP5 - Animation
-## -----------------------------------------------------------------------------------------------
+### TP5 - Animation [Code](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp5/tp5)
+## ------------------------------------------------------------------------------
 
 
 * End of the straight flight
@@ -47,9 +45,8 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 * Video of the plane movement
 
 
-## -----------------------------------------------------------------------------------------------
-### TP4 - Textures
-## -----------------------------------------------------------------------------------------------
+### TP4 - Textures [Code](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp4/tp4)
+## ------------------------------------------------------------------------------
 
 
 * Class colors
@@ -61,9 +58,8 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp4/CGFImage-tp4-T3G10-extra.png)
 
 
-## -----------------------------------------------------------------------------------------------
-### TP3 - Shading and approximation of curved surfaces
-## -----------------------------------------------------------------------------------------------
+### TP3 - Shading and approximation of curved surfaces [Code](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp3/tp3)
+## ------------------------------------------------------------------------------
 
 
 * Trapezium
@@ -77,5 +73,22 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 * End of TP3
 
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp3/CGFImage-tp3-T3G10-extra.png)
+
+
+### TP2 - Illumination and materials [Code](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp2/tp2)
+## ------------------------------------------------------------------------------
+
+
+* Illumination 1
+
+![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp2/CGFImage‐tp2‐T3G10‐2.8.png)
+
+* Illumination 2
+
+![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp2/CGFImage-tp3-T3G10-3.4.png)
+
+* End of TP3 - Table and floor with materials
+
+![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp2/CGFImage‐tp2‐T3G10‐extra.png)
 
 
