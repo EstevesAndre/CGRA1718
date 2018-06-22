@@ -14,7 +14,6 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 
 
 ### TP6 - Final Project - Code [link](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp6/tp6)
-## ------------------------------------------------------------------------------
 
 
 * Final state
@@ -31,7 +30,6 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 
 
 ### TP5 - Animation - Code [link](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp5/tp5)
-## ------------------------------------------------------------------------------
 
 
 * End of the straight flight
@@ -46,7 +44,6 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 
 
 ### TP4 - Textures - Code [link](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp4/tp4)
-## ------------------------------------------------------------------------------
 
 
 * Class colors
@@ -59,8 +56,6 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 
 
 ### TP3 - Shading and approximation of curved surfaces - Code [link](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp3/tp3)
-## ------------------------------------------------------------------------------
-
 
 * Trapezium
 
