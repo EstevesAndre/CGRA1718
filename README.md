@@ -29,4 +29,8 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 
 
 #### TP5 - Animation
-...
+
+![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp5/CGFImage-tp5-T3G10-extra.png)
+
+
+![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp5/CGFImage-tp5-T3G10-extra-straight.png)
