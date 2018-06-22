@@ -13,7 +13,7 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 ## Screenshots
 
 
-### TP6 - Final Project [Code](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp6/tp6)
+### TP6 - Final Project - Code [link](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp6/tp6)
 ## ------------------------------------------------------------------------------
 
 
@@ -30,7 +30,7 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp6/GUI.png)
 
 
-### TP5 - Animation [Code](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp5/tp5)
+### TP5 - Animation - Code [link](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp5/tp5)
 ## ------------------------------------------------------------------------------
 
 
@@ -45,7 +45,7 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 * Video of the plane movement
 
 
-### TP4 - Textures [Code](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp4/tp4)
+### TP4 - Textures - Code [link](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp4/tp4)
 ## ------------------------------------------------------------------------------
 
 
@@ -58,7 +58,7 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp4/CGFImage-tp4-T3G10-extra.png)
 
 
-### TP3 - Shading and approximation of curved surfaces [Code](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp3/tp3)
+### TP3 - Shading and approximation of curved surfaces - Code [link](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp3/tp3)
 ## ------------------------------------------------------------------------------
 
 
@@ -75,8 +75,7 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp3/CGFImage-tp3-T3G10-extra.png)
 
 
-### TP2 - Illumination and materials [Code](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp2/tp2)
-## ------------------------------------------------------------------------------
+### TP2 - Illumination and materials - Code [link](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp2/tp2)
 
 
 * Illumination 1
@@ -85,7 +84,7 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 
 * Illumination 2
 
-![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp2/CGFImage-tp3-T3G10-3.4.png)
+![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp2/CGFImage-tp2-T3G10-3.4.png)
 
 * End of TP3 - Table and floor with materials
 
