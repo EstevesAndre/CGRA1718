@@ -12,7 +12,11 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 
 ## Screenshots
 
+
+## -----------------------------------------------------------------------------------------------
 ### TP6 - Final Project
+## -----------------------------------------------------------------------------------------------
+
 
 * Final state
 
@@ -27,28 +31,40 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp6/GUI.png)
 
 
-
-
+## -----------------------------------------------------------------------------------------------
 ### TP5 - Animation
+## -----------------------------------------------------------------------------------------------
+
+
+* End of the straight flight
 
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp5/CGFImage-tp5-T3G10-extra.png)
 
+* Straight flight
 
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp5/CGFImage-tp5-T3G10-extra-straight.png)
 
+* Video of the plane movement
 
 
-
+## -----------------------------------------------------------------------------------------------
 ### TP4 - Textures
+## -----------------------------------------------------------------------------------------------
+
+
+* Class colors
+
+![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp4/CGFImage-tp4-T3G10-3.3.png)
+
+* End of TP4 
 
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp4/CGFImage-tp4-T3G10-extra.png)
 
 
-![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp4/CGFImage-tp4-T3G10-3.3.png)
-
-
-
+## -----------------------------------------------------------------------------------------------
 ### TP3 - Shading and approximation of curved surfaces
+## -----------------------------------------------------------------------------------------------
+
 
 * Trapezium
 
