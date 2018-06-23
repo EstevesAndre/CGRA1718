@@ -41,7 +41,7 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 ![alt text](https://github.com/EstevesAndre/CGRA1718/blob/master/WebCGF.tp5/CGFImage-tp5-T3G10-extra-straight.png)
 
 * Video of the plane movement
-
+@[youtube](aeXdJqvqmqc)
 
 ### TP4 - Textures - Code [link](https://github.com/EstevesAndre/CGRA1718/tree/master/WebCGF.tp4/tp4)
 
