@@ -17,7 +17,7 @@ Library used: WebCGF - [Documentation Site](https://paginas.fe.up.pt/~ruirodrig/
 
 * Demonstration Video 
 
-@[youtube](https://www.youtube.com/watch?v=aeXdJqvqmqc)
+[![Demonstration](https://img.youtube.com/vi/aeXdJqvqmqc/0.jpg)](https://www.youtube.com/watch?v=aeXdJqvqmqc)
 
 * Final state
 
